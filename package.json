@@ -1,0 +1,8 @@
+{
+  "name": "super-enigma-fe",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/IlonaMenkui/super-enigma-fe",
+  "author": "IlonaMenkui <ilonaspolding@gmail.com>",
+  "license": "MIT"
+}
