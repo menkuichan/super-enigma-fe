@@ -8,7 +8,7 @@ export const HeaderTab = styled.button`
   padding: 20px 30px;
   ${({ index, value }) =>
     (index === value
-      ? 'color: orange;'
+      ? 'color: #F79B0E;'
       : '')}
   :focus {
     { outline: none }
