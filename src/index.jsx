@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Hello from './components/Hello';
+import Header from './containers/Header';
 
 ReactDOM.render(
-  <Hello />,
+  <Header />,
   document.getElementById('root'),
 );
