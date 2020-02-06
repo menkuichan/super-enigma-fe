@@ -8,4 +8,7 @@ export const HeaderTab = styled.button`
     (index === value
       ? 'color: orange;'
       : '')}
+  :focus {
+    { outline: none }
+  }
 `;
