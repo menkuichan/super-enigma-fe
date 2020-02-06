@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const TabsWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   background-color: #110F10;
+  align-items: center;
 `;

@@ -1,6 +1,9 @@
 import React from 'react';
 
 import HeaderTabs from '../../components/HeaderTabs';
+import Logo from '../../components/Logo';
+
+import { HeaderWrapper } from './style';
 
 export class Header extends React.PureComponent {
   constructor(props) {
@@ -18,12 +21,13 @@ export class Header extends React.PureComponent {
   render() {
     const { value } = this.state;
     return (
-      <header>
+      <HeaderWrapper>
+        <Logo />
         <HeaderTabs
           onClickTab={this.handleChange}
           value={value}
         />
-      </header>
+      </HeaderWrapper>
     );
   }
 }

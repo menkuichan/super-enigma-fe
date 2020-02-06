@@ -1,5 +1,5 @@
 const HEADER_TABS = [
-  'Popular', 'Upcoming', 'Most rated',
+  'Popular', 'Now playing', 'Upcoming', 'Most rated',
 ];
 
 export default HEADER_TABS;
