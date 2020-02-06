@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tab from './Tab';
+import Tab from './NavLink';
 
 import { NAV_LINKS } from '../../constants';
-import { TabsWrapper } from './style';
 
 const HeaderTabs = ({ value, onClickTab }) => (
-  <TabsWrapper>
+  <div>
     {NAV_LINKS.map((title, index) => (
       <Tab
         onClickTab={onClickTab}
@@ -16,7 +15,7 @@ const HeaderTabs = ({ value, onClickTab }) => (
         title={title}
       />
     ))}
-  </TabsWrapper>
+  </div>
 );
 
 HeaderTabs.propTypes = {

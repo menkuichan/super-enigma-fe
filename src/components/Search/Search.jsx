@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { SearchInput } from './style';
 
 const Search = ({ searchQuery, onChange, onEnterPress }) => {
-  console.log(searchQuery);
   return (
     <SearchInput
       placeholder="Search…"

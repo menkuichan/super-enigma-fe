@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import HeaderTabs from '../HeaderTabs';
+import HeaderTabs from '../HeaderNav';
 import Logo from '../Icons/Logo';
 import Search from '../Search';
 

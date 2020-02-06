@@ -6,8 +6,8 @@ export const SearchInput = styled.input`
   color: #f2f2f2;
   font-size: 15px;
   background-color: #110F10;
-  border-bottom: solid #716F73 2px;
+  border-bottom: 2px solid #716F73;
   &:focus {
-    { outline: none }
+    outline: none;
   }
 `;
