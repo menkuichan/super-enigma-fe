@@ -7,9 +7,6 @@ export const HeaderWrapper = styled.header`
   align-items: center;
 `;
 
-export const SearchWrapper = styled.div`
-`;
-
 export const TabsWrapper = styled.div`
   display: flex;
   justify-content: start;

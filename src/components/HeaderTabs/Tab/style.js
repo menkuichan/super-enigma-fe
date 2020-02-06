@@ -3,13 +3,9 @@ import styled from 'styled-components';
 export const HeaderTab = styled.button`
   border: none;
   background: none;
-  color: #f2f2f2;
   font-size: 15px;
   padding: 20px 30px;
-  ${({ index, value }) =>
-    (index === value
-      ? 'color: #F79B0E;'
-      : '')}
+  color: ${({ index, value }) => (index === value ? '#f79b0e' : '#f2f2f2')};
   :focus {
     { outline: none }
   }

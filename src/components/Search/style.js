@@ -8,7 +8,7 @@ export const SearchInput = styled.input`
   font-size: 15px;
   background-color: #110F10;
   border-bottom: solid #716F73 2px;
-  :focus {
+  &:focus {
     { outline: none }
   }
 `;

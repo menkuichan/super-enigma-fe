@@ -1,5 +1,3 @@
-const HEADER_TABS = [
+export const NAV_LINKS = [
   'Popular', 'Now playing', 'Upcoming', 'Most rated',
 ];
-
-export default HEADER_TABS;
