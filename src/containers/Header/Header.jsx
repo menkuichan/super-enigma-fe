@@ -2,8 +2,9 @@ import React from 'react';
 
 import HeaderTabs from '../../components/HeaderTabs';
 import Logo from '../../components/Logo';
+import Search from '../../components/Search';
 
-import { HeaderWrapper } from './style';
+import { HeaderWrapper, SearchWrapper, TabsWrapper } from './style';
 
 export class Header extends React.PureComponent {
   constructor(props) {
@@ -22,11 +23,16 @@ export class Header extends React.PureComponent {
     const { value } = this.state;
     return (
       <HeaderWrapper>
-        <Logo />
-        <HeaderTabs
-          onClickTab={this.handleChange}
-          value={value}
-        />
+        <TabsWrapper>
+          <Logo />
+          <HeaderTabs
+            onClickTab={this.handleChange}
+            value={value}
+          />
+        </TabsWrapper>
+        <SearchWrapper>
+          <Search />
+        </SearchWrapper>
       </HeaderWrapper>
     );
   }

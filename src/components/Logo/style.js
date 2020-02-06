@@ -4,5 +4,4 @@ export const Svg = styled.svg`
   margin-left: 20px;
 `;
 
-export const Rectangle = styled.rect`
-`;
+export default Svg;
