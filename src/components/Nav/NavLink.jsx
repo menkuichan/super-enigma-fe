@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { Link } from './styles';
+import { LinkButton } from './styles';
 
 const NavLink = ({
   title, value, index, onClickLink,
 }) => (
-  <Link
+  <LinkButton
     onClick={() => onClickLink(index)}
     value={value}
     index={index}
   >
     {title}
-  </Link>
+  </LinkButton>
 );
 
 NavLink.propTypes = {

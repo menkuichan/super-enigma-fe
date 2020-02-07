@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import SearchIcon from '../Icons/SearchIcon';
 import { ENTER_KEY } from '../../constants';
 import { SearchWrapper, SearchInput } from './styles';
 
-const Input = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+const Search = () => {
+  const [value, setvalue] = useState('');
 
   const onEnterPress = (e) => {
     if (e.charCode === ENTER_KEY) {
-      setSearchQuery(searchQuery);
+      setvalue(value);
     }
   };
 
   const onHandleChange = (e) => {
-    setSearchQuery(e.target.value);
+    setvalue(e.target.value);
   };
 
   return (
@@ -23,11 +22,11 @@ const Input = () => {
         placeholder="Search…"
         onKeyPress={onEnterPress}
         onChange={onHandleChange}
-        value={searchQuery}
+        value={value}
       />
       <SearchIcon />
     </SearchWrapper>
   );
 };
 
-export default Input;
+export default Search;

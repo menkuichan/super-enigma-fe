@@ -17,18 +17,18 @@ const Logo = ({
   </svg>
 );
 
-Logo.defaultProps = {
-  fill: 'none',
-  width: '30',
-  height: '30',
-  viewBox: '0 0 30 30',
-};
-
 Logo.propTypes = {
   fill: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
   viewBox: PropTypes.string,
+};
+
+Logo.defaultProps = {
+  fill: 'none',
+  width: '30',
+  height: '30',
+  viewBox: '0 0 30 30',
 };
 
 export default Logo;

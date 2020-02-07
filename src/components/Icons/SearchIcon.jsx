@@ -9,18 +9,18 @@ const SearchIcon = ({
   </svg>
 );
 
-SearchIcon.defaultProps = {
-  fill: 'none',
-  width: '16',
-  height: '16',
-  viewBox: '0 0 16 16',
-};
-
 SearchIcon.propTypes = {
   fill: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
   viewBox: PropTypes.string,
+};
+
+SearchIcon.defaultProps = {
+  fill: 'none',
+  width: '16',
+  height: '16',
+  viewBox: '0 0 16 16',
 };
 
 export default SearchIcon;

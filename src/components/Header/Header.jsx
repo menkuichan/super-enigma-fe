@@ -1,21 +1,17 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-import HeaderNav from '../HeaderNav';
-import Logo from '../Icons/Logo';
-import Input from '../Search';
+import styled from 'styled-components';
 
-import { HeaderWrapper, NavWrapper } from './styles';
+const Header = styled.header`
+  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: ${(props) => props.theme.main.color};
+  align-items: center;
+`;
 
-const Header = () => (
-  <HeaderWrapper>
-    <NavWrapper>
-      <Logo />
-      <HeaderNav />
-    </NavWrapper>
-    <div>
-      <Input />
-    </div>
-  </HeaderWrapper>
-);
+Header.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Header;
