@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Hello from './components/Hello';
+import { ThemeProvider } from 'styled-components';
+import MoviesPage from './Pages/MoviePage';
+import { theme } from './theme';
 
 ReactDOM.render(
-  <Hello />,
+  <ThemeProvider theme={theme}>
+    <MoviesPage />
+  </ThemeProvider>,
   document.getElementById('root'),
 );
