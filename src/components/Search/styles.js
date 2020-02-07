@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import defaultTheme from '../../theme';
 
 export const SearchInput = styled.input`
   border: 0;
-  width: 200px;
   color: ${(props) => props.theme.main.gray};
   font-size: 15px;
   background-color: ${(props) => props.theme.main.color};
@@ -11,6 +11,10 @@ export const SearchInput = styled.input`
     outline: none;
   }
 `;
+
+SearchInput.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const SearchWrapper = styled.div`
   display: flex;
