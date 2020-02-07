@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const HeaderTab = styled.button`
+export const Link = styled.button`
   border: none;
   background: none;
   font-size: 15px;
   padding: 20px 30px;
-  color: ${({ index, value }) => (index === value ? '#f79b0e' : '#f2f2f2')};
+  color: ${({ index, value, theme }) => (index === value ? theme.main.orange : theme.main.gray)};
   :focus {
-    { outline: none }
+    outline: none
   }
 `;

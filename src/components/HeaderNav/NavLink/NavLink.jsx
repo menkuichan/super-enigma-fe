@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { HeaderTab } from './styles';
+import { Link } from './styles';
 
 const NavLink = ({
   title, value, index, onClickLink,
 }) => (
-  <HeaderTab
+  <Link
     onClick={() => onClickLink(index)}
     value={value}
     index={index}
   >
     {title}
-  </HeaderTab>
+  </Link>
 );
 
 NavLink.propTypes = {
