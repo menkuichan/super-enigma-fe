@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
 `;
 
-export const TabsWrapper = styled.div`
+export const NavWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;

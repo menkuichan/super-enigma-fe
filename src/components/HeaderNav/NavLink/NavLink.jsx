@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { HeaderTab } from './style';
 
-const Tab = ({
-  title, value, index, onClickTab,
+const NavLink = ({
+  title, value, index, onClickLink,
 }) => (
   <HeaderTab
-    onClick={() => onClickTab(index)}
+    onClick={() => onClickLink(index)}
     value={value}
     index={index}
   >
@@ -15,11 +15,11 @@ const Tab = ({
   </HeaderTab>
 );
 
-Tab.propTypes = {
+NavLink.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
-  onClickTab: PropTypes.func.isRequired,
+  onClickLink: PropTypes.func.isRequired,
 };
 
-export default Tab;
+export default NavLink;

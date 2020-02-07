@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import HeaderTabs from '../HeaderNav';
+import HeaderNav from '../HeaderNav';
 import Logo from '../Icons/Logo';
 import Search from '../Search';
 
 import { ENTER_KEY } from '../../constants';
 
-import { HeaderWrapper, TabsWrapper } from './style';
+import { HeaderWrapper, NavWrapper } from './style';
 
 const Header = () => {
   const [value, setValue] = useState(0);
@@ -24,13 +24,13 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <TabsWrapper>
+      <NavWrapper>
         <Logo />
-        <HeaderTabs
-          onClickTab={setValue}
+        <HeaderNav
+          onClickLink={setValue}
           value={value}
         />
-      </TabsWrapper>
+      </NavWrapper>
       <div>
         <Search
           onChange={onHandleChange}

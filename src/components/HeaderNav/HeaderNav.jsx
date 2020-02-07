@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tab from './NavLink';
+import NavLink from './NavLink';
 
 import { NAV_LINKS } from '../../constants';
 
-const HeaderTabs = ({ value, onClickTab }) => (
+const HeaderNav = ({ value, onClickLink }) => (
   <div>
     {NAV_LINKS.map((title, index) => (
-      <Tab
-        onClickTab={onClickTab}
+      <NavLink
+        onClickLink={onClickLink}
         value={value}
         index={index}
         title={title}
@@ -18,9 +18,9 @@ const HeaderTabs = ({ value, onClickTab }) => (
   </div>
 );
 
-HeaderTabs.propTypes = {
+HeaderNav.propTypes = {
   value: PropTypes.number.isRequired,
-  onClickTab: PropTypes.func.isRequired,
+  onClickLink: PropTypes.func.isRequired,
 };
 
-export default HeaderTabs;
+export default HeaderNav;
