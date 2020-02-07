@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SearchInput } from './style';
+import { SearchInput } from './styles';
 
 const Search = ({ searchQuery, onChange, onEnterPress }) => {
   // state + fuctions

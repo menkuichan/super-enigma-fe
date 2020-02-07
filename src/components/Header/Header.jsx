@@ -6,7 +6,7 @@ import Search from '../Search';
 
 import { ENTER_KEY } from '../../constants';
 
-import { HeaderWrapper, NavWrapper } from './style';
+import { HeaderWrapper, NavWrapper } from './styles';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
