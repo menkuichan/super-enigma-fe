@@ -9,7 +9,6 @@ import { ENTER_KEY } from '../../constants';
 import { HeaderWrapper, NavWrapper } from './style';
 
 const Header = () => {
-  const [value, setValue] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
   const onEnterPress = (e) => {
@@ -26,10 +25,7 @@ const Header = () => {
     <HeaderWrapper>
       <NavWrapper>
         <Logo />
-        <HeaderNav
-          onClickLink={setValue}
-          value={value}
-        />
+        <HeaderNav />
       </NavWrapper>
       <div>
         <Search

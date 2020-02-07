@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/Header';
+import MoviesPage from './components/Pages/MoviesPage';
 
 ReactDOM.render(
-  <Header />,
+  <MoviesPage />,
   document.getElementById('root'),
 );

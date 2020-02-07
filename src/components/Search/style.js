@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const SearchInput = styled.input`
   border: none;
   width: 200px;
@@ -7,6 +8,7 @@ export const SearchInput = styled.input`
   font-size: 15px;
   background-color: #110F10;
   border-bottom: 2px solid #716F73;
+
   &:focus {
     outline: none;
   }
