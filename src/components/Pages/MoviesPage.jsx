@@ -3,7 +3,9 @@ import React from 'react';
 import Header from '../Header';
 
 const MoviesPage = () => (
-  <Header />
+  <div>
+    <Header />
+  </div>
 );
 
 export default MoviesPage;

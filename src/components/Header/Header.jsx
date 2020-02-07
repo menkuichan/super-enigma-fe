@@ -20,7 +20,6 @@ const Header = () => {
   const onHandleChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
   return (
     <HeaderWrapper>
       <NavWrapper>
