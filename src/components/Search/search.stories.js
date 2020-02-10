@@ -1,14 +1,6 @@
 import React from 'react';
-import { Button } from '@storybook/react/demo';
+import { storiesOf } from '@storybook/react'; // eslint-disable-line
+import Search from '.';
 
-export default { title: 'Button' };
-
-export const withText = () => <Button>Hello Button</Button>;
-
-export const withEmoji = () => (
-  <Button>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
+storiesOf('Search', module).add('default',
+  () => <Search />); // eslint-disable-line

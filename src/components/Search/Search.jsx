@@ -1,31 +1,46 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import SearchIcon from '../Icons/SearchIcon';
-import { ENTER_KEY } from '../../constants';
+import List from './List';
+import { API_URL } from '../../constants';
 import { SearchWrapper, SearchInput } from './styles';
 
 const Search = () => {
-  const [value, setvalue] = useState('');
+  const [value, setValue] = useState('');
+  const [data, setData] = useState([]);
 
-  const onEnterPress = (e) => {
-    if (e.charCode === ENTER_KEY) {
-      setvalue(value);
+  const onHandleChange = async (e) => {
+    const currentValue = e.target.value;
+    setValue(currentValue);
+    if (!currentValue.length) {
+      setData([]);
+    }
+    if (currentValue.trim().length) {
+      const { data: { movies } } = await axios.get(`${API_URL}/movies`,
+        {
+          params: {
+            title: e.target.value,
+            page: 1,
+            perPage: 5,
+          },
+        });
+      setData(movies);
     }
   };
 
-  const onHandleChange = (e) => {
-    setvalue(e.target.value);
-  };
 
   return (
-    <SearchWrapper>
-      <SearchInput
-        placeholder="Search…"
-        onKeyPress={onEnterPress}
-        onChange={onHandleChange}
-        value={value}
-      />
-      <SearchIcon />
-    </SearchWrapper>
+    <div>
+      <SearchWrapper>
+        <SearchInput
+          placeholder="Search…"
+          onChange={onHandleChange}
+          value={value}
+        />
+        <SearchIcon />
+      </SearchWrapper>
+      <List movies={data} />
+    </div>
   );
 };
 
