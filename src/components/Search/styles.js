@@ -42,19 +42,24 @@ export const Item = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 25px;
   width: 230px;
-  padding: 15px 10px;
-  color: ${(props) => props.textColor}
+  padding: 10px;
+  color: ${(props) => props.textColor};
 `;
 
 export const Poster = styled.img`
-  width: 30px;
+  width: 33px;
 `;
 
 export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 210px;
-  margin-left: 5px;
+  margin-left: 10px;
+`;
+
+export const Description = styled.div`
+  font-family: Open Sans;
+  font-size: ${(props) => props.textSize};
+  font-weight: ${(props) => props.fontWeight};
 `;
