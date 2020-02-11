@@ -21,13 +21,12 @@ const Search = () => {
           params: {
             title: e.target.value,
             page: 1,
-            perPage: 5,
+            perPage: 3,
           },
         });
       setData(movies);
     }
   };
-
 
   return (
     <div>
@@ -39,7 +38,7 @@ const Search = () => {
         />
         <SearchIcon />
       </SearchWrapper>
-      <List movies={data} />
+      {value.length ? <List movies={data} /> : <div />}
     </div>
   );
 };

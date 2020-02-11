@@ -29,19 +29,32 @@ SearchWrapper.defaultProps = {
   theme: defaultTheme,
 };
 
-export const Item = styled.div`
-  flex-direction: row;
-  height: 25px;
-  width: 220px;
-  padding: 6px 15px;
-  padding: 6px 15px;
-`;
-
 export const ListWrapper = styled.div`
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   background-color: whitesmoke;
   border-radius: 3px;
+  position: absolute;
+`;
+
+export const Item = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+  width: 230px;
+  padding: 15px 10px;
+  color: ${(props) => props.textColor}
 `;
 
 export const Poster = styled.img`
+  width: 30px;
+`;
+
+export const DescriptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  margin-left: 5px;
 `;
