@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import SearchIcon from '../Icons/SearchIcon';
+import moviesAPI from '../../api/movies';
 import List from './List';
-import { API_URL } from '../../constants';
-import { SearchWrapper, SearchInput } from './styles';
+import { LIST_PAGE, LIST_PER_PAGE } from '../../constants';
+import { SearchWrapper, SearchInput, IconContainer } from './styles';
 
 const Search = () => {
   const [value, setValue] = useState('');
@@ -16,14 +16,11 @@ const Search = () => {
       setData([]);
     }
     if (currentValue.trim().length) {
-      const { data: { movies } } = await axios.get(`${API_URL}/movies`,
-        {
-          params: {
-            title: e.target.value,
-            page: 1,
-            perPage: 3,
-          },
-        });
+      const { movies } = await moviesAPI.get({
+        title: e.target.value,
+        page: LIST_PAGE,
+        perPage: LIST_PER_PAGE,
+      });
       setData(movies);
     }
   };
@@ -36,7 +33,9 @@ const Search = () => {
           onChange={onHandleChange}
           value={value}
         />
-        <SearchIcon />
+        <IconContainer>
+          <SearchIcon />
+        </IconContainer>
       </SearchWrapper>
       {value.length ? <List movies={data} /> : <div />}
     </div>

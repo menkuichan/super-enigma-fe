@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ListWrapper, Item, Poster, DescriptionWrapper, Description,
+  ListWrapper, Item, Poster, Info, Title, Overview,
 } from './styles';
 
 const List = ({ movies = [] }) => {
@@ -19,15 +19,17 @@ const List = ({ movies = [] }) => {
           <Item
             key={index} // eslint-disable-line
           >
-            <Poster src={`https://image.tmdb.org/t/p/w94_and_h141_bestv2${movie.poster_path}`} />
-            <DescriptionWrapper>
-              <Description fontWeight="bold" textSize="16px">
+            <Poster
+              src={`https://image.tmdb.org/t/p/w94_and_h141_bestv2${movie.poster_path}`}
+            />
+            <Info>
+              <Title>
                 {`${movie.title} ${getYear(movie.release_date)}`}
-              </Description>
-              <Description textSize="12px">
-                {`${movie.overview.slice(0, 27).trim()}...`}
-              </Description>
-            </DescriptionWrapper>
+              </Title>
+              <Overview>
+                {`${movie.overview}`}
+              </Overview>
+            </Info>
           </Item>
         ))
         : <Item textColor="gray">No results</Item>}
