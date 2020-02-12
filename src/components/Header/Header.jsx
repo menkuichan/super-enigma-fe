@@ -6,7 +6,7 @@ const Header = styled.header`
   padding: 0 20px 0 20px;
   display: flex;
   justify-content: space-between;
-  background-color: ${({ theme: { header: { colors } } }) => colors.darkGray};
+  background-color: ${({ theme: { header } }) => header.background};
   align-items: center;
 `;
 

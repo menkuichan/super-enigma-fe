@@ -5,7 +5,7 @@ const inputHeight = 31;
 
 export const SearchInput = styled.input`
   border: 0;
-  color: ${({ theme: { header: { colors } } }) => colors.lightGray};
+  color: ${({ theme: { header } }) => header.text};
   font-size: 15px;
   background-color: transparent;
   padding: 6px 15px;
@@ -33,7 +33,7 @@ export const SearchWrapper = styled.div`
 export const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 3px;
   width: 100%;
   left: 0;
@@ -47,12 +47,11 @@ export const Item = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   padding: 10px;
-  color: ${(props) => props.textColor};
   cursor: pointer;
-  border-bottom: 1px solid ${({ theme: { search: { colors } } }) => colors.borderBottom};
+  border-bottom: 1px solid ${({ theme: { search } }) => search.borderBottom};
 
   &:hover {
-    background-color: ${({ theme: { search: { colors } } }) => colors.itemHover};
+    background-color: ${({ theme: { search } }) => search.itemHover};
     border-radius: ${({ theme: { search } }) => search.borderRadius};
   }
 

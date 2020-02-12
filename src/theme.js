@@ -1,16 +1,12 @@
 export default {
   header: {
-    colors: {
-      darkGray: '#110F10',
-      orange: '#f79b0e',
-      lightGray: '#808080',
-    },
+    background: '#110F10',
+    activeLink: '#f79b0e',
+    text: '#808080',
   },
   search: {
     borderRadius: '3px',
-    colors: {
-      borderBottom: 'rgba(204, 204, 204, 0.4)',
-      itemHover: '#ddc753',
-    },
+    borderBottom: '#cccccc',
+    itemHover: '#ddc753',
   },
 };
