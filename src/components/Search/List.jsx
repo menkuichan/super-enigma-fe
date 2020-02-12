@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { POSTER_BASE_URL } from '../../constants';
 import {
   ListWrapper, Item, Poster, Info, Title, Overview,
 } from './styles';
@@ -20,7 +21,7 @@ const List = ({ movies = [] }) => {
             key={index} // eslint-disable-line
           >
             <Poster
-              src={`https://image.tmdb.org/t/p/w94_and_h141_bestv2${movie.poster_path}`}
+              src={`${POSTER_BASE_URL}${movie.poster_path}`}
             />
             <Info>
               <Title>
