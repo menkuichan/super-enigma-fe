@@ -3,7 +3,9 @@ import SearchIcon from '../Icons/SearchIcon';
 import moviesAPI from '../../api/movies';
 import List from './List';
 import { LIST_PAGE, LIST_PER_PAGE } from '../../constants';
-import { SearchWrapper, SearchInput, IconContainer } from './styles';
+import {
+  SearchWrapper, SearchInput, IconContainer, InputContainer,
+} from './styles';
 
 const Search = () => {
   const [value, setValue] = useState('');
@@ -15,7 +17,7 @@ const Search = () => {
     if (!currentValue.length) {
       setData([]);
     }
-    if (currentValue.trim().length) {
+    if (currentValue.trim().length > 0) {
       const { movies } = await moviesAPI.get({
         title: e.target.value,
         page: LIST_PAGE,
@@ -26,8 +28,8 @@ const Search = () => {
   };
 
   return (
-    <div>
-      <SearchWrapper>
+    <SearchWrapper>
+      <InputContainer>
         <SearchInput
           placeholder="Search…"
           onChange={onHandleChange}
@@ -36,9 +38,9 @@ const Search = () => {
         <IconContainer>
           <SearchIcon />
         </IconContainer>
-      </SearchWrapper>
-      {value.length ? <List movies={data} /> : <div />}
-    </div>
+      </InputContainer>
+      {value.length > 0 ? <List movies={data} /> : <div />}
+    </SearchWrapper>
   );
 };
 

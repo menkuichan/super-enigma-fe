@@ -5,38 +5,33 @@ import {
   ListWrapper, Item, Poster, Info, Title, Overview,
 } from './styles';
 
-const List = ({ movies = [] }) => {
-  const getYear = (date) => {
-    if (date) {
-      return `(${new Date(date).getFullYear()})`;
-    }
-    return '';
-  };
+const getTitle = (title, date) => {
+  if (date) {
+    return `${title} (${new Date(date).getFullYear()})`;
+  }
+  return title;
+};
 
-  return (
-    <ListWrapper>
-      {(movies.length)
-        ? movies.map((movie, index) => (
-          <Item
-            key={index} // eslint-disable-line
-          >
-            <Poster
-              src={`${POSTER_BASE_URL}${movie.poster_path}`}
-            />
+const List = ({ movies = [] }) => (
+  <ListWrapper>
+    {movies.length > 0
+      ? movies.map((movie, index) => (
+          // eslint-disable-next-line
+          <Item key={index}>
+            <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
             <Info>
-              <Title>
-                {`${movie.title} ${getYear(movie.release_date)}`}
+              <Title title={getTitle(movie.title, movie.release_date)}>
+                {getTitle(movie.title, movie.release_date)}
               </Title>
               <Overview>
-                {`${movie.overview}`}
+                {movie.overview}
               </Overview>
             </Info>
           </Item>
-        ))
-        : <Item textColor="gray">No results</Item>}
-    </ListWrapper>
-  );
-};
+      ))
+      : <Item textColor="gray">No results</Item>}
+  </ListWrapper>
+);
 
 List.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,

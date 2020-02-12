@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import defaultTheme from '../../theme';
 
+const inputHeight = 31;
+
 export const SearchInput = styled.input`
   border: 0;
-  color: ${(props) => props.theme.main.gray};
+  color: ${({ theme: { header: { colors } } }) => colors.lightGray};
   font-size: 15px;
   background-color: transparent;
   padding: 6px 15px;
   border: 1px solid #716F73;
   border-radius: 5px;
+  height: ${inputHeight}px;
+  width: 100%;
 
   &:focus {
     outline: none;
@@ -26,17 +30,14 @@ export const SearchWrapper = styled.div`
   position: relative;
 `;
 
-SearchWrapper.defaultProps = {
-  theme: defaultTheme,
-};
-
 export const ListWrapper = styled.div`
   display: flex;
-  flex: 0;
-  margin-top: 5px;
   flex-direction: column;
   background-color: white;
   border-radius: 3px;
+  width: 100%;
+  left: 0;
+  top: ${inputHeight + 5}px;
   position: absolute;
 `;
 
@@ -45,15 +46,24 @@ export const Item = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
-  width: 230px;
   padding: 10px;
   color: ${(props) => props.textColor};
   cursor: pointer;
+  border-bottom: 1px solid ${({ theme: { search: { colors } } }) => colors.borderBottom};
 
   &:hover {
-    background-color: #ddc753;
+    background-color: ${({ theme: { search: { colors } } }) => colors.itemHover};
+    border-radius: ${({ theme: { search } }) => search.borderRadius};
+  }
+
+  &:last-child {
+    border-bottom: none;
   }
 `;
+
+Item.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const Poster = styled.img`
   width: 30px;
@@ -96,4 +106,8 @@ export const IconContainer = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  margin-right: 5px;
+`;
+
+export const InputContainer = styled.div`
 `;
