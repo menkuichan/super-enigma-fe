@@ -1,30 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SearchIcon from '../Icons/SearchIcon';
-import { ENTER_KEY } from '../../constants';
-import { SearchWrapper, SearchInput } from './styles';
+import moviesAPI from '../../api/movies';
+import List from './List';
+import useDebounce from '../../hooks/useDebounce';
+import useOutsideClick from '../../hooks/useOutsideClick';
+import { SEARCH_PARAMS, EVENT_TYPE } from '../../constants';
+import {
+  SearchWrapper, SearchInput, IconContainer, InputContainer,
+} from './styles';
 
 const Search = () => {
-  const [value, setvalue] = useState('');
+  const [value, setValue] = useState('');
+  const [data, setData] = useState([]);
+  const debouncedValue = useDebounce(value, 200);
 
-  const onEnterPress = (e) => {
-    if (e.charCode === ENTER_KEY) {
-      setvalue(value);
+  const wrapperRef = useRef(null);
+  useOutsideClick(wrapperRef, () => setData([]), EVENT_TYPE.MOUSEDOWN);
+
+  useEffect(() => {
+    if (value && value.trim().length >= 2) {
+      moviesAPI.get({
+        title: value,
+        page: SEARCH_PARAMS.REQUEST_PAGE,
+        perPage: SEARCH_PARAMS.REQUEST_PER_PAGE,
+      }).then(({ movies }) => setData(movies));
+    } else {
+      setData([]);
     }
-  };
+  }, [debouncedValue]);
 
-  const onHandleChange = (e) => {
-    setvalue(e.target.value);
+  const onHandleChange = (event) => {
+    setValue(event.target.value);
   };
 
   return (
-    <SearchWrapper>
-      <SearchInput
-        placeholder="Search…"
-        onKeyPress={onEnterPress}
-        onChange={onHandleChange}
-        value={value}
-      />
-      <SearchIcon />
+    <SearchWrapper ref={wrapperRef}>
+      <InputContainer>
+        <SearchInput
+          placeholder="Type to search…"
+          onChange={onHandleChange}
+          value={value}
+        />
+        <IconContainer>
+          <SearchIcon />
+        </IconContainer>
+      </InputContainer>
+      {(data.length > 0) && <List value={value} movies={data} />}
     </SearchWrapper>
   );
 };
