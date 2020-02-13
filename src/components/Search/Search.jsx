@@ -14,13 +14,15 @@ const Search = () => {
   const debouncedValue = useDebounce(value, 1000);
 
   useEffect(() => {
-    if (value && value.trim().length > 0) {
+    if (value && value.trim().length >= 2) {
       moviesAPI.get({
         title: value,
         page: SEARCH_PARAMS.REQUEST_PAGE,
         perPage: SEARCH_PARAMS.REQUEST_PER_PAGE,
       }).then(({ movies }) => setData(movies));
-    } else setData([]);
+    } else {
+      setData([]);
+    }
   }, [debouncedValue]);
 
   const onHandleChange = (event) => {
@@ -40,7 +42,7 @@ const Search = () => {
           <SearchIcon />
         </IconContainer>
       </InputContainer>
-      {debouncedValue.length > 0 && <List movies={data} />}
+      {data.length > 0 && <List value={value} movies={data} />}
     </SearchWrapper>
   );
 };

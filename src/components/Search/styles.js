@@ -39,6 +39,7 @@ export const ListWrapper = styled.div`
   left: 0;
   top: ${inputHeight + 5}px;
   position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Item = styled.div`
