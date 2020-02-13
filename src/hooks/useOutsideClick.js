@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default (ref, callback) => {
+export default (ref, callback, eventType) => {
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
       callback();
@@ -8,9 +8,9 @@ export default (ref, callback) => {
   }
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener(eventType, handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener(eventType, handleClickOutside);
     };
   });
 };

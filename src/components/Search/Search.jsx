@@ -4,7 +4,7 @@ import moviesAPI from '../../api/movies';
 import List from './List';
 import useDebounce from '../../hooks/useDebounce';
 import useOutsideClick from '../../hooks/useOutsideClick';
-import { SEARCH_PARAMS } from '../../constants';
+import { SEARCH_PARAMS, EVENT_TYPE } from '../../constants';
 import {
   SearchWrapper, SearchInput, IconContainer, InputContainer,
 } from './styles';
@@ -12,11 +12,10 @@ import {
 const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
-  const [isListOpen, setListOpen] = useState(false);
   const debouncedValue = useDebounce(value, 200);
 
   const wrapperRef = useRef(null);
-  useOutsideClick(wrapperRef, () => setListOpen(false));
+  useOutsideClick(wrapperRef, () => setData([]), EVENT_TYPE.MOUSEDOWN);
 
   useEffect(() => {
     if (value && value.trim().length >= 2) {
@@ -25,7 +24,6 @@ const Search = () => {
         page: SEARCH_PARAMS.REQUEST_PAGE,
         perPage: SEARCH_PARAMS.REQUEST_PER_PAGE,
       }).then(({ movies }) => setData(movies));
-      setListOpen(true);
     } else {
       setData([]);
     }
@@ -47,7 +45,7 @@ const Search = () => {
           <SearchIcon />
         </IconContainer>
       </InputContainer>
-      {(data.length > 0 && isListOpen) && <List value={value} movies={data} />}
+      {(data.length > 0) && <List value={value} movies={data} />}
     </SearchWrapper>
   );
 };
