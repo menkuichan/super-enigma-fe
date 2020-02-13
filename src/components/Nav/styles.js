@@ -5,7 +5,7 @@ export const LinkButton = styled.button`
   background: none;
   font-size: 15px;
   padding: 20px 30px;
-  color: ${({ index, value, theme: { header } }) => (index === value ? header.activeLink : header.text)};
+  color: ${({ index, value, theme }) => (index === value ? theme.header.activeLink : theme.header.text)};
 
   &:focus {
     outline: none

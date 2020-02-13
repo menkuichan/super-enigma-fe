@@ -13,7 +13,7 @@ const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
   const [isListOpen, setListOpen] = useState(false);
-  const debouncedValue = useDebounce(value, 1000);
+  const debouncedValue = useDebounce(value, 200);
 
   const wrapperRef = useRef(null);
   useOutsideClick(wrapperRef, () => setListOpen(false));
@@ -32,8 +32,7 @@ const Search = () => {
   }, [debouncedValue]);
 
   const onHandleChange = (event) => {
-    const { value: currValue } = event.target;
-    setValue(currValue);
+    setValue(event.target.value);
   };
 
   return (

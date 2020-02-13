@@ -5,7 +5,7 @@ const inputHeight = 31;
 
 export const SearchInput = styled.input`
   border: 0;
-  color: ${({ theme: { header } }) => header.text};
+  color: ${({ theme }) => theme.header.text};
   font-size: 15px;
   background-color: transparent;
   padding: 6px 15px;
@@ -49,11 +49,11 @@ export const Item = styled.div`
   align-items: flex-start;
   padding: 10px;
   cursor: pointer;
-  border-bottom: 1px solid ${({ theme: { search } }) => search.borderBottom};
+  border-bottom: 1px solid ${({ theme }) => theme.search.borderBottom};
 
   &:hover {
-    background-color: ${({ theme: { search } }) => search.itemHover};
-    border-radius: ${({ theme: { search } }) => search.borderRadius};
+    background-color: ${({ theme }) => theme.search.itemHover};
+    border-radius: ${({ theme }) => theme.borderRadius};
   }
 
   &:last-child {
