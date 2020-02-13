@@ -16,18 +16,18 @@ const List = ({ movies = [] }) => (
   <ListWrapper>
     {movies.length > 0
       ? movies.map((movie, index) => (
-        // eslint-disable-next-line
-        <Item key={index}>
-          <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
-          <Info>
-            <Title title={getTitle(movie.title, movie.release_date)}>
-              {getTitle(movie.title, movie.release_date)}
-            </Title>
-            <Overview>
-              {movie.overview}
-            </Overview>
-          </Info>
-        </Item>
+          // eslint-disable-next-line
+          <Item key={index}>
+            <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
+            <Info>
+              <Title title={getTitle(movie.title, movie.release_date)}>
+                {getTitle(movie.title, movie.release_date)}
+              </Title>
+              <Overview>
+                {movie.overview}
+              </Overview>
+            </Info>
+          </Item>
       ))
       : (
         <Item>

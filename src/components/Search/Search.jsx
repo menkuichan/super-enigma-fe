@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchIcon from '../Icons/SearchIcon';
 import moviesAPI from '../../api/movies';
 import List from './List';
+import useDebounce from '../../hooks/useDebounce';
 import { SEARCH_PARAMS } from '../../constants';
 import {
   SearchWrapper, SearchInput, IconContainer, InputContainer,
@@ -10,21 +11,21 @@ import {
 const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
+  const debouncedValue = useDebounce(value, 1000);
 
-  const onHandleChange = async (e) => {
-    const currentValue = e.target.value;
-    setValue(currentValue);
-    if (!currentValue.length) {
-      setData([]);
-    }
-    if (currentValue.trim().length > 0) {
-      const { movies } = await moviesAPI.get({
-        title: e.target.value,
+  useEffect(() => {
+    if (value && value.trim().length > 0) {
+      moviesAPI.get({
+        title: value,
         page: SEARCH_PARAMS.REQUEST_PAGE,
         perPage: SEARCH_PARAMS.REQUEST_PER_PAGE,
-      });
-      setData(movies);
-    }
+      }).then(({ movies }) => setData(movies));
+    } else setData([]);
+  }, [debouncedValue]);
+
+  const onHandleChange = (event) => {
+    const { value: currValue } = event.target;
+    setValue(currValue);
   };
 
   return (
@@ -39,7 +40,7 @@ const Search = () => {
           <SearchIcon />
         </IconContainer>
       </InputContainer>
-      {value.length > 0 && <List movies={data} />}
+      {debouncedValue.length > 0 && <List movies={data} />}
     </SearchWrapper>
   );
 };
