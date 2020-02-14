@@ -7,7 +7,7 @@ export const SEARCH_PARAMS = {
   REQUEST_PAGE: 1,
   REQUEST_PER_PAGE: 3,
 };
-export const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w94_and_h141_bestv2';
+export const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
 
 export const EVENT_TYPE = {
   MOUSEDOWN: 'mousedown',

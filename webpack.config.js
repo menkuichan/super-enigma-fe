@@ -22,4 +22,8 @@ module.exports = {
       filename: 'index.html',
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+    port: 8888,
+  },
 };

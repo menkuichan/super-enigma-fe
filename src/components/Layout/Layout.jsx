@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
-import Logo from '../../components/Icons/Logo';
-import { Nav, NavLink } from '../../components/Nav';
-import Search from '../../components/Search';
+import PropTypes from 'prop-types';
+import Header from '../Header';
+import Logo from '../Icons/Logo';
+import { Nav, NavLink } from '../Nav';
+import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
-const MoviesPage = () => {
+const Layout = ({ children }) => {
   const [value, setValue] = useState(0);
 
   return (
@@ -30,8 +31,13 @@ const MoviesPage = () => {
           <Search />
         </div>
       </Header>
+      {children}
     </div>
   );
 };
 
-export default MoviesPage;
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Layout;
