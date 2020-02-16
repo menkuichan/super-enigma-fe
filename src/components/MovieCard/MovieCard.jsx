@@ -4,17 +4,17 @@ import {
   CardContainer, PosterContainer, Poster, Info, Title, Rating,
 } from './styles';
 
-const MovieCard = () => (
+const MovieCard = ({ title, vote_average, poster_path }) => (
   <CardContainer>
     <PosterContainer>
-      <Poster src={`${POSTER_BASE_URL}/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg`} />
+      <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
     </PosterContainer>
     <Info>
       <Title>
-        John Wick
+        {title}
       </Title>
       <Rating>
-        7.1 | 58888 rates
+        {vote_average}
       </Rating>
     </Info>
   </CardContainer>
