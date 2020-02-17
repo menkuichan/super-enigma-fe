@@ -4,11 +4,10 @@ import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ThemeProvider } from 'styled-components';
-
 import Layout from './components/Layout';
-import MovieCard from './components/MovieCard';
+import MovieDescription from './components/MovieDescription';
 import GlobalStyles from './components/GlobalStyles';
-import MoviesView from './components/views/MoviesView';
+import MoviesView from './pages/MoviesView';
 import { configureStore } from './store';
 import theme from './theme';
 
@@ -23,12 +22,13 @@ ReactDOM.render(
         <Layout>
           <Switch>
             <Route
+              exact
               path="/movies"
               component={MoviesView}
             />
             <Route
               path="/movies/:id"
-              component={MovieCard}
+              component={MovieDescription}
             />
           </Switch>
         </Layout>

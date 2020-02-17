@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-
-import { loadMovies } from '../../../store/actions/movies';
-
-import Component from './MoviesView';
+import { loadMovies } from '../../store/actions/movies';
+import Component from './Movies';
 
 const mapStateToProps = ({
   movies: { data },

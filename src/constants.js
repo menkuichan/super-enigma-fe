@@ -8,7 +8,6 @@ export const SEARCH_PARAMS = {
   REQUEST_PER_PAGE: 3,
 };
 export const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
-
 export const EVENT_TYPE = {
   MOUSEDOWN: 'mousedown',
 };

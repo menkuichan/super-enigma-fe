@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import getMovies from '../../../api/movies';
-import MoviesList from '../../MoviesList/MoviesList';
+import getMovies from '../../api/movies';
+import MoviesList from '../../components/MoviesList/MoviesList';
 import { MoviesViewContainer } from './styles';
 
 const MoviesView = ({ movies, loadMovies }) => {

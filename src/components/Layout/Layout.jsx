@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   const [value, setValue] = useState(0);
 
   return (
-    <div>
+    <>
       <Header>
         <NavWrapper>
           <Logo />
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
         </div>
       </Header>
       {children}
-    </div>
+    </>
   );
 };
 

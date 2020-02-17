@@ -2,6 +2,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.jsx'],
+  output: {
+    filename: 'bundle.js',
+    publicPath: '/',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -23,7 +27,12 @@ module.exports = {
     }),
   ],
   devServer: {
-    historyApiFallback: true,
     port: 8888,
+    publicPath: '/',
+    historyApiFallback: {
+      index: '/index.html',
+    },
+    inline: true,
+    hot: true,
   },
 };

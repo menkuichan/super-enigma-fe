@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const MoviesViewContainer = styled.div`
-  background-color: ${({ theme }) => theme.moviesView.background};
+  padding-top: 57px;
+  background-color: ${({ theme }) => theme.movies.background};
 `;

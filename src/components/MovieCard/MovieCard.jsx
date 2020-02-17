@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { POSTER_BASE_URL } from '../../constants';
 import StarIcon from '../Icons/StarIcon';
 import {
@@ -7,12 +8,14 @@ import {
 } from './styles';
 
 const MovieCard = ({
-  title, vote_average, vote_count, poster_path,
+  title, vote_average, vote_count, poster_path, id,
 }) => (
   <CardContainer>
-    <PosterContainer>
-      <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
-    </PosterContainer>
+    <Link to={`/movies/${id}`}>
+      <PosterContainer>
+        <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+      </PosterContainer>
+    </Link>
     <Info>
       <Title>
         {title}
@@ -30,6 +33,7 @@ const MovieCard = ({
 );
 
 MovieCard.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
   vote_count: PropTypes.number.isRequired,
