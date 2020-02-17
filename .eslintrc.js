@@ -20,7 +20,8 @@ module.exports = {
   ],
   rules: {
     'import/prefer-default-export': 0,
-    "react-hooks/rules-of-hooks": 'error',
-    "react-hooks/exhaustive-deps": 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'camelcase': 0,
   },
 };

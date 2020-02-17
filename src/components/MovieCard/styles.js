@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 250px;
+  margin: 40px;
 `;
 
 export const PosterContainer = styled.div`
@@ -28,7 +29,7 @@ export const Title = styled.h1`
   margin-top: 0;
   font-size: 18px;
   font-weight: 600;
-  line-height: 18px;
+  color: white;
 `;
 
 export const Rating = styled.p`
@@ -40,4 +41,5 @@ export const Rating = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: ${({ theme }) => theme.moviesView.text};
 `;

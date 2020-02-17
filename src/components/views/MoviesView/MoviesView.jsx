@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import getMovies from '../../../api/movies';
 import MoviesList from '../../MoviesList/MoviesList';
+import { MoviesViewContainer } from './styles';
 
 const MoviesView = ({ movies, loadMovies }) => {
   useEffect(() => {
     getMovies
       .get({
         page: 1,
-        perPage: 3,
+        perPage: 20,
       })
       .then((m) => {
         loadMovies(m.movies);
@@ -15,10 +17,15 @@ const MoviesView = ({ movies, loadMovies }) => {
   }, []);
 
   return (
-    <div>
+    <MoviesViewContainer>
       <MoviesList movies={movies} />
-    </div>
+    </MoviesViewContainer>
   );
+};
+
+MoviesView.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loadMovies: PropTypes.func.isRequired,
 };
 
 export default MoviesView;
