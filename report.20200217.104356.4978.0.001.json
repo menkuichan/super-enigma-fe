@@ -1,0 +1,455 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200217.104356.4978.0.001.json",
+    "dumpEventTime": "2020-02-17T10:43:56Z",
+    "dumpEventTimeStamp": "1581925436871",
+    "processId": 4978,
+    "cwd": "/home/menkuichan@instinctools.ru/projects/super-enigma-fe",
+    "commandLine": [
+      "/usr/local/bin/node",
+      "/home/menkuichan@instinctools.ru/projects/super-enigma-fe/node_modules/.bin/webpack-dev-server",
+      "--open",
+      "--mode",
+      "development"
+    ],
+    "nodejsVersion": "v13.2.0",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "13.2.0",
+      "v8": "7.9.317.23-node.20",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "79",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v13.2.0/node-v13.2.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v13.2.0/node-v13.2.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-72-generic",
+    "osVersion": "#81-Ubuntu SMP Tue Nov 26 12:20:02 UTC 2019",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-6600 CPU @ 3.30GHz",
+        "speed": 3645,
+        "user": 5395000,
+        "nice": 7700,
+        "sys": 1135400,
+        "idle": 36934100,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6600 CPU @ 3.30GHz",
+        "speed": 3658,
+        "user": 5454200,
+        "nice": 9300,
+        "sys": 1180400,
+        "idle": 36608000,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6600 CPU @ 3.30GHz",
+        "speed": 3653,
+        "user": 5404900,
+        "nice": 7500,
+        "sys": 1166100,
+        "idle": 36806500,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6600 CPU @ 3.30GHz",
+        "speed": 3702,
+        "user": 5583000,
+        "nice": 8400,
+        "sys": 1152300,
+        "idle": 36695600,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "enp0s31f6",
+        "internal": false,
+        "mac": "40:8d:5c:b1:6f:b1",
+        "address": "172.31.1.205",
+        "netmask": "255.255.254.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "docker0",
+        "internal": false,
+        "mac": "02:42:bf:02:5b:f7",
+        "address": "172.17.0.1",
+        "netmask": "255.255.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "enp0s31f6",
+        "internal": false,
+        "mac": "40:8d:5c:b1:6f:b1",
+        "address": "fe80::282e:5ad6:ec94:5632",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      },
+      {
+        "name": "docker0",
+        "internal": false,
+        "mac": "02:42:bf:02:5b:f7",
+        "address": "fe80::42:bfff:fe02:5bf7",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 3
+      },
+      {
+        "name": "vetha660fba",
+        "internal": false,
+        "mac": "ea:45:ca:b7:87:05",
+        "address": "fe80::e845:caff:feb7:8705",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 7
+      },
+      {
+        "name": "veth8a10376",
+        "internal": false,
+        "mac": "5e:43:ca:6d:d3:d1",
+        "address": "fe80::5c43:caff:fe6d:d3d1",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      }
+    ],
+    "host": "menkuichan"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b16525",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000000009f261c",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b4c04e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b4c3c9",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf9ee5",
+      "symbol": " [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cfa576",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0978f",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0a615",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0d0ac",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cd3b94",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000001020cce",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000000013a1179",
+      "symbol": " [/usr/local/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2190786560,
+    "totalCommittedMemory": 2171463872,
+    "usedMemory": 2149252304,
+    "availableMemory": 37489264,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33328,
+        "capacity": 33040,
+        "used": 33040,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 14749960,
+        "capacity": 16758784,
+        "used": 4935144,
+        "available": 11823640
+      },
+      "old_space": {
+        "memorySize": 2102235136,
+        "committedMemory": 2102069304,
+        "capacity": 2092789304,
+        "used": 2090911200,
+        "available": 1878104
+      },
+      "code_space": {
+        "memorySize": 2265088,
+        "committedMemory": 2141728,
+        "capacity": 1754592,
+        "used": 1754592,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 2625536,
+        "committedMemory": 2625328,
+        "capacity": 1923200,
+        "used": 1923200,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 49221632,
+        "committedMemory": 49221632,
+        "capacity": 49150584,
+        "used": 49150584,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 544544,
+        "used": 544544,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16758784,
+        "used": 0,
+        "available": 16758784
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 114.961,
+    "kernelCpuSeconds": 12.3795,
+    "cpuConsumptionPercent": 3.33353,
+    "maxRss": 3309215744,
+    "pageFaults": {
+      "IORequired": 45,
+      "IONotRequired": 1588367
+    },
+    "fsActivity": {
+      "reads": 119404,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 47.8699,
+    "kernelCpuSeconds": 3.40714,
+    "cpuConsumptionPercent": 1.34233,
+    "fsActivity": {
+      "reads": 12496,
+      "writes": 16
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "SUDO_GID": "291200513",
+    "MAIL": "/var/mail/root",
+    "LANGUAGE": "en_GB:en",
+    "LC_TIME": "be_BY.UTF-8",
+    "USER": "root",
+    "npm_package_devDependencies_webpack_cli": "^3.3.10",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_user_agent": "yarn/1.21.1 npm/? node/v13.2.0 linux x64",
+    "npm_config_bin_links": "true",
+    "npm_node_execpath": "/usr/local/bin/node",
+    "npm_config_init_version": "1.0.0",
+    "HOME": "/home/menkuichan@instinctools.ru",
+    "npm_config_init_license": "MIT",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_config_version_tag_prefix": "v",
+    "LC_MONETARY": "be_BY.UTF-8",
+    "npm_package_devDependencies_eslint_plugin_react_hooks": "^0.0.0-241c4467e",
+    "COLORTERM": "truecolor",
+    "npm_package_description": "React application for viewing detailed information about films with the ability to search and filter.",
+    "npm_package_devDependencies_babel_loader": "^8.0.6",
+    "npm_package_dependencies_react_router_dom": "^5.1.2",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_devDependencies__babel_preset_env": "^7.8.4",
+    "SUDO_UID": "291207904",
+    "LOGNAME": "root",
+    "npm_package_devDependencies_eslint_plugin_import": "^2.20.1",
+    "npm_package_devDependencies__babel_preset_react": "^7.8.3",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "TERM": "xterm-256color",
+    "USERNAME": "root",
+    "npm_package_devDependencies__babel_core": "^7.8.4",
+    "npm_package_dependencies_redux_logger": "^3.0.6",
+    "npm_package_devDependencies_html_webpack_plugin": "^3.2.0",
+    "npm_package_scripts_start": "webpack-dev-server --open --mode development",
+    "npm_config_ignore_scripts": "",
+    "npm_package_dependencies_axios": "^0.19.2",
+    "npm_package_author_email": "ilonaspolding@gmail.com",
+    "PATH": "/tmp/yarn--1581921616317-0.26360550551799755:/home/menkuichan@instinctools.ru/projects/super-enigma-fe/node_modules/.bin:/usr/local/share/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin",
+    "NODE": "/usr/local/bin/node",
+    "npm_package_repository_type": "git",
+    "npm_package_name": "super-enigma-fe",
+    "LC_ADDRESS": "be_BY.UTF-8",
+    "npm_package_devDependencies_eslint_plugin_jsx_a11y": "^6.2.3",
+    "npm_package_devDependencies__babel_cli": "^7.8.4",
+    "npm_package_dependencies_react_redux": "^7.1.3",
+    "DISPLAY": ":0",
+    "npm_package_devDependencies_eslint_config_airbnb": "^18.0.1",
+    "LANG": "en_GB.UTF-8",
+    "LC_TELEPHONE": "be_BY.UTF-8",
+    "npm_package_devDependencies_webpack": "^4.41.5",
+    "npm_package_devDependencies_eslint": "^6.8.0",
+    "npm_package_dependencies_redux": "^4.0.5",
+    "npm_package_dependencies_react_dom": "^16.12.0",
+    "npm_package_dependencies_history": "^4.10.1",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "XAUTHORITY": "/run/user/291207904/gdm/Xauthority",
+    "npm_lifecycle_script": "webpack-dev-server --open --mode development",
+    "npm_package_dependencies__babel_polyfill": "^7.8.3",
+    "npm_package_main": "index.js",
+    "SUDO_COMMAND": "/usr/bin/yarn start",
+    "npm_package_devDependencies_webpack_dev_server": "^3.10.3",
+    "npm_config_version_git_message": "v%s",
+    "LC_NAME": "be_BY.UTF-8",
+    "KRB5CCNAME": "FILE:/tmp/krb5cc_291207904_LSRYTr",
+    "SHELL": "/bin/bash",
+    "npm_lifecycle_event": "start",
+    "npm_package_repository_url": "https://github.com/IlonaMenkui/super-enigma-fe",
+    "npm_package_version": "0.1.0",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_package_scripts_build": "webpack --mode production",
+    "SUDO_USER": "menkuichan@instinctools.ru",
+    "LC_MEASUREMENT": "be_BY.UTF-8",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_git_sign": "",
+    "LC_IDENTIFICATION": "be_BY.UTF-8",
+    "npm_package_devDependencies_eslint_plugin_react": "^7.18.3",
+    "npm_package_license": "MIT",
+    "npm_config_strict_ssl": "true",
+    "PWD": "/home/menkuichan@instinctools.ru/projects/super-enigma-fe",
+    "npm_execpath": "/usr/share/yarn/bin/yarn.js",
+    "npm_package_author_name": "IlonaMenkui",
+    "LC_NUMERIC": "be_BY.UTF-8",
+    "npm_package_dependencies_styled_components": "^5.0.1",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_config_save_prefix": "^",
+    "npm_config_ignore_optional": "",
+    "LC_PAPER": "be_BY.UTF-8",
+    "npm_package_scripts_storybook": "start-storybook",
+    "npm_package_devDependencies__storybook_react": "^5.3.12",
+    "INIT_CWD": "/home/menkuichan@instinctools.ru/projects/super-enigma-fe",
+    "npm_package_dependencies_react": "^16.12.0",
+    "WEBPACK_DEV_SERVER": "true"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 4096,
+      "hard": 4096
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 127801,
+      "hard": 127801
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/lib/x86_64-linux-gnu/libnss_files.so.2"
+  ]
+}

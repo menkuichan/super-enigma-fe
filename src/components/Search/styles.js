@@ -53,7 +53,7 @@ export const Item = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.search.itemHover};
-    border-radius: ${({ theme }) => theme.borderRadius};
+    border-radius: ${({ theme }) => theme.search.borderRadius};
   }
 
   &:last-child {

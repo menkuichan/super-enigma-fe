@@ -9,9 +9,15 @@ export const PosterContainer = styled.div`
 `;
 
 export const Poster = styled.img`
+  vertical-align: middle;
   max-width: 100%;
-  border-radius: 15px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: ${({ theme }) => theme.moviesView.borderRadius};
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    border-radius: ${({ theme }) => theme.moviesView.borderRadius};
+    box-shadow: 2px 2px 8px ${({ theme }) => theme.moviesView.boxShadow};;
+  }
 `;
 
 export const Info = styled.div`
@@ -42,4 +48,13 @@ export const Rating = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${({ theme }) => theme.moviesView.text};
+`;
+
+export const IconContainer = styled.div`
+  transform: translateY(-5%);
+  margin-right: 5px;
+`;
+
+export const RatingContainer = styled.div`
+  display: flex;
 `;

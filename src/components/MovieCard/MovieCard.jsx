@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { POSTER_BASE_URL } from '../../constants';
+import StarIcon from '../Icons/StarIcon';
 import {
-  CardContainer, PosterContainer, Poster, Info, Title, Rating,
+  CardContainer, PosterContainer, Poster, Info, Title, Rating, IconContainer, RatingContainer,
 } from './styles';
 
 const MovieCard = ({
@@ -16,9 +17,14 @@ const MovieCard = ({
       <Title>
         {title}
       </Title>
-      <Rating>
-        {`${vote_average} | ${vote_count}`}
-      </Rating>
+      <RatingContainer>
+        <IconContainer>
+          <StarIcon />
+        </IconContainer>
+        <Rating>
+          {`${vote_average} | ${vote_count}`}
+        </Rating>
+      </RatingContainer>
     </Info>
   </CardContainer>
 );
