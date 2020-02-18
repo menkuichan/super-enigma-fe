@@ -4,8 +4,10 @@ import Component from './Movies';
 
 const mapStateToProps = ({
   movies: { data },
+  query,
 }) => ({
   movies: data,
+  query,
 });
 const mapDispatchToProps = {
   loadMovies,

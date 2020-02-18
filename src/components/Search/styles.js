@@ -79,6 +79,8 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.h1`
+  color: inherit;
+  text-decoration: inherit;
   font-family: 'Open Sans', sans-serif;
   white-space: nowrap;
   overflow: hidden;

@@ -5,7 +5,7 @@ import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination';
 import { MoviesViewContainer } from './styles';
 
-const MoviesView = ({ movies, loadMovies }) => {
+const MoviesView = (props) => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -20,15 +20,15 @@ const MoviesView = ({ movies, loadMovies }) => {
         perPage: 20,
       })
       .then((data) => {
-        loadMovies(data.movies);
+        props.loadMovies(data.movies);
         setTotalPages(data.totalPages);
       });
   }, [page]);
-
+console.log(props)
   return (
     <MoviesViewContainer>
       <Pagination page={page} totalPages={totalPages} handleClick={handleChangePage} />
-      <MoviesList movies={movies} />
+      <MoviesList movies={props.movies} />
     </MoviesViewContainer>
   );
 };
