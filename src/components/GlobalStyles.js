@@ -5,7 +5,7 @@ export default createGlobalStyle`
   ${normalize}
 
   a {
-    color: inherit; /* blue colors for links too */
+    color: inherit;
     text-decoration: inherit;
   }
 
