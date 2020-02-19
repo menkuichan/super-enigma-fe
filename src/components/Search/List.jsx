@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
   ListWrapper, Item, Poster, Info, Title, Overview,
@@ -19,7 +20,9 @@ const List = ({ movies }) => (
       // eslint-disable-next-line
       <Link to={`/movies/${movie.id}`}>
         <Item key={index}>
-          <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
+          {movies.poster_path
+            ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
+            : <Poster src={EmptyPoster} />}
           <Info>
             <Title title={getTitle(movie.title, movie.release_date)}>
               {getTitle(movie.title, movie.release_date)}

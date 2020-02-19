@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { POSTER_BASE_URL } from '../../constants';
 import StarIcon from '../Icons/StarIcon';
+import EmptyPoster from '../../../assets/empty-poster.png';
 import {
   CardContainer, PosterContainer, Poster, Info, Title, Rating, IconContainer, RatingContainer,
 } from './styles';
@@ -13,7 +14,9 @@ const MovieCard = ({
   <CardContainer>
     <Link to={`/movies/${id}`}>
       <PosterContainer>
-        <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+        {poster_path
+          ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+          : <Poster src={EmptyPoster} />}
       </PosterContainer>
     </Link>
     <Info>

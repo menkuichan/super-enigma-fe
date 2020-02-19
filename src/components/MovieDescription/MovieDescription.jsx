@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import moviesAPI from '../../api/movies';
 import StarIcon from '../Icons/StarIcon';
+import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
   MovieContainer, PosterContainer, Poster, Title, Info, RatingContainer,
@@ -23,7 +24,9 @@ const MovieDescription = () => {
   return (
     <MovieContainer>
       <PosterContainer>
-        <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+        {poster_path
+          ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+          : <Poster src={EmptyPoster} />}
       </PosterContainer>
       <Info>
         <Title>
