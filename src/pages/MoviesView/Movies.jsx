@@ -24,6 +24,7 @@ const MoviesView = ({ movies, loadMovies }) => {
         setTotalPages(data.totalPages);
       });
   }, [page]);
+
   return (
     <MoviesViewContainer>
       <Pagination page={page} totalPages={totalPages} handleClick={handleChangePage} />

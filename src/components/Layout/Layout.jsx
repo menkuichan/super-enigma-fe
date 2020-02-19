@@ -8,42 +8,15 @@ import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
-const Layout = ({children, loadMovies}) => {
+const Layout = ({ children, loadMovies }) => {
   const [value, setValue] = useState(0);
-  // 'Popular', 'Now playing', 'Upcoming', 'Most rated',
+
   useEffect(() => {
-    switch (value) {
-      case 0:
-        moviesAPI.get({
-          page: 1,
-          perPage: 20,
-          sortBy: 'popularity.desc',
-        }).then(({ movies }) => loadMovies(movies));
-        break;
-      case 1:
-        moviesAPI.get({
-          page: 1,
-          perPage: 20,
-          sortBy: 'year.desc',
-        }).then(({ movies }) => loadMovies(movies));
-        break;
-      case 2:
-        moviesAPI.get({
-          page: 1,
-          perPage: 20,
-          sortBy: 'year.desc',
-        }).then(({ movies }) => loadMovies(movies));
-        break;
-      case 3:
-        moviesAPI.get({
-          page: 1,
-          perPage: 20,
-          sortBy: 'vote_count.desc',
-        }).then(({ movies }) => loadMovies(movies));
-        break;
-      default:
-        break;
-    }
+    moviesAPI.get({
+      page: 1,
+      perPage: 20,
+      sortBy: NAV_LINKS[value].filter,
+    }).then(({ movies }) => loadMovies(movies));
   }, [value]);
 
   return (
@@ -52,7 +25,7 @@ const Layout = ({children, loadMovies}) => {
         <NavWrapper>
           <Logo />
           <Nav>
-            {NAV_LINKS.map((title, index) => (
+            {NAV_LINKS.map(({ title }, index) => (
               <NavLink
                 onClickLink={setValue}
                 value={value}
@@ -73,6 +46,7 @@ const Layout = ({children, loadMovies}) => {
 };
 
 Layout.propTypes = {
+  loadMovies: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FIRST_PAGES_COUNT, LAST_PAGES_COUNT, ACTUAL_PAGES_COUNT } from '../../constants';
 import { PaginationWrapper, PageNumber } from './styles';
 
 const Pagination = ({ totalPages, page, handleClick }) => {
   const [firstPages, setFirstPages] = useState([]);
   const [lastPages, setLastPages] = useState([]);
   const [actualPages, setActualPages] = useState([]);
-  const firstPagesCount = 3;
-  const lastPagesCount = 3;
-  const actualPagesCount = 3;
 
   useEffect(() => {
     setFirstPages(getFirstPages());
@@ -19,40 +17,40 @@ const Pagination = ({ totalPages, page, handleClick }) => {
   const getFirstPages = () => {
     if (totalPages <= 0) return [0];
 
-    if (totalPages <= firstPagesCount + lastPagesCount + actualPagesCount) {
+    if (totalPages <= FIRST_PAGES_COUNT + LAST_PAGES_COUNT + ACTUAL_PAGES_COUNT) {
       return [...Array(totalPages)].map((_, i) => i + 1);
     }
 
-    return [...Array(firstPagesCount)].map((_, i) => i + 1);
+    return [...Array(FIRST_PAGES_COUNT)].map((_, i) => i + 1);
   };
 
   const getLastPages = () => {
     if (totalPages <= 0
-      || totalPages <= firstPagesCount + lastPagesCount + actualPagesCount) return [];
+      || totalPages <= FIRST_PAGES_COUNT + LAST_PAGES_COUNT + ACTUAL_PAGES_COUNT) return [];
 
-    return [...Array(lastPagesCount)].map((_, i) => i + totalPages - lastPagesCount + 1);
+    return [...Array(LAST_PAGES_COUNT)].map((_, i) => i + totalPages - LAST_PAGES_COUNT + 1);
   };
 
   const getActualPages = () => {
-    const firstPageOfTheLastGroup = totalPages - lastPagesCount + 1;
-    if (totalPages <= 0 || page < firstPagesCount || page > firstPageOfTheLastGroup
-      || totalPages <= firstPagesCount + lastPagesCount + actualPagesCount) return [];
+    const firstPageOfTheLastGroup = totalPages - LAST_PAGES_COUNT + 1;
+    if (totalPages <= 0 || page < FIRST_PAGES_COUNT || page > firstPageOfTheLastGroup
+      || totalPages <= FIRST_PAGES_COUNT + LAST_PAGES_COUNT + ACTUAL_PAGES_COUNT) return [];
 
-    const endOfTheFirstGroup = firstPagesCount + 1;
-    const endOfTheLastGroup = totalPages - lastPagesCount - 1;
+    const endOfTheFirstGroup = FIRST_PAGES_COUNT + 1;
+    const endOfTheLastGroup = totalPages - LAST_PAGES_COUNT - 1;
 
-    const actualPagesStart = Math.max(endOfTheFirstGroup, page - ((actualPagesCount - 1) / 2));
-    const actualPagesEnd = Math.min(endOfTheLastGroup, page + ((actualPagesCount - 1) / 2));
+    const actualPagesStart = Math.max(endOfTheFirstGroup, page - ((ACTUAL_PAGES_COUNT - 1) / 2));
+    const actualPagesEnd = Math.min(endOfTheLastGroup, page + ((ACTUAL_PAGES_COUNT - 1) / 2));
 
 
     if (page <= endOfTheFirstGroup) {
-      return [...Array(actualPagesCount)]
+      return [...Array(ACTUAL_PAGES_COUNT)]
         .map((_, i) => i + endOfTheFirstGroup);
     }
 
     if (page >= endOfTheLastGroup) {
-      return [...Array(actualPagesCount)]
-        .map((_, i) => i + firstPageOfTheLastGroup - actualPagesCount);
+      return [...Array(ACTUAL_PAGES_COUNT)]
+        .map((_, i) => i + firstPageOfTheLastGroup - ACTUAL_PAGES_COUNT);
     }
 
     return [...Array(actualPagesEnd - actualPagesStart + 1)]
