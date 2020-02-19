@@ -73,7 +73,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         ))}
       {((firstPages[FIRST_PAGES_COUNT - 1] + 1) === (actualPages[0]) || !actualPages.length)
         ? ''
-        : <PageNumber>..</PageNumber>}
+        : <PageNumber>...</PageNumber>}
       {actualPages
         .map((pageNumber, index) => (
           <PageNumber
