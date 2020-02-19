@@ -33,7 +33,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
 
   const getActualPages = () => {
     const firstPageOfTheLastGroup = totalPages - LAST_PAGES_COUNT + 1;
-    if (totalPages <= 0 || page > firstPageOfTheLastGroup
+    if (totalPages <= 0
       || totalPages <= FIRST_PAGES_COUNT + LAST_PAGES_COUNT + ACTUAL_PAGES_COUNT) return [];
 
     const endOfTheFirstGroup = FIRST_PAGES_COUNT + 1;
