@@ -51,10 +51,10 @@ export const Rating = styled.p`
 `;
 
 export const IconContainer = styled.div`
-  transform: translateY(-5%);
   margin-right: 5px;
 `;
 
 export const RatingContainer = styled.div`
   display: flex;
+  align-items: center;
 `;

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
-export const PageNumber = styled.a`
+export const PageNumber = styled.span`
+  cursor: pointer;
+  user-select: none;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  padding: 8px 16px;
+  padding: 9px 16px;
   color: ${({ theme }) => theme.movies.text};
   transition: background-color .3s;
   border-radius: 5px;
