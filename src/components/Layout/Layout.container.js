@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadMovies, setQuery } from '../../store/actions/movies';
+import { loadMovies } from '../../store/actions/movies';
 import Component from './Layout';
 
 const mapStateToProps = ({
@@ -11,7 +11,6 @@ const mapStateToProps = ({
 });
 const mapDispatchToProps = {
   loadMovies,
-  setQuery,
 };
 
 

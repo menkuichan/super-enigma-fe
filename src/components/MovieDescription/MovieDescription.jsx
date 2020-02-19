@@ -5,7 +5,7 @@ import StarIcon from '../Icons/StarIcon';
 import { POSTER_BASE_URL } from '../../constants';
 import {
   MovieContainer, PosterContainer, Poster, Title, Info, RatingContainer,
-  IconContainer, Rating, Overview,
+  IconContainer, Rating, Overview, OriginalTitle, Language,
 } from './styles';
 
 const MovieDescription = () => {
@@ -15,27 +15,40 @@ const MovieDescription = () => {
   useEffect(() => {
     moviesAPI.getById(id).then((data) => setMovie(data));
   }, [id]);
+  const {
+    poster_path, title, release_date, vote_average, vote_count, overview,
+    original_title, original_language, popularity,
+  } = movie;
 
   return (
     <MovieContainer>
       <PosterContainer>
-        <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
+        <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
       </PosterContainer>
       <Info>
         <Title>
-          {movie.original_title}
+          {`${title} (${new Date(release_date).getFullYear()}) `}
+          <Language>{original_language}</Language>
         </Title>
+        <OriginalTitle>
+          {original_title}
+        </OriginalTitle>
+        <RatingContainer>
+          <Rating>
+            {`Popularity: ${popularity}`}
+          </Rating>
+        </RatingContainer>
         <RatingContainer>
           <IconContainer>
             <StarIcon />
           </IconContainer>
           <Rating>
-            {`${movie.vote_average} | ${movie.vote_count}`}
+            {`${vote_average} | ${vote_count}`}
           </Rating>
         </RatingContainer>
         <div>
           <Overview>
-            {movie.overview}
+            {overview}
           </Overview>
         </div>
       </Info>
