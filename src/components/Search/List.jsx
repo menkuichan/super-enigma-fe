@@ -20,7 +20,7 @@ const List = ({ movies }) => (
       // eslint-disable-next-line
       <Link to={`/movies/${movie.id}`}>
         <Item key={index}>
-          {movies.poster_path
+          {movie.poster_path
             ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
             : <Poster src={EmptyPoster} />}
           <Info>
