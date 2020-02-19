@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { LinkButton } from './styles';
 
 const NavLink = ({
   title, value, index, onClickLink,
 }) => (
-  <LinkButton
-    onClick={() => onClickLink(index)}
-    value={value}
-    index={index}
-  >
-    {title}
-  </LinkButton>
+  <Link to="/movies">
+    <LinkButton
+      onClick={() => onClickLink(index)}
+      value={value}
+      index={index}
+    >
+      {title}
+    </LinkButton>
+  </Link>
 );
 
 NavLink.propTypes = {

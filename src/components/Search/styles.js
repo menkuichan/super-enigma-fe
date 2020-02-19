@@ -4,15 +4,16 @@ import defaultTheme from '../../theme';
 const inputHeight = 31;
 
 export const SearchInput = styled.input`
+  font-family: 'Open Sans', sans-serif;
   border: 0;
   color: ${({ theme }) => theme.header.text};
-  font-size: 15px;
+  font-size: 14px;
   background-color: transparent;
   padding: 6px 15px;
   border: 1px solid #716F73;
   border-radius: 5px;
   height: ${inputHeight}px;
-  width: 100%;
+  width: 230px;
 
   &:focus {
     outline: none;
@@ -26,7 +27,6 @@ SearchInput.defaultProps = {
 
 export const SearchWrapper = styled.div`
   display: flex;
-  width: 220px;
   position: relative;
 `;
 
@@ -53,7 +53,7 @@ export const Item = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.search.itemHover};
-    border-radius: ${({ theme }) => theme.borderRadius};
+    border-radius: ${({ theme }) => theme.search.borderRadius};
   }
 
   &:last-child {
@@ -79,6 +79,8 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.h1`
+  color: inherit;
+  text-decoration: inherit;
   font-family: 'Open Sans', sans-serif;
   white-space: nowrap;
   overflow: hidden;
