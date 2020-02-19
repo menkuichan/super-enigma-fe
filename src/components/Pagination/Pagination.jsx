@@ -33,7 +33,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
 
   const getActualPages = () => {
     const firstPageOfTheLastGroup = totalPages - LAST_PAGES_COUNT + 1;
-    if (totalPages <= 0 || page < FIRST_PAGES_COUNT || page > firstPageOfTheLastGroup
+    if (totalPages <= 0 || page > firstPageOfTheLastGroup
       || totalPages <= FIRST_PAGES_COUNT + LAST_PAGES_COUNT + ACTUAL_PAGES_COUNT) return [];
 
     const endOfTheFirstGroup = FIRST_PAGES_COUNT + 1;
@@ -41,7 +41,6 @@ const Pagination = ({ totalPages, page, handleClick }) => {
 
     const actualPagesStart = Math.max(endOfTheFirstGroup, page - ((ACTUAL_PAGES_COUNT - 1) / 2));
     const actualPagesEnd = Math.min(endOfTheLastGroup, page + ((ACTUAL_PAGES_COUNT - 1) / 2));
-
 
     if (page <= endOfTheFirstGroup) {
       return [...Array(ACTUAL_PAGES_COUNT)]
@@ -67,31 +66,35 @@ const Pagination = ({ totalPages, page, handleClick }) => {
             onClick={() => handleClick(pageNumber)}
             className={`p${pageNumber}`}
             page={page}
-            key={index}
+            key={index} // eslint-disable-line
           >
             {pageNumber}
           </PageNumber>
         ))}
-      {actualPages.length ? <PageNumber>...</PageNumber> : ''}
+      {((firstPages[FIRST_PAGES_COUNT - 1] + 1) === (actualPages[0]) || !actualPages.length)
+        ? ''
+        : <PageNumber>..</PageNumber>}
       {actualPages
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
             className={`p${pageNumber}`}
             page={page}
-            key={index}
+            key={index} // eslint-disable-line
           >
             {pageNumber}
           </PageNumber>
         ))}
-      {lastPages.length ? <PageNumber>...</PageNumber> : ''}
+      {((actualPages[ACTUAL_PAGES_COUNT - 1] + 1) === (lastPages[0]))
+        ? ''
+        : <PageNumber>...</PageNumber>}
       {lastPages
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
             className={`p${pageNumber}`}
             page={page}
-            key={index}
+            key={index} // eslint-disable-line
           >
             {pageNumber}
           </PageNumber>

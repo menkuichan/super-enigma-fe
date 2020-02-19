@@ -5,11 +5,11 @@ export const NAV_LINKS = [
   },
   {
     title: 'Now playing',
-    filter: 'year.desc',
+    filter: 'release_date.desc',
   },
   {
     title: 'Upcoming',
-    filter: 'popularity.desc',
+    filter: 'release_date.desc',
   },
   {
     title: 'Most rated',
