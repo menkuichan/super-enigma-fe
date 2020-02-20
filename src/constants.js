@@ -22,6 +22,9 @@ export const SEARCH_PARAMS = {
   REQUEST_PAGE: 1,
   REQUEST_PER_PAGE: 3,
 };
+export const MOVIES_PARAMS = {
+  PER_PAGE: 20,
+};
 export const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
 export const EVENT_TYPE = {
   MOUSEDOWN: 'mousedown',
