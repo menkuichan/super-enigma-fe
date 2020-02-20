@@ -13,4 +13,6 @@ export const movies = (state = defaultState, { type, payload }) => {
   }
 };
 
+export const selectMovies = (store) => (store.movies.data);
+
 export default movies;
