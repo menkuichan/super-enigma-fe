@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import queryString from 'query-string';
 import { selectMovies, selectTotalPages } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination';
 import { MoviesViewContainer } from './styles';
 
-const MoviesView = ({ history }) => {
+const MoviesView = () => {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
+  const history = useHistory();
+  const location = useLocation();
   const movies = useSelector(selectMovies);
   const totalPages = useSelector(selectTotalPages);
 
+  const { page } = queryString.parse(location.search);
+
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
-      setPage(newPage);
       history.push(`/movies/?page=${newPage}`);
     }
   };
@@ -28,7 +32,7 @@ const MoviesView = ({ history }) => {
 
   return (
     <MoviesViewContainer>
-      <Pagination page={page} totalPages={totalPages} handleClick={handleChangePage} />
+      <Pagination page={parseInt(page, 10)} totalPages={totalPages} handleClick={handleChangePage} />
       <MoviesList movies={movies} />
     </MoviesViewContainer>
   );

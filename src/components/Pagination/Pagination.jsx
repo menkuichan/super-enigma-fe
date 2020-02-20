@@ -51,7 +51,6 @@ const Pagination = ({ totalPages, page, handleClick }) => {
       return [...Array(ACTUAL_PAGES_COUNT)]
         .map((_, i) => i + firstPageOfTheLastGroup - ACTUAL_PAGES_COUNT);
     }
-
     return [...Array(actualPagesEnd - actualPagesStart + 1)]
       .map((_, i) => i + actualPagesStart);
   };
