@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMovies } from '../../store/reducers/movies';
 import getMovies from '../../api/movies';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination';
 import { MoviesViewContainer } from './styles';
 
-const MoviesView = ({ movies, loadMovies }) => {
+const MoviesView = () => {
+  const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const movies = useSelector(selectMovies);
 
   const handleChangePage = (newPage) => {
     setPage(newPage);
@@ -20,10 +23,13 @@ const MoviesView = ({ movies, loadMovies }) => {
         perPage: 20,
       })
       .then((data) => {
-        loadMovies(data.movies);
+        dispatch({
+          type: 'LOAD_MOVIES',
+          payload: data.movies,
+        });
         setTotalPages(data.totalPages);
       });
-  }, [page]);
+  }, [dispatch, page]);
 
   return (
     <MoviesViewContainer>
@@ -31,11 +37,6 @@ const MoviesView = ({ movies, loadMovies }) => {
       <MoviesList movies={movies} />
     </MoviesViewContainer>
   );
-};
-
-MoviesView.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loadMovies: PropTypes.func.isRequired,
 };
 
 export default MoviesView;

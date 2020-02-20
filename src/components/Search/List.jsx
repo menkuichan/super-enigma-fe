@@ -17,10 +17,11 @@ const getTitle = (title, date) => {
 const List = ({ movies }) => (
   <ListWrapper>
     {movies.map((movie, index) => (
-      // eslint-disable-next-line
       <Link to={`/movies/${movie.id}`}>
-        <Item key={index}>
-          {movies.poster_path
+        <Item
+          key={index} // eslint-disable-line
+        >
+          {movie.poster_path
             ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
             : <Poster src={EmptyPoster} />}
           <Info>

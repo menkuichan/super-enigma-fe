@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import moviesAPI from '../../api/movies';
 import Header from '../Header';
@@ -8,7 +9,8 @@ import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
-const Layout = ({ children, loadMovies }) => {
+const Layout = ({ children }) => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -16,7 +18,12 @@ const Layout = ({ children, loadMovies }) => {
       page: 1,
       perPage: 20,
       sortBy: NAV_LINKS[value].filter,
-    }).then(({ movies }) => loadMovies(movies));
+    }).then(({ movies }) => {
+      dispatch({
+        type: 'LOAD_MOVIES',
+        payload: movies,
+      });
+    });
   }, [value]);
 
   return (
@@ -46,7 +53,6 @@ const Layout = ({ children, loadMovies }) => {
 };
 
 Layout.propTypes = {
-  loadMovies: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
