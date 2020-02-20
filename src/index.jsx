@@ -8,7 +8,7 @@ import Layout from './components/Layout';
 import MovieDescription from './components/MovieDescription';
 import GlobalStyles from './components/GlobalStyles';
 import MoviesView from './pages/MoviesView';
-import { configureStore } from './store';
+import configureStore from './store';
 import theme from './theme';
 
 const history = createBrowserHistory();

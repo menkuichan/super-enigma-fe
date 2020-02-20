@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import moviesAPI from '../../api/movies';
 import Header from '../Header';
 import Logo from '../Icons/Logo';
 import { Nav, NavLink } from '../Nav';
@@ -10,21 +8,7 @@ import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
   const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    moviesAPI.get({
-      page: 1,
-      perPage: 20,
-      sortBy: NAV_LINKS[value].filter,
-    }).then(({ movies }) => {
-      dispatch({
-        type: 'LOAD_MOVIES',
-        payload: movies,
-      });
-    });
-  }, [value]);
 
   return (
     <>

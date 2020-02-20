@@ -1,4 +1,4 @@
-import { LOAD_MOVIES } from '../actionTypes';
+import { GET_MOVIES_PENDING, GET_MOVIES_SUCCESS } from '../actionTypes';
 
 const defaultState = {
   data: [],
@@ -6,7 +6,9 @@ const defaultState = {
 
 export const movies = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case LOAD_MOVIES:
+    case GET_MOVIES_PENDING:
+      return { ...state };
+    case GET_MOVIES_SUCCESS:
       return { ...state, data: [...payload] };
     default:
       return state;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMovies } from '../../store/reducers/movies';
-import getMovies from '../../api/movies';
+import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination';
 import { MoviesViewContainer } from './styles';
@@ -17,19 +17,11 @@ const MoviesView = () => {
   };
 
   useEffect(() => {
-    getMovies
-      .get({
-        page,
-        perPage: 20,
-      })
-      .then((data) => {
-        dispatch({
-          type: 'LOAD_MOVIES',
-          payload: data.movies,
-        });
-        setTotalPages(data.totalPages);
-      });
-  }, [dispatch, page]);
+    dispatch({
+      type: GET_MOVIES_PENDING,
+      payload: page,
+    });
+  }, [page]);
 
   return (
     <MoviesViewContainer>
