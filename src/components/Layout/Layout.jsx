@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
         payload: movies,
       });
     });
-  }, [dispatch, value]);
+  }, [value]);
 
   return (
     <>
