@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import queryString from 'query-string';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMovies } from '../../store/reducers/movies';
-import getMovies from '../../api/movies';
+import { selectMovies, selectTotalPages } from '../../store/reducers/movies';
+import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination';
 import { MoviesViewContainer } from './styles';
 
 const MoviesView = () => {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const history = useHistory();
+  const location = useLocation();
   const movies = useSelector(selectMovies);
+  const totalPages = useSelector(selectTotalPages);
+
+  const { page = 1, filter } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
-    setPage(newPage);
+    if (newPage <= totalPages && newPage > 0) {
+      history.push(`/movies?page=${newPage}&filter=${filter}`);
+    }
   };
 
   useEffect(() => {
-    getMovies
-      .get({
-        page,
-        perPage: 20,
-      })
-      .then((data) => {
-        dispatch({
-          type: 'LOAD_MOVIES',
-          payload: data.movies,
-        });
-        setTotalPages(data.totalPages);
-      });
-  }, [dispatch, page]);
+    dispatch({
+      type: GET_MOVIES_PENDING,
+      payload: { page, filter },
+    });
+  }, [page, filter]);
 
   return (
     <MoviesViewContainer>
-      <Pagination page={page} totalPages={totalPages} handleClick={handleChangePage} />
+      <Pagination
+        page={parseInt(page, 10)}
+        totalPages={totalPages}
+        handleClick={handleChangePage}
+      />
       <MoviesList movies={movies} />
     </MoviesViewContainer>
   );

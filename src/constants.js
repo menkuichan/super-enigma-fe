@@ -2,18 +2,22 @@ export const NAV_LINKS = [
   {
     title: 'Popular',
     filter: 'popularity.desc',
+    value: 'popular',
   },
   {
     title: 'Now playing',
     filter: 'release_date.desc',
+    value: 'nowPlaying',
   },
   {
     title: 'Upcoming',
     filter: 'release_date.desc',
+    value: 'upcoming',
   },
   {
     title: 'Most rated',
     filter: 'vote_count.desc',
+    value: 'mostRated',
   },
 ];
 const PORT = 3000;
@@ -21,6 +25,9 @@ export const API_URL = `http://localhost:${PORT}`;
 export const SEARCH_PARAMS = {
   REQUEST_PAGE: 1,
   REQUEST_PER_PAGE: 3,
+};
+export const MOVIES_PARAMS = {
+  PER_PAGE: 20,
 };
 export const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
 export const EVENT_TYPE = {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import moviesAPI from '../../api/movies';
 import Header from '../Header';
 import Logo from '../Icons/Logo';
 import { Nav, NavLink } from '../Nav';
@@ -10,21 +10,13 @@ import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
-  const [value, setValue] = useState(0);
+  const history = useHistory();
+  const location = useLocation();
+  const { filter } = queryString.parse(location.search);
 
-  useEffect(() => {
-    moviesAPI.get({
-      page: 1,
-      perPage: 20,
-      sortBy: NAV_LINKS[value].filter,
-    }).then(({ movies }) => {
-      dispatch({
-        type: 'LOAD_MOVIES',
-        payload: movies,
-      });
-    });
-  }, [value]);
+  const handleFilter = (value) => {
+    history.push(`/movies?filter=${value}`);
+  };
 
   return (
     <>
@@ -32,11 +24,11 @@ const Layout = ({ children }) => {
         <NavWrapper>
           <Logo />
           <Nav>
-            {NAV_LINKS.map(({ title }, index) => (
+            {NAV_LINKS.map(({ title, value }, index) => (
               <NavLink
-                onClickLink={setValue}
+                onClickLink={handleFilter}
                 value={value}
-                index={index}
+                filter={filter}
                 title={title}
                 key={index} // eslint-disable-line
               />
