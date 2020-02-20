@@ -2,18 +2,22 @@ export const NAV_LINKS = [
   {
     title: 'Popular',
     filter: 'popularity.desc',
+    value: 'popular',
   },
   {
     title: 'Now playing',
     filter: 'release_date.desc',
+    value: 'nowPlaying',
   },
   {
     title: 'Upcoming',
     filter: 'release_date.desc',
+    value: 'upcoming',
   },
   {
     title: 'Most rated',
     filter: 'vote_count.desc',
+    value: 'mostRated',
   },
 ];
 const PORT = 3000;

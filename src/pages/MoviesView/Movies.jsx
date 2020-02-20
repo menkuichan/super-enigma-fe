@@ -20,7 +20,7 @@ const MoviesView = () => {
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
-      history.push(`/movies/?page=${newPage}&filter=${filter}`);
+      history.push(`/movies?page=${newPage}&filter=${filter}`);
     }
   };
 
