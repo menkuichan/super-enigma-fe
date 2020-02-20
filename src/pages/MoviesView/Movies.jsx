@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import queryString from 'query-string';
@@ -16,6 +16,7 @@ const MoviesView = () => {
   const totalPages = useSelector(selectTotalPages);
 
   const { page } = queryString.parse(location.search);
+  const queryPage = page || 1;
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
@@ -26,13 +27,17 @@ const MoviesView = () => {
   useEffect(() => {
     dispatch({
       type: GET_MOVIES_PENDING,
-      payload: page,
+      payload: { page: queryPage },
     });
   }, [page]);
 
   return (
     <MoviesViewContainer>
-      <Pagination page={parseInt(page, 10)} totalPages={totalPages} handleClick={handleChangePage} />
+      <Pagination
+        page={parseInt(queryPage, 10)}
+        totalPages={totalPages}
+        handleClick={handleChangePage}
+      />
       <MoviesList movies={movies} />
     </MoviesViewContainer>
   );
