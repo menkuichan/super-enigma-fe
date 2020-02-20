@@ -4,11 +4,12 @@ import { MOVIES_PARAMS } from '../../constants';
 import { GET_MOVIES_PENDING, GET_MOVIES_SUCCESS, GET_MOVIES_ERROR } from '../actionTypes';
 
 function* loadMovies(action) {
-  const { page } = action.payload;
+  const { page, filter } = action.payload;
   try {
     const { movies, totalPages } = yield call(moviesApi.get, {
       page,
       perPage: MOVIES_PARAMS.PER_PAGE,
+      sortBy: filter,
     });
     yield put({ type: GET_MOVIES_SUCCESS, payload: { movies, totalPages } });
   } catch (e) {

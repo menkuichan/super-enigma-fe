@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import queryString from 'query-string';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import queryString from 'query-string';
 import { selectMovies, selectTotalPages } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MoviesList from '../../components/MoviesList/MoviesList';
@@ -15,21 +15,21 @@ const MoviesView = () => {
   const movies = useSelector(selectMovies);
   const totalPages = useSelector(selectTotalPages);
 
-  const { page } = queryString.parse(location.search);
+  const { page, filter } = queryString.parse(location.search);
   const queryPage = page || 1;
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
-      history.push(`/movies/?page=${newPage}`);
+      history.push(`/movies/?page=${newPage}&filter=${filter}`);
     }
   };
 
   useEffect(() => {
     dispatch({
       type: GET_MOVIES_PENDING,
-      payload: { page: queryPage },
+      payload: { page: queryPage, filter },
     });
-  }, [page]);
+  }, [page, filter]);
 
   return (
     <MoviesViewContainer>
