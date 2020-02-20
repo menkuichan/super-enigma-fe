@@ -15,8 +15,7 @@ const MoviesView = () => {
   const movies = useSelector(selectMovies);
   const totalPages = useSelector(selectTotalPages);
 
-  const { page, filter } = queryString.parse(location.search);
-  const queryPage = page || 1;
+  const { page = 1, filter } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
@@ -27,14 +26,14 @@ const MoviesView = () => {
   useEffect(() => {
     dispatch({
       type: GET_MOVIES_PENDING,
-      payload: { page: queryPage, filter },
+      payload: { page, filter },
     });
   }, [page, filter]);
 
   return (
     <MoviesViewContainer>
       <Pagination
-        page={parseInt(queryPage, 10)}
+        page={parseInt(page, 10)}
         totalPages={totalPages}
         handleClick={handleChangePage}
       />
