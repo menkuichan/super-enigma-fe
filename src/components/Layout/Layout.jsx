@@ -10,22 +10,12 @@ import { NAV_LINKS } from '../../constants';
 import { NavWrapper } from './styles';
 
 const Layout = ({ children }) => {
-  const [value, setValue] = useState(0);
   const history = useHistory();
   const location = useLocation();
   const { filter } = queryString.parse(location.search);
 
-  useEffect(() => {
-    NAV_LINKS.forEach((link, index) => {
-      if (link.value === filter) {
-        setValue(+index);
-      }
-    });
-  }, [value]);
-
-  const handleChangePage = (index) => {
-    setValue(index);
-    history.push(`/movies?filter=${NAV_LINKS[index].value}`);
+  const handleFilter = (value) => {
+    history.push(`/movies?filter=${value}`);
   };
 
   return (
@@ -34,11 +24,11 @@ const Layout = ({ children }) => {
         <NavWrapper>
           <Logo />
           <Nav>
-            {NAV_LINKS.map(({ title }, index) => (
+            {NAV_LINKS.map(({ title, value }, index) => (
               <NavLink
-                onClickLink={handleChangePage}
+                onClickLink={handleFilter}
                 value={value}
-                index={index}
+                filter={filter}
                 title={title}
                 key={index} // eslint-disable-line
               />

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { LinkButton } from './styles';
 
 const NavLink = ({
-  title, value, index, onClickLink,
+  title, value, onClickLink, filter,
 }) => (
   <LinkButton
-    onClick={() => onClickLink(index)}
+    onClick={() => onClickLink(value)}
     value={value}
-    index={index}
+    filter={filter}
   >
     {title}
   </LinkButton>
@@ -16,8 +16,8 @@ const NavLink = ({
 
 NavLink.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
-  index: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   onClickLink: PropTypes.func.isRequired,
 };
 
