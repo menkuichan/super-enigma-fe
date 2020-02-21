@@ -10,3 +10,10 @@ export const MoviesViewContainer = styled.div`
   padding-top: 65px;
   background-color: ${({ theme }) => theme.movies.background};
 `;
+
+export const MoviesListContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 30px;
+`;

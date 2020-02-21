@@ -24,4 +24,7 @@ export const PageNumber = styled.span`
 `;
 
 export const PaginationWrapper = styled.div`
+  &:last-child {
+    margin-bottom: 30px;
+  }
 `;

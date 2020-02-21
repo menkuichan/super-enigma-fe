@@ -6,6 +6,7 @@ export default {
       params,
     });
   },
+
   getById(id) {
     return axiosInstance.get(`/movies/${id}`);
   },

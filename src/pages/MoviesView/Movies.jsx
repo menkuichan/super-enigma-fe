@@ -4,9 +4,9 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMovies, selectTotalPages } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
-import MoviesList from '../../components/MoviesList/MoviesList';
+import MovieCard from '../../components/MovieCard';
 import Pagination from '../../components/Pagination';
-import { MoviesViewContainer } from './styles';
+import { MoviesViewContainer, MoviesListContainer } from './styles';
 
 const MoviesView = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,14 @@ const MoviesView = () => {
         totalPages={totalPages}
         handleClick={handleChangePage}
       />
-      <MoviesList movies={movies} />
+      <MoviesListContainer>
+        {movies.map((movie, index) => <MovieCard key={index} {...movie} />)}
+      </MoviesListContainer>
+      <Pagination
+        page={parseInt(page, 10)}
+        totalPages={totalPages}
+        handleClick={handleChangePage}
+      />
     </MoviesViewContainer>
   );
 };
