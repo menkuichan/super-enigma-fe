@@ -25,12 +25,12 @@ SearchInput.defaultProps = {
   theme: defaultTheme,
 };
 
-export const SearchWrapper = styled.div`
+export const SearchContainer = styled.div`
   display: flex;
   position: relative;
 `;
 
-export const ListWrapper = styled.div`
+export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;

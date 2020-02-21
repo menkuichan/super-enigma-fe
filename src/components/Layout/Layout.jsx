@@ -7,7 +7,7 @@ import Logo from '../Icons/Logo';
 import { Nav, NavLink } from '../Nav';
 import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
-import { NavWrapper } from './styles';
+import { NavContainer } from './styles';
 
 const Layout = ({ children }) => {
   const history = useHistory();
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header>
-        <NavWrapper>
+        <NavContainer>
           <Logo />
           <Nav>
             {NAV_LINKS.map(({ title, value }, index) => (
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
               />
             ))}
           </Nav>
-        </NavWrapper>
+        </NavContainer>
         <div>
           <Search />
         </div>

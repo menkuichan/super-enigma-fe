@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FIRST_PAGES_COUNT, LAST_PAGES_COUNT, ACTUAL_PAGES_COUNT } from '../../constants';
-import { PaginationWrapper, PageNumber } from './styles';
+import { PaginationContainer, PageNumber } from './styles';
 
 const Pagination = ({ totalPages, page, handleClick }) => {
   const [firstPages, setFirstPages] = useState([]);
@@ -56,7 +56,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
   };
 
   return (
-    <PaginationWrapper>
+    <PaginationContainer>
       <PageNumber onClick={() => handleClick(1)}>{'<<'}</PageNumber>
       <PageNumber onClick={() => handleClick(page - 1)}>{'<'}</PageNumber>
       {firstPages
@@ -100,7 +100,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         ))}
       <PageNumber onClick={() => handleClick(page + 1)}>{'>'}</PageNumber>
       <PageNumber onClick={() => handleClick(totalPages)}>{'>>'}</PageNumber>
-    </PaginationWrapper>
+    </PaginationContainer>
   );
 };
 

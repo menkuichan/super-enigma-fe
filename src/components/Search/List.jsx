@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
-  ListWrapper, Item, Poster, Info, Title, Overview,
+  ListContainer, Item, Poster, Info, Title, Overview,
 } from './styles';
 
 const getTitle = (title, date) => {
@@ -15,7 +15,7 @@ const getTitle = (title, date) => {
 };
 
 const List = ({ movies }) => (
-  <ListWrapper>
+  <ListContainer>
     {movies.map((movie, index) => (
       <Link to={`/movies/${movie.id}`}>
         <Item
@@ -35,7 +35,7 @@ const List = ({ movies }) => (
         </Item>
       </Link>
     ))}
-  </ListWrapper>
+  </ListContainer>
 );
 
 List.propTypes = {

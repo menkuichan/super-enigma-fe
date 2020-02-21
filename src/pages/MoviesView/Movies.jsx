@@ -6,7 +6,9 @@ import { selectMovies, selectTotalPages } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MovieCard from '../../components/MovieCard';
 import Pagination from '../../components/Pagination';
-import { MoviesViewContainer, MoviesListContainer } from './styles';
+import {
+  MoviesViewContainer, MoviesListContainer, NoResultsContainer, NoResults,
+} from './styles';
 
 const MoviesView = () => {
   const dispatch = useDispatch();
@@ -28,23 +30,33 @@ const MoviesView = () => {
       type: GET_MOVIES_PENDING,
       payload: { page, filter },
     });
-  }, [page, filter]);
+  }, [page, filter, dispatch]);
 
   return (
     <MoviesViewContainer>
-      <Pagination
-        page={parseInt(page, 10)}
-        totalPages={totalPages}
-        handleClick={handleChangePage}
-      />
-      <MoviesListContainer>
-        {movies.map((movie, index) => <MovieCard key={index} {...movie} />)}
-      </MoviesListContainer>
-      <Pagination
-        page={parseInt(page, 10)}
-        totalPages={totalPages}
-        handleClick={handleChangePage}
-      />
+      {movies.length ? (
+        <>
+          <Pagination
+            page={parseInt(page, 10)}
+            totalPages={totalPages}
+            handleClick={handleChangePage}
+          />
+          <MoviesListContainer>
+            {movies.map((movie, index) => <MovieCard key={index} {...movie} />)}
+          </MoviesListContainer>
+          <Pagination
+            page={parseInt(page, 10)}
+            totalPages={totalPages}
+            handleClick={handleChangePage}
+          />
+        </>
+      )
+        : (
+          <NoResultsContainer>
+            <NoResults>No results</NoResults>
+          </NoResultsContainer>
+        )}
+
     </MoviesViewContainer>
   );
 };
