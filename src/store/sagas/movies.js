@@ -20,14 +20,6 @@ const getSortFilter = (filter) => {
   return sortBy;
 };
 
-const convertArrayToObject = (array) => {
-  const newObj = {};
-  array.forEach((movie) => Object.assign(newObj, { [movie.id]: movie }));
-  return newObj;
-};
-
-const convertObject = (obj) => ({ [obj.id]: obj });
-
 function* loadMovies(action) {
   const { page, filter } = action.payload;
 
@@ -39,7 +31,7 @@ function* loadMovies(action) {
     });
     yield put({
       type: GET_MOVIES_SUCCESS,
-      payload: { totalPages, byId: convertArrayToObject(movies) },
+      payload: { totalPages, movies },
     });
   } catch (e) {
     yield put({ type: GET_MOVIES_ERROR, payload: e.message });
@@ -50,7 +42,7 @@ function* loadMovie(action) {
   const { id } = action.payload;
   try {
     const movie = yield call(moviesApi.getById, id);
-    yield put({ type: GET_MOVIE_SUCCESS, payload: { byId: convertObject(movie) } });
+    yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }

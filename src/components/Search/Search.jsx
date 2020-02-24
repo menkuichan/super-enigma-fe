@@ -45,7 +45,14 @@ const Search = () => {
           <SearchIcon />
         </IconContainer>
       </InputContainer>
-      {(data.length > 0) && <List value={value} movies={data} />}
+      {(data.length > 0)
+        && (
+          <List
+            onItemClick={() => setData([])}
+            value={value}
+            movies={data}
+          />
+        )}
     </SearchContainer>
   );
 };

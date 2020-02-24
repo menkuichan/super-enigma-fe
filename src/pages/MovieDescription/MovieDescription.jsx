@@ -1,21 +1,32 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import StarIcon from '../Icons/StarIcon';
+import StarIcon from '../../components/Icons/StarIcon';
 import { selectMovieById, selectLoading } from '../../store/reducers/movies';
 import { GET_MOVIE_PENDING } from '../../store/actionTypes';
-import Spinner from '../Spinner';
+import Spinner from '../../components/Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
-  MovieContainer, PosterContainer, Poster, Title, Info, RatingContainer,
-  IconContainer, Rating, Overview, OriginalTitle, Language,
+  MovieContainer,
+  PosterContainer,
+  Poster,
+  Title,
+  Info,
+  RatingContainer,
+  IconContainer,
+  SpinnerContainer,
+  Rating,
+  Overview,
+  OriginalTitle,
+  Language,
 } from './styles';
 
 const MovieDescription = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
+  const movie = useSelector((state) => selectMovieById(state, id)) || {};
 
   useEffect(() => {
     dispatch({
@@ -24,8 +35,6 @@ const MovieDescription = () => {
     });
   }, [dispatch, id]);
 
-  const movie = useSelector((state) => selectMovieById(state, id)) || {};
-
   const {
     poster_path, title, release_date, vote_average, vote_count, overview,
     original_title, original_language, popularity,
@@ -33,7 +42,7 @@ const MovieDescription = () => {
 
   return (
     <MovieContainer>
-      {isLoading ? <Spinner />
+      {isLoading ? <SpinnerContainer><Spinner /></SpinnerContainer>
         : (
           <>
             <PosterContainer>

@@ -14,10 +14,14 @@ const NavLink = ({
   </LinkButton>
 );
 
+NavLink.defaultProps = {
+  filter: null,
+};
+
 NavLink.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.string,
   onClickLink: PropTypes.func.isRequired,
 };
 

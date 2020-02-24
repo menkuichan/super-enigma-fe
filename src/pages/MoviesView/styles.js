@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NoResults = styled.h1`
-  color: white;
+  color: ${({ theme }) => theme.movies.noResultsColor};
   font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -26,4 +26,11 @@ export const MoviesListContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 0 30px;
+`;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+  width: 100%;
 `;

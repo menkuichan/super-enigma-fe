@@ -14,13 +14,14 @@ const getTitle = (title, date) => {
   return title;
 };
 
-const List = ({ movies }) => (
+const List = ({ movies, onItemClick }) => (
   <ListContainer>
     {movies.map((movie, index) => (
-      <Link to={`/movies/${movie.id}`}>
-        <Item
-          key={index} // eslint-disable-line
-        >
+      <Link
+        to={`/movies/${movie.id}`}
+        key={index} // eslint-disable-line
+      >
+        <Item onClick={onItemClick}>
           {movie.poster_path
             ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
             : <Poster src={EmptyPoster} />}
@@ -40,6 +41,7 @@ const List = ({ movies }) => (
 
 List.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 export default List;

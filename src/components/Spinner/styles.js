@@ -25,14 +25,10 @@ const rotateCircle = keyframes`
 `;
 
 export const Svg = styled.svg`
-  height: 85px;
   animation: 1.5s linear infinite both ${rotateSvg};
 `;
 
 export const Circle = styled.circle`
-  cx: 50;
-  cy: 50;
-  r: 45;
   animation: 1.4s ease-in-out infinite both ${rotateCircle};
   fill: transparent;
   stroke: ${({ theme }) => theme.spinner.color};
@@ -40,11 +36,4 @@ export const Circle = styled.circle`
   stroke-linecap: round;
   stroke-width: 10;
   transform-origin: 50% 50%;
-`;
-
-export const SpinnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 150px;
-  width: 100%;
 `;

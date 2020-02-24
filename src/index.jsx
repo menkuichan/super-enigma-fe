@@ -5,7 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
-import MovieDescription from './components/MovieDescription';
+import MovieDescription from './pages/MovieDescription';
 import GlobalStyles from './components/GlobalStyles';
 import MoviesView from './pages/MoviesView';
 import store from './store';
