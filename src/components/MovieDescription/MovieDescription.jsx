@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import StarIcon from '../Icons/StarIcon';
-import { selectMovieById } from '../../store/reducers/movies';
+import { selectMovieById, selectLoading } from '../../store/reducers/movies';
 import { GET_MOVIE_PENDING } from '../../store/actionTypes';
+import Spinner from '../Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
@@ -14,6 +15,7 @@ import {
 const MovieDescription = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch({
@@ -31,38 +33,43 @@ const MovieDescription = () => {
 
   return (
     <MovieContainer>
-      <PosterContainer>
-        {poster_path
-          ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
-          : <Poster src={EmptyPoster} />}
-      </PosterContainer>
-      <Info>
-        <Title>
-          {`${title} (${new Date(release_date).getFullYear()}) `}
-          <Language>{original_language}</Language>
-        </Title>
-        <OriginalTitle>
-          {original_title}
-        </OriginalTitle>
-        <RatingContainer>
-          <Rating>
-            {`Popularity: ${popularity}`}
-          </Rating>
-        </RatingContainer>
-        <RatingContainer>
-          <IconContainer>
-            <StarIcon />
-          </IconContainer>
-          <Rating>
-            {`${vote_average} | ${vote_count}`}
-          </Rating>
-        </RatingContainer>
-        <div>
-          <Overview>
-            {overview}
-          </Overview>
-        </div>
-      </Info>
+      {isLoading ? <Spinner />
+        : (
+          <>
+            <PosterContainer>
+              {poster_path
+                ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+                : <Poster src={EmptyPoster} />}
+            </PosterContainer>
+            <Info>
+              <Title>
+                {`${title} (${new Date(release_date).getFullYear()}) `}
+                <Language>{original_language}</Language>
+              </Title>
+              <OriginalTitle>
+                {original_title}
+              </OriginalTitle>
+              <RatingContainer>
+                <Rating>
+                  {`Popularity: ${popularity}`}
+                </Rating>
+              </RatingContainer>
+              <RatingContainer>
+                <IconContainer>
+                  <StarIcon />
+                </IconContainer>
+                <Rating>
+                  {`${vote_average} | ${vote_count}`}
+                </Rating>
+              </RatingContainer>
+              <div>
+                <Overview>
+                  {overview}
+                </Overview>
+              </div>
+            </Info>
+          </>
+        )}
     </MovieContainer>
   );
 };

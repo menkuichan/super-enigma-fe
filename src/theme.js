@@ -16,4 +16,7 @@ export default {
     borderColor: 'rgba(204, 204, 204, 0.4)',
     boxShadow: 'rgb(128, 128, 128, 0.7)',
   },
+  spinner: {
+    color: '#f79b0e',
+  },
 };
