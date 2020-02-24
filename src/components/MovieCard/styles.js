@@ -9,6 +9,7 @@ export const PosterContainer = styled.div`
 `;
 
 export const Poster = styled.img`
+  height: 375px;
   vertical-align: middle;
   max-width: 100%;
   border-radius: ${({ theme }) => theme.movies.borderRadius};
