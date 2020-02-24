@@ -37,7 +37,7 @@ function* loadMovie(action) {
   const { id } = action.payload;
   try {
     const movie = yield call(moviesApi.getById, id);
-    yield put({ type: GET_MOVIE_SUCCESS, payload: [{ movie }] });
+    yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }

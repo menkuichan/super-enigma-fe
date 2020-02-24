@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
-import moviesAPI from '../../api/movies';
+import { useDispatch, useSelector } from 'react-redux';
 import StarIcon from '../Icons/StarIcon';
+import { selectMovieById } from '../../store/reducers/movies';
+import { GET_MOVIE_PENDING } from '../../store/actionTypes';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
@@ -10,16 +12,23 @@ import {
 } from './styles';
 
 const MovieDescription = () => {
-  const [movie, setMovie] = useState({});
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    moviesAPI.getById(id).then((data) => setMovie(data));
-  }, [id]);
+    dispatch({
+      type: GET_MOVIE_PENDING,
+      payload: { id },
+    });
+  }, [dispatch, id]);
+
+  const movie = useSelector((state) => selectMovieById(state, id));
+  const movieDescription = movie || {};
+
   const {
     poster_path, title, release_date, vote_average, vote_count, overview,
     original_title, original_language, popularity,
-  } = movie;
+  } = movieDescription;
 
   return (
     <MovieContainer>

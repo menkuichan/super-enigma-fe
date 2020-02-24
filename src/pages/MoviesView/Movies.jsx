@@ -30,7 +30,7 @@ const MoviesView = () => {
       type: GET_MOVIES_PENDING,
       payload: { page, filter },
     });
-  }, [page, filter, dispatch]);
+  }, [page, filter]);
 
   return (
     <MoviesViewContainer>

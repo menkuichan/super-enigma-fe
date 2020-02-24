@@ -17,7 +17,7 @@ export const movies = (state = defaultState, { type, payload }) => {
     case GET_MOVIE_PENDING:
       return { ...state };
     case GET_MOVIE_SUCCESS:
-      return { ...state, data: [...state.data, payload.movie] };
+      return { ...state, data: [payload.movie] };
     default:
       return state;
   }
@@ -25,6 +25,6 @@ export const movies = (state = defaultState, { type, payload }) => {
 
 export const selectMovies = (store) => (store.movies.data);
 export const selectTotalPages = (store) => (store.movies.totalPages);
-export const selectMovieById = ({ store, id }) => (store.movies.data);
+export const selectMovieById = (store, id) => (store.movies.data.find((movie) => movie.id === +id));
 
 export default movies;
