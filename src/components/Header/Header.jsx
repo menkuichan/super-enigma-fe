@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import styled from 'styled-components';
 
 const Header = styled.header`
@@ -11,9 +9,5 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.header.background};
   align-items: center;
 `;
-
-Header.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Header;
