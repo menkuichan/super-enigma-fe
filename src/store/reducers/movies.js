@@ -1,6 +1,11 @@
 import { normalizeData } from '../../utils/index';
 import {
-  GET_MOVIES_PENDING, GET_MOVIES_SUCCESS, GET_MOVIE_SUCCESS, GET_MOVIE_PENDING,
+  GET_MOVIES_PENDING,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_ERROR,
+  GET_MOVIE_SUCCESS,
+  GET_MOVIE_PENDING,
+  GET_MOVIE_ERROR,
 } from '../actionTypes';
 
 const defaultState = {
@@ -21,6 +26,8 @@ export const movies = (state = defaultState, { type, payload }) => {
         byId: normalizeData(payload.movies),
         isLoading: false,
       };
+    case GET_MOVIES_ERROR:
+      return { ...state, isLoading: false };
     case GET_MOVIE_PENDING:
       return { ...state, isLoading: true };
     case GET_MOVIE_SUCCESS:
@@ -29,6 +36,8 @@ export const movies = (state = defaultState, { type, payload }) => {
         byId: { ...state.byId, [payload.movie.id]: payload.movie },
         isLoading: false,
       };
+    case GET_MOVIE_ERROR:
+      return { ...state, isLoading: false };
     default:
       return state;
   }

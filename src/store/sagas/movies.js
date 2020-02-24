@@ -1,11 +1,13 @@
-import {
-  all, call, put, takeLatest,
-} from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import moviesApi from '../../api/movies';
 import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
 import {
-  GET_MOVIES_PENDING, GET_MOVIES_SUCCESS, GET_MOVIES_ERROR,
-  GET_MOVIE_PENDING, GET_MOVIE_SUCCESS, GET_MOVIE_ERROR,
+  GET_MOVIES_PENDING,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_ERROR,
+  GET_MOVIE_PENDING,
+  GET_MOVIE_SUCCESS,
+  GET_MOVIE_ERROR,
 } from '../actionTypes';
 
 const getSortFilter = (filter) => {

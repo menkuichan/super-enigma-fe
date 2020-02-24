@@ -5,17 +5,17 @@ import { LinkButton } from './styles';
 const NavLink = ({
   title, value, onClickLink, filter,
 }) => (
-  <LinkButton
-    onClick={() => onClickLink(value)}
-    value={value}
-    filter={filter}
-  >
-    {title}
-  </LinkButton>
-);
+    <LinkButton
+      onClick={() => onClickLink(value)}
+      value={value}
+      filter={filter}
+    >
+      {title}
+    </LinkButton>
+  );
 
 NavLink.defaultProps = {
-  filter: null,
+  filter: '',
 };
 
 NavLink.propTypes = {

@@ -6,7 +6,10 @@ import useDebounce from '../../hooks/useDebounce';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { SEARCH_PARAMS, EVENT_TYPE } from '../../constants';
 import {
-  SearchContainer, SearchInput, IconContainer, InputContainer,
+  SearchContainer,
+  SearchInput,
+  IconContainer,
+  InputContainer,
 } from './styles';
 
 const Search = () => {
@@ -33,6 +36,11 @@ const Search = () => {
     setValue(event.target.value);
   };
 
+  const onItemCleck = () => {
+    setData([]);
+    setValue('');
+  };
+
   return (
     <SearchContainer ref={wrapperRef}>
       <InputContainer>
@@ -48,7 +56,7 @@ const Search = () => {
       {(data.length > 0)
         && (
           <List
-            onItemClick={() => setData([])}
+            onItemClick={onItemCleck}
             value={value}
             movies={data}
           />

@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL } from '../../constants';
 import {
-  ListContainer, Item, Poster, Info, Title, Overview,
+  ListContainer,
+  Item,
+  Poster,
+  Info,
+  Title,
+  Overview,
 } from './styles';
 
 const getTitle = (title, date) => {
