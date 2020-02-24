@@ -14,10 +14,10 @@ const MoviesView = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const movies = useSelector(selectMovies);
+  const moviesId = useSelector(selectMovies);
   const totalPages = useSelector(selectTotalPages);
-
   const { page = 1, filter } = queryString.parse(location.search);
+  const movies = Object.keys(moviesId).map((key) => moviesId[key]);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {

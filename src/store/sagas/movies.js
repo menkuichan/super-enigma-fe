@@ -1,4 +1,6 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, call, put, takeLatest,
+} from 'redux-saga/effects';
 import moviesApi from '../../api/movies';
 import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
 import {
@@ -18,6 +20,14 @@ const getSortFilter = (filter) => {
   return sortBy;
 };
 
+const convertArrayToObject = (array) => {
+  const newObj = {};
+  array.forEach((movie) => Object.assign(newObj, { [movie.id]: movie }));
+  return newObj;
+};
+
+const convertObject = (obj) => ({ [obj.id]: obj });
+
 function* loadMovies(action) {
   const { page, filter } = action.payload;
 
@@ -27,7 +37,10 @@ function* loadMovies(action) {
       perPage: MOVIES_PARAMS.PER_PAGE,
       sortBy: getSortFilter(filter),
     });
-    yield put({ type: GET_MOVIES_SUCCESS, payload: { movies, totalPages } });
+    yield put({
+      type: GET_MOVIES_SUCCESS,
+      payload: { totalPages, byId: convertArrayToObject(movies) },
+    });
   } catch (e) {
     yield put({ type: GET_MOVIES_ERROR, payload: e.message });
   }
@@ -37,7 +50,7 @@ function* loadMovie(action) {
   const { id } = action.payload;
   try {
     const movie = yield call(moviesApi.getById, id);
-    yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
+    yield put({ type: GET_MOVIE_SUCCESS, payload: { byId: convertObject(movie) } });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }

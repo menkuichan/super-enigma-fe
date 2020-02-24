@@ -22,13 +22,12 @@ const MovieDescription = () => {
     });
   }, [dispatch, id]);
 
-  const movie = useSelector((state) => selectMovieById(state, id));
-  const movieDescription = movie || {};
+  const movie = useSelector((state) => selectMovieById(state, id)) || {};
 
   const {
     poster_path, title, release_date, vote_average, vote_count, overview,
     original_title, original_language, popularity,
-  } = movieDescription;
+  } = movie;
 
   return (
     <MovieContainer>
