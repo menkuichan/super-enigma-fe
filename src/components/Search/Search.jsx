@@ -36,7 +36,7 @@ const Search = () => {
     setValue(event.target.value);
   };
 
-  const onItemCleck = () => {
+  const onItemClick = () => {
     setData([]);
     setValue('');
   };
@@ -56,7 +56,7 @@ const Search = () => {
       {(data.length > 0)
         && (
           <List
-            onItemClick={onItemCleck}
+            onItemClick={onItemClick}
             value={value}
             movies={data}
           />
