@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import defaultTheme from '../../theme';
 
 export const CardContainer = styled.div`
   width: 250px;
@@ -20,6 +21,10 @@ export const Poster = styled.img`
     box-shadow: 2px 2px 8px ${({ theme }) => theme.movies.boxShadow};;
   }
 `;
+
+Poster.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const Info = styled.div`
   display: flex;
@@ -50,6 +55,10 @@ export const Rating = styled.p`
   text-overflow: ellipsis;
   color: ${({ theme }) => theme.movies.text};
 `;
+
+Rating.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const IconContainer = styled.div`
   margin-right: 5px;
