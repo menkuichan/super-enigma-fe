@@ -1,8 +1,10 @@
 import React from 'react';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
-import Radio from '../Radio';
+import RadioGroup from '../RadioGroup';
+import { SORT_FILTERS } from '../../constants';
 import {
+  FilterContainer,
   SortContainer,
   ListContainer,
   LabelContainer,
@@ -10,7 +12,7 @@ import {
 } from './styles';
 
 const SortFilter = () => (
-  <>
+  <FilterContainer>
     <FilterIcon />
     <SortContainer>
       <ListContainer>
@@ -18,10 +20,10 @@ const SortFilter = () => (
           <Label>Sort by</Label>
           <SortBy />
         </LabelContainer>
-        <Radio />
+        <RadioGroup data={SORT_FILTERS} />
       </ListContainer>
     </SortContainer>
-  </>
+  </FilterContainer>
 );
 
 export default SortFilter;

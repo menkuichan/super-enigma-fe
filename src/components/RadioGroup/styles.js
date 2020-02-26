@@ -11,7 +11,7 @@ export const ItemContainer = styled.div`
   padding: 7px;
 `;
 
-export const Label = styled.p`
+export const Label = styled.label`
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   font-size: 15px;
@@ -29,7 +29,10 @@ export const RadioInput = styled.input`
   height: 16px;
   border: 1px solid #B4B4B4;
   border-radius: 50%;
-  :checked {
+  &:checked {
     background-color: #DDC753;
+  }
+  &:focus {
+    outline: none;
   }
 `;

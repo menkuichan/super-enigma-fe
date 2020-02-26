@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const FilterContainer = styled.div`
+  position: relative;
+`;
+
 export const SortContainer = styled.div`
   background-color: #FFFFFF;
   border: 1px solid rgba(60, 60, 60, 0.1);
