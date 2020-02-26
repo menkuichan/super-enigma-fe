@@ -8,7 +8,7 @@ export const RadioContainer = styled.div`
 export const ItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 7px;
+  padding: 7px 15px;
 `;
 
 export const Label = styled.label`

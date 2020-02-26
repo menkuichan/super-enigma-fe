@@ -16,13 +16,13 @@ const RadioGroup = ({ data, value, onChange }) => {
     <RadioContainer>
       {data.map((params) => (
         <ItemContainer>
+          <Label>{params.title}</Label>
           <RadioInput
             type="radio"
             name="filter"
             onChange={handleChange(params.value)}
             checked={params.value === value}
           />
-          <Label>{params.title}</Label>
         </ItemContainer>
       ))}
     </RadioContainer>

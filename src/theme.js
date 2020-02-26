@@ -20,4 +20,8 @@ export default {
   spinner: {
     color: '#f79b0e',
   },
+  button: {
+    primary: '#000000',
+    secondary: '#DDC753',
+  },
 };
