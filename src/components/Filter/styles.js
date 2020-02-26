@@ -13,7 +13,8 @@ export const SortContainer = styled.div`
 
 export const ListContainer = styled.div`
   border-top: 1px solid rgba(60, 60, 60, 0.1);
-  :first-child {
+
+  &:first-child {
     border-top: none;
   }
 `;
@@ -22,9 +23,10 @@ export const LabelContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 7px;
+  padding: 15px;
   border-bottom: 1px solid rgba(60, 60, 60, 0.1);
-  :last-child {
+
+  &:last-child {
     border-bottom: none;
   }
 `;

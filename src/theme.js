@@ -24,4 +24,8 @@ export default {
     primary: '#000000',
     secondary: '#DDC753',
   },
+  input: {
+    text: '#666666',
+    background: '#EEEEEE',
+  },
 };

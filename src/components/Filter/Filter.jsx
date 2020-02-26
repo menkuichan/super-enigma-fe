@@ -4,6 +4,7 @@ import SortBy from '../Icons/SortBy';
 import RadioGroup from '../RadioGroup';
 import Button from '../Button';
 import { SORT_FILTERS } from '../../constants';
+import TextField from '../TextField';
 import {
   FilterContainer,
   SortContainer,
@@ -15,6 +16,23 @@ import {
 const SortFilter = () => {
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState(SORT_FILTERS[0].value);
+  const [value, setValue] = useState('1998');
+
+  const onHandleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const applyFilters = () => {
+    setFilter({
+      sortBy: sort,
+      yaer: value,
+    });
+  };
+
+  const resetFilters = () => {
+    setFilter({});
+  };
+
   return (
     <FilterContainer>
       <FilterIcon />
@@ -32,8 +50,24 @@ const SortFilter = () => {
         </ListContainer>
         <ListContainer>
           <LabelContainer>
-            <Button label="Reset" />
-            <Button label="Apply" type="secondary" />
+            <Label>Year</Label>
+            <TextField
+              value={value}
+              onChange={onHandleChange}
+            />
+          </LabelContainer>
+        </ListContainer>
+        <ListContainer>
+          <LabelContainer>
+            <Button
+              label="Reset"
+              onClick={resetFilters}
+            />
+            <Button
+              label="Apply"
+              type="secondary"
+              onClick={applyFilters}
+            />
           </LabelContainer>
         </ListContainer>
       </SortContainer>

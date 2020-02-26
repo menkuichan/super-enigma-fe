@@ -29,6 +29,7 @@ export const RadioInput = styled.input`
   height: 16px;
   border: 1px solid #B4B4B4;
   border-radius: 50%;
+  cursor: pointer;
   &:checked {
     background-color: #DDC753;
   }

@@ -11,6 +11,11 @@ export const SimpleButton = styled.button`
   padding: 0;
   background-color: inherit;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+    background-color: white;
+  }
 `;
 
 SimpleButton.defaultProps = {
