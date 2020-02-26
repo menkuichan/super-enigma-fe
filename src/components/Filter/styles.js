@@ -12,7 +12,7 @@ export const IconContainer = styled.div`
 export const SortContainer = styled.div`
   position: absolute;
   top: 27px;
-  transform: translateX(-47%);
+  /* transform: translateX(-47%); */
   background-color: #FFFFFF;
   border: 1px solid rgba(60, 60, 60, 0.1);
   border-radius: 5px;

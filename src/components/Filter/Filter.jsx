@@ -5,6 +5,7 @@ import RadioGroup from '../RadioGroup';
 import Button from '../Button';
 import { SORT_FILTERS } from '../../constants';
 import TextField from '../TextField';
+import Slider from '../Slider';
 import {
   FilterContainer,
   SortContainer,
@@ -13,6 +14,7 @@ import {
   Label,
   IconContainer,
 } from './styles';
+import { SliderInput } from '../Slider/styles';
 
 const SortFilter = () => {
   const [open, setOpen] = useState(true);
@@ -52,6 +54,12 @@ const SortFilter = () => {
               value={sort}
               onChange={setSort}
             />
+          </ListContainer>
+          <ListContainer>
+            <LabelContainer>
+              <Label>Rating</Label>
+              <Slider />
+            </LabelContainer>
           </ListContainer>
           <ListContainer>
             <LabelContainer>
