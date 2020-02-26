@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import defaultTheme from '../../theme';
 
-export const SimpleButton = styled.button`
+export const ButtonContainer = styled.button`
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
@@ -9,15 +9,14 @@ export const SimpleButton = styled.button`
   color: ${({ type, theme }) => (type === 'primary' ? theme.button.primary : theme.button.secondary)};
   border: none;
   padding: 0;
-  background-color: inherit;
+  background-color: ${({ theme }) => theme.button.background};
   cursor: pointer;
 
   &:focus {
     outline: none;
-    background-color: white;
   }
 `;
 
-SimpleButton.defaultProps = {
+ButtonContainer.defaultProps = {
   theme: defaultTheme,
 };

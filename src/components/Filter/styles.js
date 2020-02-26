@@ -1,20 +1,19 @@
 import styled from 'styled-components';
+import defaultTheme from '../../theme';
 
 export const FilterContainer = styled.div`
   position: relative;
 `;
 
 export const IconContainer = styled.div`
-  position: absolute;
-  transform: translateY(-50%);
 `;
 
 export const SortContainer = styled.div`
   position: absolute;
   top: 27px;
   transform: translateX(-47%);
-  background-color: #FFFFFF;
-  border: 1px solid rgba(60, 60, 60, 0.1);
+  background-color: ${({ theme }) => theme.filter.background};
+  border: 1px solid ${({ theme }) => theme.filter.border};
   border-radius: 5px;
   width: 270px;
 
@@ -30,29 +29,41 @@ export const SortContainer = styled.div`
     height: 0;
     border-style: solid;
     border-width: 0 5px 7px 5px;
-    border-color: transparent transparent #FFFFFF transparent;
+    border-color: transparent transparent ${({ theme }) => theme.filter.background} transparent;
   }
 `;
 
+SortContainer.defaultProps = {
+  theme: defaultTheme,
+};
+
 export const ListContainer = styled.div`
-  border-top: 1px solid rgba(60, 60, 60, 0.1);
+  border-top: 1px solid ${({ theme }) => theme.filter.border};
 
   &:first-child {
     border-top: none;
   }
 `;
 
+ListContainer.defaultProps = {
+  theme: defaultTheme,
+};
+
 export const LabelContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid rgba(60, 60, 60, 0.1);
+  border-bottom: 1px solid ${({ theme }) => theme.filter.border};
 
   &:last-child {
     border-bottom: none;
   }
 `;
+
+LabelContainer.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const Label = styled.h1`
   font-family: 'Open Sans', sans-serif;

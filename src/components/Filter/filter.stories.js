@@ -3,4 +3,4 @@ import { storiesOf } from '@storybook/react';
 import Filter from '.';
 
 storiesOf('Filter', module)
-  .add('default', () => <Filter />); // eslint-disable-line
+  .add('default', () => <Filter />);

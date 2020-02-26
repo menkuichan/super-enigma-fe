@@ -17,7 +17,7 @@ export const SearchInput = styled.input`
 
   &:focus {
     outline: none;
-    background-color: white;
+    background-color: ${({ theme }) => theme.search.background};
   }
 `;
 

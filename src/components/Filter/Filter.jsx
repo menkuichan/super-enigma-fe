@@ -14,7 +14,6 @@ import {
   Label,
   IconContainer,
 } from './styles';
-import { SliderInput } from '../Slider/styles';
 
 const SortFilter = () => {
   const [open, setOpen] = useState(true);
@@ -22,7 +21,7 @@ const SortFilter = () => {
   const [sort, setSort] = useState(SORT_FILTERS[0].value);
   const [value, setValue] = useState('1998');
 
-  const onHandleChange = (event) => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
 
@@ -37,9 +36,13 @@ const SortFilter = () => {
     setFilter({});
   };
 
+  const openFilterContainer = () => {
+    setOpen(!open);
+  };
+
   return (
     <FilterContainer>
-      <IconContainer onClick={() => setOpen(!open)}>
+      <IconContainer onClick={openFilterContainer}>
         <FilterIcon />
       </IconContainer>
       {open && (
@@ -66,7 +69,7 @@ const SortFilter = () => {
               <Label>Year</Label>
               <TextField
                 value={value}
-                onChange={onHandleChange}
+                onChange={handleChange}
               />
             </LabelContainer>
           </ListContainer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import TextFieldExample from './Text.field.example';
+import TextFieldExample from './TextField.example';
 
 storiesOf('TextField', module)
-  .add('default', () => <TextFieldExample />); // eslint-disable-line
+  .add('default', () => <TextFieldExample />);

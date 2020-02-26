@@ -41,7 +41,7 @@ export const Title = styled.h1`
   margin-top: 0;
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: ${({ theme }) => theme.movies.whiteText};
 `;
 
 export const Rating = styled.p`

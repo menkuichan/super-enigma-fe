@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SimpleButton } from './styles';
+import { ButtonContainer } from './styles';
 
 const Button = ({ type, label, onClick }) => (
-  <SimpleButton onClick={onClick} type={type}>{label}</SimpleButton>
+  <ButtonContainer onClick={onClick} type={type}>{label}</ButtonContainer>
 );
 
 Button.defaultProps = {
@@ -11,7 +11,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['primary', 'secondary']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

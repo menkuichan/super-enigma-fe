@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import defaultTheme from '../../theme';
 
 const radioHeight = 16;
 const radioWidth = 16;
+const circleWidth = radioWidth - 7;
+const circleHeight = radioHeight - 7;
 
 export const RadioContainer = styled.div`
   display: flex;
@@ -21,8 +24,12 @@ export const Label = styled.label`
   font-size: 15px;
   font-weight: 300;
   line-height: 15px;
-  color: #666666;
+  color: ${({ theme }) => theme.radio.label};
 `;
+
+Label.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const CircleContainer = styled.div`
   position: relative;
@@ -30,28 +37,38 @@ export const CircleContainer = styled.div`
 
 export const RadioCircle = styled.label`
   position: absolute;
-  width: ${radioWidth - 7}px;
-  height: ${radioHeight - 7}px;
-  background-color: #DDC753;
+  width: ${circleWidth}px;
+  height: ${circleHeight}px;
+  background-color: ${({ theme }) => theme.radio.input};
   border-radius: 50%;
   left: 50%;
   top: 42%;
   transform: translate(-50%, -50%);
 `;
 
+RadioCircle.defaultProps = {
+  theme: defaultTheme,
+};
+
 export const RadioInput = styled.input`
   position: relative;
   appearance: none;
   width: ${radioWidth}px;
   height: ${radioHeight}px;
-  border: 1px solid #B4B4B4;
+  border: 1px solid ${({ theme }) => theme.radio.border};
   border-radius: 50%;
   cursor: pointer;
+
   &:checked {
-    border: 1px solid #DDC753;
-    background-color: #FFFFFF;
+    border: 1px solid ${({ theme }) => theme.radio.input};
+    background-color: ${({ theme }) => theme.radio.background};
   }
+
   &:focus {
     outline: none;
   }
 `;
+
+RadioInput.defaultProps = {
+  theme: defaultTheme,
+};

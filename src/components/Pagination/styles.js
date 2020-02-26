@@ -13,13 +13,13 @@ export const PageNumber = styled.span`
 
   &.p${({ page }) => page} {
     background-color: ${({ theme }) => theme.header.activeLink};
-    color: white;
+    color: ${({ theme }) => theme.pagination.page};
   }
 
   &:hover:not(.p${({ page }) => page}) {
     border-radius: 5px;
     background-color: rgba(221, 221, 221, 0.4);
-    color: white;
+    color: ${({ theme }) => theme.pagination.page};
   }
 `;
 

@@ -16,8 +16,10 @@ const RadioGroup = ({ data, value, onChange }) => {
 
   return (
     <RadioContainer>
-      {data.map((params) => (
-        <ItemContainer>
+      {data.map((params, index) => (
+        <ItemContainer
+          key={index} // eslint-disable-line
+        >
           <Label>{params.title}</Label>
           <CircleContainer>
             <RadioInput

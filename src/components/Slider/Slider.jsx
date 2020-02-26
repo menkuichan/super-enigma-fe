@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SliderContainer, SliderInput, InputValue } from './styles';
 
-
 const Slider = () => {
   const [value, setValue] = useState(0);
 
@@ -11,7 +10,11 @@ const Slider = () => {
 
   return (
     <SliderContainer>
-      <div><InputValue>{value}</InputValue></div>
+      <div>
+        <InputValue>
+          {value}
+        </InputValue>
+      </div>
       <div>
         <SliderInput
           type="range"

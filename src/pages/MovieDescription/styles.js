@@ -38,7 +38,7 @@ export const Title = styled.h1`
   font-size: 34px;
   font-weight: 300;
   line-height: 45px;
-  color: white;
+  color: ${({ theme }) => theme.movies.whiteText};
 `;
 
 export const OriginalTitle = styled.h2`
@@ -66,7 +66,7 @@ export const Overview = styled.p`
   font-size: 16px;
   font-weight: 300;
   line-height: 25px;
-  color: white;
+  color: ${({ theme }) => theme.movies.whiteText};
 `;
 
 export const Rating = styled.p`

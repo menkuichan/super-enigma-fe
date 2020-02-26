@@ -15,7 +15,7 @@ export const SliderInput = styled.input`
   -webkit-appearance: none;
   width: 100%;
   height: 2px;
-  background: #DADADA;
+  background: ${({ theme }) => theme.slider.background};
   outline: none;
   z-index: 1;
 
@@ -28,8 +28,8 @@ export const SliderInput = styled.input`
     width: ${circleSize}px;
     height: ${circleSize}px;
     border-radius: 50%;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-    background: #666666;
+    box-shadow: 1px 1px 4px ${({ theme }) => theme.slider.boxShadow};
+    background: ${({ theme }) => theme.slider.circle};
     cursor: pointer;
   }
 
@@ -38,13 +38,14 @@ export const SliderInput = styled.input`
     content: '';
     display: inline-block;
     position: absolute;
-    width: ${({ value }) => value * (sliderHeigth / 10) - circleSize}px;
+    width: ${({ value }) => value * (sliderHeigth / 10)}px;
     height: 2px;
-    background-color: #DDC753;
+    background-color: ${({ theme }) => theme.slider.activeField};
   }
 `;
 
 export const InputValue = styled.p`
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   font-weight: 300;
   line-height: 15px;
