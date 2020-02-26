@@ -11,9 +11,11 @@ import {
   ListContainer,
   LabelContainer,
   Label,
+  IconContainer,
 } from './styles';
 
 const SortFilter = () => {
+  const [open, setOpen] = useState(true);
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState(SORT_FILTERS[0].value);
   const [value, setValue] = useState('1998');
@@ -35,42 +37,46 @@ const SortFilter = () => {
 
   return (
     <FilterContainer>
-      <FilterIcon />
-      <SortContainer>
-        <ListContainer>
-          <LabelContainer>
-            <Label>Sort by</Label>
-            <SortBy />
-          </LabelContainer>
-          <RadioGroup
-            data={SORT_FILTERS}
-            value={sort}
-            onChange={setSort}
-          />
-        </ListContainer>
-        <ListContainer>
-          <LabelContainer>
-            <Label>Year</Label>
-            <TextField
-              value={value}
-              onChange={onHandleChange}
+      <IconContainer onClick={() => setOpen(!open)}>
+        <FilterIcon />
+      </IconContainer>
+      {open && (
+        <SortContainer>
+          <ListContainer>
+            <LabelContainer>
+              <Label>Sort by</Label>
+              <SortBy />
+            </LabelContainer>
+            <RadioGroup
+              data={SORT_FILTERS}
+              value={sort}
+              onChange={setSort}
             />
-          </LabelContainer>
-        </ListContainer>
-        <ListContainer>
-          <LabelContainer>
-            <Button
-              label="Reset"
-              onClick={resetFilters}
-            />
-            <Button
-              label="Apply"
-              type="secondary"
-              onClick={applyFilters}
-            />
-          </LabelContainer>
-        </ListContainer>
-      </SortContainer>
+          </ListContainer>
+          <ListContainer>
+            <LabelContainer>
+              <Label>Year</Label>
+              <TextField
+                value={value}
+                onChange={onHandleChange}
+              />
+            </LabelContainer>
+          </ListContainer>
+          <ListContainer>
+            <LabelContainer>
+              <Button
+                label="Reset"
+                onClick={resetFilters}
+              />
+              <Button
+                label="Apply"
+                type="secondary"
+                onClick={applyFilters}
+              />
+            </LabelContainer>
+          </ListContainer>
+        </SortContainer>
+      )}
     </FilterContainer>
   );
 };
