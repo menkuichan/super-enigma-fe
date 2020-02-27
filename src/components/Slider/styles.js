@@ -10,6 +10,12 @@ export const SliderContainer = styled.div`
   justify-content: space-between;
 `;
 
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-left: 15px;
+`;
+
 export const SliderInput = styled.input`
   width: ${sliderHeigth}px;
   -webkit-appearance: none;

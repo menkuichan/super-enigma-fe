@@ -15,17 +15,20 @@ import {
   IconContainer,
 } from './styles';
 
-const reducer = (currentState, newState) => ({ ...currentState, ...newState });
+const reducer = (currentState, newState) => (
+  { ...currentState, ...newState }
+);
+
+const initialState = {
+  sort: SORT_FILTERS[0].value,
+  direction: 'asc',
+  year: '1998',
+  rating: '0',
+  open: true,
+};
 
 const SortFilter = () => {
-  const [{
-    sort, year, rating, open,
-  }, setState] = useReducer(reducer, {
-    sort: SORT_FILTERS[0].value,
-    year: '1998',
-    rating: 0,
-    open: true,
-  });
+  const [{ sort, year, rating, open, direction }, setState] = useReducer(reducer, initialState); // eslint-disable-line
 
   const handleYearChange = (event) => {
     setState({ year: event.target.value });
@@ -39,21 +42,21 @@ const SortFilter = () => {
     setState({ open: false });
   };
 
+  const changeDirection = () => {
+    const newDirection = direction === 'asc' ? 'desc' : 'asc';
+    setState({ direction: newDirection });
+  };
+
   const resetFilters = () => {
-    setState({
-      sort: SORT_FILTERS[0].value,
-      year: '1998',
-      rating: 0,
-      open: false,
-    });
+    setState(initialState);
   };
 
   const openFilterContainer = () => {
     setState({ open: !open });
   };
 
-  const setSort = (val) => {
-    setState({ sort: val });
+  const setSort = (value) => {
+    setState({ sort: value });
   };
 
   return (
@@ -66,12 +69,13 @@ const SortFilter = () => {
           <ListContainer>
             <LabelContainer>
               <Label>Sort by</Label>
-              <SortBy />
+              <SortBy onClick={changeDirection} direction={direction} />
             </LabelContainer>
             <RadioGroup
               data={SORT_FILTERS}
               value={sort}
               onChange={setSort}
+              direction={direction}
             />
           </ListContainer>
           <ListContainer>

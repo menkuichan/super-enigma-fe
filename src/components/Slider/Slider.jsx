@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SliderContainer, SliderInput, InputValue } from './styles';
+import {
+  SliderContainer,
+  SliderInput,
+  InputContainer,
+  InputValue,
+} from './styles';
 
 const Slider = ({ value, onChange }) => (
   <SliderContainer>
@@ -9,7 +14,7 @@ const Slider = ({ value, onChange }) => (
         {`>${value}`}
       </InputValue>
     </div>
-    <div>
+    <InputContainer>
       <SliderInput
         type="range"
         min="1"
@@ -18,7 +23,7 @@ const Slider = ({ value, onChange }) => (
         value={value}
         onChange={onChange}
       />
-    </div>
+    </InputContainer>
   </SliderContainer>
 );
 

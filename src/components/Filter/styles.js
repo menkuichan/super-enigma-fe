@@ -11,7 +11,8 @@ export const IconContainer = styled.div`
 export const SortContainer = styled.div`
   position: absolute;
   top: 27px;
-  transform: translateX(-47%);
+  left: 50%;
+  transform: translateX(-50%);
   background-color: ${({ theme }) => theme.filter.background};
   border: 1px solid ${({ theme }) => theme.filter.border};
   border-radius: 5px;
