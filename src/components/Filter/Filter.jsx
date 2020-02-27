@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
 import RadioGroup from '../RadioGroup';
@@ -15,30 +15,91 @@ import {
   IconContainer,
 } from './styles';
 
-const SortFilter = () => {
-  const [open, setOpen] = useState(true);
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState(SORT_FILTERS[0].value);
-  const [value, setValue] = useState('1998');
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_FILTER':
+      return {
+        ...state,
+        open: false,
+      };
+    case 'RESET_FILTER':
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          sort: SORT_FILTERS[0].value,
+          year: '1998',
+        },
+        open: false,
+      };
+    case 'SET_YEAR':
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          year: action.value,
+        },
+      };
+    case 'SET_RATING':
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          rating: action.rating,
+        },
+      };
+    case 'SET_OPEN':
+      return {
+        ...state,
+        open: !state.open,
+      };
+    case 'SET_SORT':
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          sort: action.sort,
+        },
+      };
+    default:
+      return state;
+  }
+};
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+const SortFilter = () => {
+  const [{ filter, open }, dispatch] = useReducer(reducer, {
+    filter: {
+      sort: SORT_FILTERS[0].value,
+      year: '1998',
+      rating: 0,
+    },
+    open: true,
+  });
+
+  const handleYearChange = (event) => {
+    dispatch({ type: 'SET_YEAR', value: event.target.value });
+  };
+
+  const handleRatingChange = (event) => {
+    dispatch({ type: 'SET_RATING', rating: event.target.value });
   };
 
   const applyFilters = () => {
-    setFilter({
-      sortBy: sort,
-      yaer: value,
-    });
+    dispatch({ type: 'SET_FILTER' });
   };
 
   const resetFilters = () => {
-    setFilter({});
+    dispatch({ type: 'RESET_FILTER' });
   };
 
   const openFilterContainer = () => {
-    setOpen(!open);
+    dispatch({ type: 'SET_OPEN' });
   };
+
+  const setSort = (val) => {
+    dispatch({ type: 'SET_SORT', sort: val });
+  };
+  console.log(filter);
 
   return (
     <FilterContainer>
@@ -54,22 +115,25 @@ const SortFilter = () => {
             </LabelContainer>
             <RadioGroup
               data={SORT_FILTERS}
-              value={sort}
+              value={filter.sort}
               onChange={setSort}
             />
           </ListContainer>
           <ListContainer>
             <LabelContainer>
               <Label>Rating</Label>
-              <Slider />
+              <Slider
+                value={filter.rating}
+                onChange={handleRatingChange}
+              />
             </LabelContainer>
           </ListContainer>
           <ListContainer>
             <LabelContainer>
               <Label>Year</Label>
               <TextField
-                value={value}
-                onChange={handleChange}
+                value={filter.year}
+                onChange={handleYearChange}
               />
             </LabelContainer>
           </ListContainer>
