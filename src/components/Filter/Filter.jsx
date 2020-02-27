@@ -28,12 +28,27 @@ const initialState = {
   direction: 'asc',
   year: '1998',
   rating: '0',
-  open: true,
-  genres: ['Adventure', 'Crime'],
+  open: false,
+  activeTags: [0, 1],
 };
 
+const tags = [{
+  id: 0,
+  name: 'Adventure',
+},
+{
+  id: 1,
+  name: 'Crime',
+},
+{
+  id: 2,
+  name: 'Horror',
+}];
+
 const SortFilter = () => {
-  const [{ sort, year, rating, open, direction, genres }, setState] = useReducer(reducer, initialState); // eslint-disable-line
+  const [{ sort, year, rating, open, direction, activeTags }, setState] = useReducer(reducer, initialState); // eslint-disable-line
+  const wrapperRef = useRef(null);
+  useOutsideClick(wrapperRef, () => setState(initialState), EVENT_TYPE.MOUSEDOWN);
 
   const handleRatingChange = (event) => {
     setState({ rating: event.target.value });
@@ -60,22 +75,14 @@ const SortFilter = () => {
     setState({ sort: value });
   };
 
-  const setGenre = (genreName) => {
-    const newGenres = genres;
-    if (genres.find((el) => el === genreName)) {
-      genres.forEach((element, index) => {
-        if (element === genreName) {
-          newGenres.splice(index, 1);
-        }
-      });
+  const setGenre = (tagId) => {
+    if (activeTags.includes(tagId)) {
+      setState({ activeTags: activeTags.filter((id) => id !== tagId) });
     } else {
-      genres.push(genreName);
+      setState({ activeTags: [...activeTags, tagId] });
     }
-    setState({ genres: newGenres });
   };
 
-  const wrapperRef = useRef(null);
-  useOutsideClick(wrapperRef, () => setState({ open: false }), EVENT_TYPE.MOUSEDOWN);
   const handleYearChange = (event) => {
     setState({ year: event.target.value });
   };
@@ -93,9 +100,15 @@ const SortFilter = () => {
               <Hover />
             </LabelContainer>
             <GenresContainer>
-              <Tag label="Adventure" genres={genres} onClick={setGenre} />
-              <Tag label="Horror" genres={genres} onClick={setGenre} />
-              <Tag label="Crime" genres={genres} onClick={setGenre} />
+              {tags.map((tag) => (
+                <Tag
+                  key={tag.id}
+                  label={tag.name}
+                  active={activeTags.includes(tag.id)}
+                  onClick={setGenre}
+                  id={tag.id}
+                />
+              ))}
             </GenresContainer>
           </ListContainer>
           <ListContainer>

@@ -3,8 +3,8 @@ import defaultTheme from '../../theme';
 
 export const TagContainer = styled.div`
   display: inline-block;
-  border: 1px solid ${({ genres, label, theme }) => (genres.find((genre) => genre === label) ? theme.tag.active : theme.tag.border)};
-  background-color: ${({ genres, label, theme }) => (genres.find((genre) => genre === label) ? theme.tag.active : theme.tag.background)};
+  border: 1px solid ${({ active, theme }) => (active ? theme.tag.active : theme.tag.border)};
+  background-color: ${({ active, theme }) => (active ? theme.tag.active : theme.tag.background)};
   border-radius: 50px;
   padding: 3px 9px;
   margin: 3px;
