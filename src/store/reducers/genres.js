@@ -24,3 +24,16 @@ export const genres = (state = defaultState, { type, payload }) => {
 };
 
 export const selectGenres = (store) => store.genres.byId;
+export const selectGenresByIds = (store, ids) => {
+  const result = [];
+  ids.forEach(
+    (id) => {
+      Object.keys(store.genres.byId).forEach((key) => {
+        if (store.genres.byId[key].id === id) {
+          result.push(store.genres.byId[key].name);
+        }
+      });
+    },
+  );
+  return result;
+};

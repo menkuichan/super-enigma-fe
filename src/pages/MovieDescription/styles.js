@@ -97,3 +97,20 @@ export const SpinnerContainer = styled.div`
   padding-top: 150px;
   width: 100%;
 `;
+
+export const GenresContainer = styled.div`
+  display: flex;
+`;
+
+export const Genres = styled.p`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 0;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: ${({ theme }) => theme.movies.text};
+`;

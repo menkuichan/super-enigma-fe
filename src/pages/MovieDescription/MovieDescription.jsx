@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import StarIcon from '../../components/Icons/StarIcon';
 import { selectMovieById, selectLoading } from '../../store/reducers/movies';
-import { selectGenres } from '../../store/reducers/genres';
+import { selectGenresByIds } from '../../store/reducers/genres';
 import { GET_MOVIE_PENDING } from '../../store/actionTypes';
 import Spinner from '../../components/Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
@@ -21,14 +21,16 @@ import {
   Overview,
   OriginalTitle,
   Language,
+  GenresContainer,
+  Genres,
 } from './styles';
 
 const MovieDescription = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
-  const genres = useSelector(selectGenres);
   const movie = useSelector((state) => selectMovieById(state, id)) || {};
+  const genresNames = useSelector((state) => selectGenresByIds(state, movie.genre_ids || []));
 
   useEffect(() => {
     dispatch({
@@ -60,6 +62,11 @@ const MovieDescription = () => {
               <OriginalTitle>
                 {original_title}
               </OriginalTitle>
+              <GenresContainer>
+                <Genres>
+                  {genresNames.join(', ')}
+                </Genres>
+              </GenresContainer>
               <RatingContainer>
                 <Rating>
                   {`Popularity: ${popularity}`}
