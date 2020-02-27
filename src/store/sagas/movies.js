@@ -1,4 +1,6 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, call, put, takeLatest,
+} from 'redux-saga/effects';
 import moviesApi from '../../api/movies';
 import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
 import {
@@ -8,6 +10,7 @@ import {
   GET_MOVIE_PENDING,
   GET_MOVIE_SUCCESS,
   GET_MOVIE_ERROR,
+  GET_GENRES_PENDING,
 } from '../actionTypes';
 
 const getSortFilter = (filter) => {
@@ -45,6 +48,10 @@ function* loadMovie(action) {
   try {
     const movie = yield call(moviesApi.getById, id);
     yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
+    yield put({
+      type: GET_GENRES_PENDING,
+      payload: { ids: movie.genre_ids },
+    });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }
