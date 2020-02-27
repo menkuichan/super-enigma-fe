@@ -8,6 +8,7 @@ export const TagContainer = styled.div`
   border-radius: 50px;
   padding: 3px 9px;
   margin: 3px;
+  cursor: pointer;
 `;
 
 TagContainer.defaultProps = {
@@ -20,4 +21,5 @@ export const TagLabel = styled.p`
   font-size: 12px;
   font-weight: 600;
   line-height: 15px;
+  user-select: none;
 `;

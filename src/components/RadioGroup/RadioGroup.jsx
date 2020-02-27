@@ -20,9 +20,10 @@ const RadioGroup = ({ data, value, onChange }) => {
         <ItemContainer
           key={index} // eslint-disable-line
         >
-          <Label>{params.title}</Label>
+          <Label htmlFor={index}>{params.title}</Label>
           <CircleContainer>
             <RadioInput
+              id={index}
               type="radio"
               name="filter"
               onChange={handleChange(params.value)}

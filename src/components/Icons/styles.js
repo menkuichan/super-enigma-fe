@@ -5,5 +5,6 @@ export const Icon = styled.svg`
 `;
 
 export const SortIcon = styled.svg`
+  cursor: pointer;
   ${({ direction }) => direction === 'desc' && 'transform: scaleY(-1);'}
 `;

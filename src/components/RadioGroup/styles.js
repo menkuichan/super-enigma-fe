@@ -25,6 +25,7 @@ export const Label = styled.label`
   font-weight: 300;
   line-height: 15px;
   color: ${({ theme }) => theme.radio.label};
+  cursor: pointer;
 `;
 
 Label.defaultProps = {

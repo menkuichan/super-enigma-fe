@@ -24,7 +24,7 @@ SortBy.defaultProps = {
   fill: 'none',
   width: '14',
   height: '8',
-  viewBox: '"0 0 14 8',
+  viewBox: '0 0 14 8',
 };
 
 export default SortBy;

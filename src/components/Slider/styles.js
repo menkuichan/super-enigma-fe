@@ -44,7 +44,7 @@ export const SliderInput = styled.input`
     content: '';
     display: inline-block;
     position: absolute;
-    width: ${({ value }) => value * (sliderHeigth / 10)}px;
+    width: ${({ value }) => value * (sliderHeigth / 10 + 2)}px;
     height: 2px;
     background-color: ${({ theme }) => theme.slider.activeField};
   }
