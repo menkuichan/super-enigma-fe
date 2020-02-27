@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import defaultTheme from '../../theme';
 
 export const CardContainer = styled.div`
   width: 250px;
@@ -21,6 +22,10 @@ export const Poster = styled.img`
   }
 `;
 
+Poster.defaultProps = {
+  theme: defaultTheme,
+};
+
 export const Info = styled.div`
   display: flex;
   overflow: hidden;
@@ -36,7 +41,7 @@ export const Title = styled.h1`
   margin-top: 0;
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: ${({ theme }) => theme.movies.whiteText};
 `;
 
 export const Rating = styled.p`
@@ -50,6 +55,10 @@ export const Rating = styled.p`
   text-overflow: ellipsis;
   color: ${({ theme }) => theme.movies.text};
 `;
+
+Rating.defaultProps = {
+  theme: defaultTheme,
+};
 
 export const IconContainer = styled.div`
   margin-right: 5px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NoResults = styled.h1`
-  color: ${({ theme }) => theme.movies.noResultsColor};
+  color: ${({ theme }) => theme.movies.whiteText};
   font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   font-weight: 300;

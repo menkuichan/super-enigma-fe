@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Logo from '../Icons/Logo';
 import { Nav, NavLink } from '../Nav';
+import Filter from '../Filter';
 import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
 import { NavContainer } from './styles';
@@ -34,10 +35,11 @@ const Layout = ({ children }) => {
               />
             ))}
           </Nav>
+          <Filter />
         </NavContainer>
-        <div>
+        <>
           <Search />
-        </div>
+        </>
       </Header>
       {children}
     </>

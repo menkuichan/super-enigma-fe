@@ -32,7 +32,7 @@ const Search = () => {
     }
   }, [debouncedValue]);
 
-  const onHandleChange = (event) => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
 
@@ -46,7 +46,7 @@ const Search = () => {
       <InputContainer>
         <SearchInput
           placeholder="Type to search…"
-          onChange={onHandleChange}
+          onChange={handleChange}
           value={value}
         />
         <IconContainer>
