@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
+import Hover from '../Icons/Hover';
 import RadioGroup from '../RadioGroup';
 import Button from '../Button';
 import { SORT_FILTERS } from '../../constants';
 import TextField from '../TextField';
 import Slider from '../Slider';
+import Tag from '../Tag';
 import {
   FilterContainer,
   SortContainer,
@@ -13,6 +15,7 @@ import {
   LabelContainer,
   Label,
   IconContainer,
+  GenresContainer,
 } from './styles';
 
 const reducer = (currentState, newState) => (
@@ -59,6 +62,8 @@ const SortFilter = () => {
     setState({ sort: value });
   };
 
+  const genres = ['adventure'];
+
   return (
     <FilterContainer>
       <IconContainer onClick={openFilterContainer}>
@@ -66,6 +71,16 @@ const SortFilter = () => {
       </IconContainer>
       {open && (
         <SortContainer>
+          <ListContainer>
+            <LabelContainer>
+              <Label>Genres</Label>
+              <Hover />
+            </LabelContainer>
+            <GenresContainer>
+              <Tag label="adventure" genres={genres} />
+              <Tag label="horror" genres={genres} />
+            </GenresContainer>
+          </ListContainer>
           <ListContainer>
             <LabelContainer>
               <Label>Sort by</Label>

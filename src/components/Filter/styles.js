@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import defaultTheme from '../../theme';
 
+export const GenresContainer = styled.div`
+  padding: 7px;
+`;
+
 export const FilterContainer = styled.div`
   position: relative;
 `;

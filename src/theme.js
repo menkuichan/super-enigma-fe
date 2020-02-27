@@ -49,4 +49,9 @@ export default {
     circle: '#666666',
     activeField: '#DDC753',
   },
+  tag: {
+    active: '#DDC753',
+    border: '#000000',
+    background: '#FFFFFF',
+  },
 };
