@@ -6,7 +6,7 @@ const Slider = ({ value, onChange }) => (
   <SliderContainer>
     <div>
       <InputValue>
-        {value}
+        {`>${value}`}
       </InputValue>
     </div>
     <div>

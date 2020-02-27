@@ -15,91 +15,46 @@ import {
   IconContainer,
 } from './styles';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_FILTER':
-      return {
-        ...state,
-        open: false,
-      };
-    case 'RESET_FILTER':
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          sort: SORT_FILTERS[0].value,
-          year: '1998',
-        },
-        open: false,
-      };
-    case 'SET_YEAR':
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          year: action.value,
-        },
-      };
-    case 'SET_RATING':
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          rating: action.rating,
-        },
-      };
-    case 'SET_OPEN':
-      return {
-        ...state,
-        open: !state.open,
-      };
-    case 'SET_SORT':
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          sort: action.sort,
-        },
-      };
-    default:
-      return state;
-  }
-};
+const reducer = (currentState, newState) => ({ ...currentState, ...newState });
 
 const SortFilter = () => {
-  const [{ filter, open }, dispatch] = useReducer(reducer, {
-    filter: {
-      sort: SORT_FILTERS[0].value,
-      year: '1998',
-      rating: 0,
-    },
+  const [{
+    sort, year, rating, open,
+  }, setState] = useReducer(reducer, {
+    sort: SORT_FILTERS[0].value,
+    year: '1998',
+    rating: 0,
     open: true,
   });
 
   const handleYearChange = (event) => {
-    dispatch({ type: 'SET_YEAR', value: event.target.value });
+    setState({ year: event.target.value });
   };
 
   const handleRatingChange = (event) => {
-    dispatch({ type: 'SET_RATING', rating: event.target.value });
+    setState({ rating: event.target.value });
   };
 
   const applyFilters = () => {
-    dispatch({ type: 'SET_FILTER' });
+    setState({ open: false });
   };
 
   const resetFilters = () => {
-    dispatch({ type: 'RESET_FILTER' });
+    setState({
+      sort: SORT_FILTERS[0].value,
+      year: '1998',
+      rating: 0,
+      open: false,
+    });
   };
 
   const openFilterContainer = () => {
-    dispatch({ type: 'SET_OPEN' });
+    setState({ open: !open });
   };
 
   const setSort = (val) => {
-    dispatch({ type: 'SET_SORT', sort: val });
+    setState({ sort: val });
   };
-  console.log(filter);
 
   return (
     <FilterContainer>
@@ -115,7 +70,7 @@ const SortFilter = () => {
             </LabelContainer>
             <RadioGroup
               data={SORT_FILTERS}
-              value={filter.sort}
+              value={sort}
               onChange={setSort}
             />
           </ListContainer>
@@ -123,7 +78,7 @@ const SortFilter = () => {
             <LabelContainer>
               <Label>Rating</Label>
               <Slider
-                value={filter.rating}
+                value={rating}
                 onChange={handleRatingChange}
               />
             </LabelContainer>
@@ -132,7 +87,7 @@ const SortFilter = () => {
             <LabelContainer>
               <Label>Year</Label>
               <TextField
-                value={filter.year}
+                value={year}
                 onChange={handleYearChange}
               />
             </LabelContainer>
