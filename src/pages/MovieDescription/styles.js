@@ -75,7 +75,6 @@ export const Rating = styled.p`
   font-weight: 300;
   line-height: 22px;
   margin: 0;
-  margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -83,12 +82,13 @@ export const Rating = styled.p`
 `;
 
 export const IconContainer = styled.div`
-  transform: translateY(10%);
   margin-right: 5px;
 `;
 
 export const RatingContainer = styled.div`
   display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 `;
 
 export const SpinnerContainer = styled.div`
@@ -96,4 +96,21 @@ export const SpinnerContainer = styled.div`
   justify-content: center;
   padding-top: 150px;
   width: 100%;
+`;
+
+export const GenresContainer = styled.div`
+  display: flex;
+`;
+
+export const Genres = styled.p`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 0;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: ${({ theme }) => theme.movies.text};
 `;

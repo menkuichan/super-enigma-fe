@@ -1,10 +1,13 @@
 import React, { useReducer, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectGenres } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
 import Hover from '../Icons/Hover';
 import RadioGroup from '../RadioGroup';
 import Button from '../Button';
+import { GET_GENRES_PENDING } from '../../store/actionTypes';
 import { SORT_FILTERS, EVENT_TYPE } from '../../constants';
 import TextField from '../TextField';
 import Slider from '../Slider';
@@ -32,20 +35,9 @@ const initialState = {
   activeTags: [0, 1],
 };
 
-const tags = [{
-  id: 0,
-  name: 'Adventure',
-},
-{
-  id: 1,
-  name: 'Crime',
-},
-{
-  id: 2,
-  name: 'Horror',
-}];
-
 const SortFilter = () => {
+  const dispatch = useDispatch();
+  const genres = useSelector(selectGenres);
   const [{ sort, year, rating, open, direction, activeTags }, setState] = useReducer(reducer, initialState); // eslint-disable-line
   const wrapperRef = useRef(null);
   useOutsideClick(wrapperRef, () => setState(initialState), EVENT_TYPE.MOUSEDOWN);
@@ -69,6 +61,7 @@ const SortFilter = () => {
 
   const openFilterContainer = () => {
     setState({ open: !open });
+    dispatch({ type: GET_GENRES_PENDING });
   };
 
   const setSort = (value) => {
@@ -100,13 +93,13 @@ const SortFilter = () => {
               <Hover />
             </LabelContainer>
             <GenresContainer>
-              {tags.map((tag) => (
+              {genres.map((genre) => (
                 <Tag
-                  key={tag.id}
-                  label={tag.name}
-                  active={activeTags.includes(tag.id)}
+                  key={genre.id}
+                  label={genre.name}
+                  active={activeTags.includes(genre.id)}
                   onClick={setGenre}
-                  id={tag.id}
+                  id={genre.id}
                 />
               ))}
             </GenresContainer>

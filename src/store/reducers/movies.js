@@ -42,6 +42,7 @@ export const movies = (state = defaultState, { type, payload }) => {
       return state;
   }
 };
+
 export const selectMovies = (store) => (
   Object
     .keys(store.movies.byId)
@@ -50,5 +51,3 @@ export const selectMovies = (store) => (
 export const selectTotalPages = (store) => store.movies.totalPages;
 export const selectMovieById = (store, id) => store.movies.byId[id];
 export const selectLoading = (store) => store.movies.isLoading;
-
-export default movies;
