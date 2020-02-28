@@ -1,8 +1,10 @@
 import {
-  GET_GENRES_BY_ID_PENDING,
   GET_GENRES_PENDING,
   GET_GENRES_SUCCESS,
   GET_GENRES_ERROR,
+  GET_GENRES_BY_IDS_PENDING,
+  GET_GENRES_BY_IDS_SUCCESS,
+  GET_GENRES_BY_IDS_ERROR,
 } from '../actionTypes';
 import { normalizeData } from '../../utils';
 
@@ -13,17 +15,23 @@ const defaultState = {
 
 export const genres = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case GET_GENRES_BY_ID_PENDING:
-      return { ...state, isLoading: true };
     case GET_GENRES_PENDING:
-      return { ...state, isLoading: true };
+      return { ...state };
     case GET_GENRES_SUCCESS:
       return {
         ...state,
         byId: normalizeData(payload.genres),
-        isLoading: false,
       };
     case GET_GENRES_ERROR:
+      return { ...state };
+    case GET_GENRES_BY_IDS_PENDING:
+      return { ...state, isLoading: true };
+    case GET_GENRES_BY_IDS_SUCCESS:
+      return {
+        ...state,
+        byId: normalizeData(payload.genres),
+      };
+    case GET_GENRES_BY_IDS_ERROR:
       return { ...state, isLoading: false };
     default:
       return state;

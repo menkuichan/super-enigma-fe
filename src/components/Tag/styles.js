@@ -6,7 +6,7 @@ export const TagContainer = styled.div`
   border: 1px solid ${({ active, theme }) => (active ? theme.tag.active : theme.tag.border)};
   background-color: ${({ active, theme }) => (active ? theme.tag.active : theme.tag.background)};
   border-radius: 50px;
-  padding: 3px 9px;
+  padding: 2px 9px;
   margin: 3px;
   cursor: pointer;
 `;
