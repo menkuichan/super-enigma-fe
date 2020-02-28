@@ -18,20 +18,41 @@ const MoviesView = () => {
   const movies = useSelector(selectMovies);
   const isLoading = useSelector(selectLoading);
   const totalPages = useSelector(selectTotalPages);
-  const { page = 1, filter } = queryString.parse(location.search);
+  const {
+    page = 1,
+    filter,
+    year,
+    vote_average,
+    genre,
+    sortBy,
+  } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
-      history.push(`/movies?page=${newPage}&filter=${filter}`);
+      history.push(`/movies?${queryString.stringify({
+        page: newPage,
+        filter,
+        year,
+        vote_average,
+        genre,
+        sortBy,
+      }, { sort: false })}`);
     }
   };
 
   useEffect(() => {
     dispatch({
       type: GET_MOVIES_PENDING,
-      payload: { page, filter },
+      payload: {
+        page,
+        filter,
+        year,
+        vote_average,
+        genre,
+        sortBy,
+      },
     });
-  }, [page, filter, dispatch]);
+  }, [page, filter, year, vote_average, genre, sortBy]);
 
   return (
     <MoviesViewContainer>

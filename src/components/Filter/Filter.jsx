@@ -1,5 +1,7 @@
 import React, { useReducer, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import queryString from 'query-string';
 import { selectGenres, selectLoading } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import FilterIcon from '../Icons/FilterIcon';
@@ -30,15 +32,16 @@ const reducer = (currentState, newState) => (
 
 const initialState = {
   sort: SORT_FILTERS[0].value,
-  direction: 'asc',
+  direction: 'desc',
   year: '1998',
   rating: '0',
   open: false,
-  activeTags: [0, 1],
+  activeTags: [],
 };
 
 const SortFilter = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const genres = useSelector(selectGenres);
   const isLoading = useSelector(selectLoading);
   const [{ sort, year, rating, open, direction, activeTags }, setState] = useReducer(reducer, initialState); // eslint-disable-line
@@ -50,6 +53,12 @@ const SortFilter = () => {
   };
 
   const applyFilters = () => {
+    history.push(`/movies?${queryString.stringify({
+      sortBy: `${sort}.${direction}`,
+      year,
+      vote_average: rating,
+      genre: activeTags,
+    }, { sort: false })}`);
     setState({ open: false });
   };
 
