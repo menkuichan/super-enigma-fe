@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import queryString from 'query-string';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import isEqual from 'lodash.isequal';
 import { selectMovies, selectTotalPages, selectLoading } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MovieCard from '../../components/MovieCard';
@@ -24,8 +25,8 @@ const MoviesView = () => {
     year,
     vote_average,
     sortBy,
+    genre = [],
   } = queryString.parse(location.search);
-  const { genre = [] } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {

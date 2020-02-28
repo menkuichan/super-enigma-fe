@@ -1,7 +1,6 @@
 import {
   all, call, put, takeLatest,
 } from 'redux-saga/effects';
-import queryString from 'query-string';
 import moviesApi from '../../api/movies';
 import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
 import {
@@ -37,7 +36,7 @@ function* loadMovies(action) {
   } = action.payload;
 
   try {
-    const { movies, totalPages } = yield call(moviesApi.get, queryString.stringify({
+    const { movies, totalPages } = yield call(moviesApi.get, {
       page,
       perPage: MOVIES_PARAMS.PER_PAGE,
       sortBy: sortBy || getSortFilter(filter),
@@ -45,7 +44,7 @@ function* loadMovies(action) {
       year,
       vote_average,
       genre,
-    }));
+    });
     yield put({
       type: GET_MOVIES_SUCCESS,
       payload: { totalPages, movies },
