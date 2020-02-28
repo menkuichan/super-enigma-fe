@@ -23,9 +23,9 @@ const MoviesView = () => {
     filter,
     year,
     vote_average,
-    genre,
     sortBy,
   } = queryString.parse(location.search);
+  const { genre = [] } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
@@ -52,7 +52,7 @@ const MoviesView = () => {
         sortBy,
       },
     });
-  }, [page, filter, year, vote_average, genre, sortBy]);
+  }, [page, filter, year, vote_average, sortBy, genre.length]);
 
   return (
     <MoviesViewContainer>
