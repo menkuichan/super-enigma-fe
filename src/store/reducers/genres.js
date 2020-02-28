@@ -1,4 +1,9 @@
-import { GET_GENRES_PENDING, GET_GENRES_SUCCESS, GET_GENRES_ERROR } from '../actionTypes';
+import {
+  GET_GENRES_BY_ID_PENDING,
+  GET_GENRES_PENDING,
+  GET_GENRES_SUCCESS,
+  GET_GENRES_ERROR,
+} from '../actionTypes';
 import { normalizeData } from '../../utils';
 
 const defaultState = {
@@ -8,6 +13,8 @@ const defaultState = {
 
 export const genres = (state = defaultState, { type, payload }) => {
   switch (type) {
+    case GET_GENRES_BY_ID_PENDING:
+      return { ...state, isLoading: true };
     case GET_GENRES_PENDING:
       return { ...state, isLoading: true };
     case GET_GENRES_SUCCESS:
@@ -23,17 +30,11 @@ export const genres = (state = defaultState, { type, payload }) => {
   }
 };
 
-export const selectGenres = (store) => store.genres.byId;
-export const selectGenresByIds = (store, ids) => {
-  const result = [];
-  ids.forEach(
-    (id) => {
-      Object.keys(store.genres.byId).forEach((key) => {
-        if (store.genres.byId[key].id === id) {
-          result.push(store.genres.byId[key].name);
-        }
-      });
-    },
-  );
-  return result;
-};
+export const selectGenres = (store) => (
+  Object
+    .keys(store.genres.byId)
+    .map((key) => store.genres.byId[key])
+);
+export const selectGenresByIds = (store, ids) => (
+  selectGenres(store).filter(({ id }) => ids.includes(id))
+);

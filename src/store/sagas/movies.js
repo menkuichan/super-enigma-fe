@@ -10,7 +10,7 @@ import {
   GET_MOVIE_PENDING,
   GET_MOVIE_SUCCESS,
   GET_MOVIE_ERROR,
-  GET_GENRES_PENDING,
+  GET_GENRES_BY_ID_PENDING,
 } from '../actionTypes';
 
 const getSortFilter = (filter) => {
@@ -49,7 +49,7 @@ function* loadMovie(action) {
     const movie = yield call(moviesApi.getById, id);
     yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
     yield put({
-      type: GET_GENRES_PENDING,
+      type: GET_GENRES_BY_ID_PENDING,
       payload: { ids: movie.genre_ids },
     });
   } catch (e) {
