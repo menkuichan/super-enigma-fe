@@ -95,7 +95,7 @@ const SortFilter = () => {
               <Label>Genres</Label>
               <Hover />
             </LabelContainer>
-            {isLoading ? <SpinnerContainer><Spinner width='20' /></SpinnerContainer> : (
+            {isLoading ? <SpinnerContainer><Spinner width="20" /></SpinnerContainer> : (
               <GenresContainer>
                 {genres.map((genre) => (
                   <Tag
