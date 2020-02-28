@@ -75,7 +75,6 @@ export const Rating = styled.p`
   font-weight: 300;
   line-height: 22px;
   margin: 0;
-  margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -83,12 +82,13 @@ export const Rating = styled.p`
 `;
 
 export const IconContainer = styled.div`
-  transform: translateY(10%);
   margin-right: 5px;
 `;
 
 export const RatingContainer = styled.div`
   display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 `;
 
 export const SpinnerContainer = styled.div`
