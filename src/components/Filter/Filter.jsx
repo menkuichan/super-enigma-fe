@@ -1,6 +1,6 @@
 import React, { useReducer, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectGenres } from '../../store/reducers/genres';
+import { selectGenres, selectLoading } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
@@ -12,6 +12,7 @@ import { SORT_FILTERS, EVENT_TYPE } from '../../constants';
 import TextField from '../TextField';
 import Slider from '../Slider';
 import Tag from '../Tag';
+import Spinner from '../Spinner';
 import {
   FilterContainer,
   SortContainer,
@@ -20,6 +21,7 @@ import {
   Label,
   IconContainer,
   GenresContainer,
+  SpinnerContainer,
 } from './styles';
 
 const reducer = (currentState, newState) => (
@@ -38,6 +40,7 @@ const initialState = {
 const SortFilter = () => {
   const dispatch = useDispatch();
   const genres = useSelector(selectGenres);
+  const isLoading = useSelector(selectLoading);
   const [{ sort, year, rating, open, direction, activeTags }, setState] = useReducer(reducer, initialState); // eslint-disable-line
   const wrapperRef = useRef(null);
   useOutsideClick(wrapperRef, () => setState(initialState), EVENT_TYPE.MOUSEDOWN);
@@ -92,17 +95,19 @@ const SortFilter = () => {
               <Label>Genres</Label>
               <Hover />
             </LabelContainer>
-            <GenresContainer>
-              {genres.map((genre) => (
-                <Tag
-                  key={genre.id}
-                  label={genre.name}
-                  active={activeTags.includes(genre.id)}
-                  onClick={setGenre}
-                  id={genre.id}
-                />
-              ))}
-            </GenresContainer>
+            {isLoading ? <SpinnerContainer><Spinner width='20' /></SpinnerContainer> : (
+              <GenresContainer>
+                {genres.map((genre) => (
+                  <Tag
+                    key={genre.id}
+                    label={genre.name}
+                    active={activeTags.includes(genre.id)}
+                    onClick={setGenre}
+                    id={genre.id}
+                  />
+                ))}
+              </GenresContainer>
+            )}
           </ListContainer>
           <ListContainer>
             <LabelContainer>
