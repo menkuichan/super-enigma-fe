@@ -42,6 +42,9 @@ const MoviesView = () => {
   };
 
   useEffect(() => {
+    if (isEqual(previousFilters.current, [page, filter, year, vote_average, sortBy, genre])) {
+      return;
+    }
     dispatch({
       type: GET_MOVIES_PENDING,
       payload: {
@@ -53,7 +56,12 @@ const MoviesView = () => {
         sortBy,
       },
     });
-  }, [page, filter, year, vote_average, sortBy, genre.length]);
+  });
+
+  const previousFilters = useRef();
+  useEffect(() => {
+    previousFilters.current = [page, filter, year, vote_average, sortBy, genre];
+  });
 
   return (
     <MoviesViewContainer>
