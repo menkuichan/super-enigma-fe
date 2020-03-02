@@ -1,6 +1,8 @@
 import React, { useReducer, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectGenres } from '../../store/reducers/genres';
+import { useHistory } from 'react-router-dom';
+import queryString from 'query-string';
+import { selectGenres, selectLoading } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import FilterIcon from '../Icons/FilterIcon';
 import SortBy from '../Icons/SortBy';
@@ -12,6 +14,7 @@ import { SORT_FILTERS, EVENT_TYPE } from '../../constants';
 import TextField from '../TextField';
 import Slider from '../Slider';
 import Tag from '../Tag';
+import Spinner from '../Spinner';
 import {
   FilterContainer,
   SortContainer,
@@ -20,6 +23,7 @@ import {
   Label,
   IconContainer,
   GenresContainer,
+  SpinnerContainer,
 } from './styles';
 
 const reducer = (currentState, newState) => (
@@ -28,16 +32,18 @@ const reducer = (currentState, newState) => (
 
 const initialState = {
   sort: SORT_FILTERS[0].value,
-  direction: 'asc',
-  year: '1998',
+  direction: 'desc',
+  year: '',
   rating: '0',
   open: false,
-  activeTags: [0, 1],
+  activeTags: [],
 };
 
 const SortFilter = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const genres = useSelector(selectGenres);
+  const isLoading = useSelector(selectLoading);
   const [{ sort, year, rating, open, direction, activeTags }, setState] = useReducer(reducer, initialState); // eslint-disable-line
   const wrapperRef = useRef(null);
   useOutsideClick(wrapperRef, () => setState(initialState), EVENT_TYPE.MOUSEDOWN);
@@ -47,6 +53,12 @@ const SortFilter = () => {
   };
 
   const applyFilters = () => {
+    history.push(`/movies?${queryString.stringify({
+      sortBy: `${sort}.${direction}`,
+      year,
+      vote_average: rating,
+      genre: activeTags,
+    }, { sort: false })}`);
     setState({ open: false });
   };
 
@@ -92,17 +104,19 @@ const SortFilter = () => {
               <Label>Genres</Label>
               <Hover />
             </LabelContainer>
-            <GenresContainer>
-              {genres.map((genre) => (
-                <Tag
-                  key={genre.id}
-                  label={genre.name}
-                  active={activeTags.includes(genre.id)}
-                  onClick={setGenre}
-                  id={genre.id}
-                />
-              ))}
-            </GenresContainer>
+            {isLoading ? <SpinnerContainer><Spinner width="20" /></SpinnerContainer> : (
+              <GenresContainer>
+                {genres.map((genre) => (
+                  <Tag
+                    key={genre.id}
+                    label={genre.name}
+                    active={activeTags.includes(genre.id)}
+                    onClick={setGenre}
+                    id={genre.id}
+                  />
+                ))}
+              </GenresContainer>
+            )}
           </ListContainer>
           <ListContainer>
             <LabelContainer>
@@ -129,6 +143,7 @@ const SortFilter = () => {
             <LabelContainer>
               <Label>Year</Label>
               <TextField
+                placeholder="..."
                 value={year}
                 onChange={handleYearChange}
               />

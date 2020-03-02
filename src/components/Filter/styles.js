@@ -77,3 +77,9 @@ export const Label = styled.h1`
   font-weight: 600;
   line-height: 15px;
 `;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

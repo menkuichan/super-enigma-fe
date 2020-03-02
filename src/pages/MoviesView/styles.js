@@ -24,8 +24,8 @@ export const MoviesViewContainer = styled.div`
 export const MoviesListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 0 30px;
+  width: 100%;
+  padding: 0 5%;
 `;
 
 export const SpinnerContainer = styled.div`

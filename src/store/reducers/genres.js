@@ -41,3 +41,4 @@ export const selectGenres = (store) => (
 export const selectGenresByIds = (store, ids) => (
   selectGenres(store).filter(({ id }) => ids.includes(id))
 );
+export const selectLoading = (store) => (store.genres.isLoading);

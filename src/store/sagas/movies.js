@@ -26,13 +26,24 @@ const getSortFilter = (filter) => {
 };
 
 function* loadMovies(action) {
-  const { page, filter } = action.payload;
+  const {
+    page,
+    filter,
+    year,
+    vote_average,
+    genre = '',
+    sortBy,
+  } = action.payload;
 
   try {
     const { movies, totalPages } = yield call(moviesApi.get, {
       page,
       perPage: MOVIES_PARAMS.PER_PAGE,
-      sortBy: getSortFilter(filter),
+      sortBy: sortBy || getSortFilter(filter),
+      filter,
+      year,
+      vote_average,
+      genre,
     });
     yield put({
       type: GET_MOVIES_SUCCESS,

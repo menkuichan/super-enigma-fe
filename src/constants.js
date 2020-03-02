@@ -5,19 +5,19 @@ export const NAV_LINKS = [
     value: 'popular',
   },
   {
-    title: 'Now playing',
-    filter: 'release_date.desc',
-    value: 'nowPlaying',
-  },
-  {
     title: 'Upcoming',
     filter: 'release_date.desc',
     value: 'upcoming',
   },
   {
     title: 'Most rated',
-    filter: 'vote_count.desc',
+    filter: 'vote_average.desc',
     value: 'mostRated',
+  },
+  {
+    title: 'Most voted',
+    filter: 'vote_count.desc',
+    value: 'nowPlaying',
   },
 ];
 export const SORT_FILTERS = [

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import queryString from 'query-string';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import isEqual from 'lodash.isequal';
 import { selectMovies, selectTotalPages, selectLoading } from '../../store/reducers/movies';
 import { GET_MOVIES_PENDING } from '../../store/actionTypes';
 import MovieCard from '../../components/MovieCard';
@@ -18,20 +19,49 @@ const MoviesView = () => {
   const movies = useSelector(selectMovies);
   const isLoading = useSelector(selectLoading);
   const totalPages = useSelector(selectTotalPages);
-  const { page = 1, filter } = queryString.parse(location.search);
+  const {
+    page = 1,
+    filter,
+    year,
+    vote_average,
+    sortBy,
+    genre = [],
+  } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
     if (newPage <= totalPages && newPage > 0) {
-      history.push(`/movies?page=${newPage}&filter=${filter}`);
+      history.push(`/movies?${queryString.stringify({
+        page: newPage,
+        filter,
+        year,
+        vote_average,
+        genre,
+        sortBy,
+      }, { sort: false })}`);
     }
   };
 
   useEffect(() => {
+    if (isEqual(previousFilters.current, [page, filter, year, vote_average, sortBy, genre])) {
+      return;
+    }
     dispatch({
       type: GET_MOVIES_PENDING,
-      payload: { page, filter },
+      payload: {
+        page,
+        filter,
+        year,
+        vote_average,
+        genre,
+        sortBy,
+      },
     });
-  }, [page, filter, dispatch]);
+  });
+
+  const previousFilters = useRef();
+  useEffect(() => {
+    previousFilters.current = [page, filter, year, vote_average, sortBy, genre];
+  });
 
   return (
     <MoviesViewContainer>
