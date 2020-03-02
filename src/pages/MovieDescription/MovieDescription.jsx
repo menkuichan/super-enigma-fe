@@ -30,7 +30,7 @@ const MovieDescription = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
   const movie = useSelector((state) => selectMovieById(state, id)) || {};
-  const genres = useSelector((state) => selectGenresByIds(state, movie.genre_ids));
+  const genres = useSelector((state) => selectGenresByIds(state, movie.genre_ids || []));
 
   useEffect(() => {
     dispatch({
