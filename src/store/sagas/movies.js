@@ -2,7 +2,7 @@ import {
   all, call, put, takeLatest,
 } from 'redux-saga/effects';
 import moviesApi from '../../api/movies';
-import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
+import { MOVIES_PARAMS, NAV_LINKS, SEARCH_PARAMS } from '../../constants';
 import {
   GET_MOVIES_PENDING,
   GET_MOVIES_SUCCESS,
@@ -11,6 +11,9 @@ import {
   GET_MOVIE_SUCCESS,
   GET_MOVIE_ERROR,
   GET_GENRES_BY_IDS_PENDING,
+  SEARCH_MOVIES_PENDING,
+  SEARCH_MOVIES_SUCCESS,
+  SEARCH_MOVIES_ERROR,
 } from '../actionTypes';
 
 const getSortFilter = (filter) => {
@@ -70,9 +73,28 @@ function* loadMovie(action) {
   }
 }
 
+function* searchMovies(action) {
+  const { title } = action.payload;
+  try {
+    const { movies } = yield call(moviesApi.get, {
+      title,
+      page: SEARCH_PARAMS.REQUEST_PAGE,
+      perPage: SEARCH_PARAMS.REQUEST_PER_PAGE,
+    });
+
+    yield put({
+      type: SEARCH_MOVIES_SUCCESS,
+      payload: { movies },
+    });
+  } catch (e) {
+    yield put({ type: SEARCH_MOVIES_ERROR, payload: e.message });
+  }
+}
+
 export default function () {
   return all([
     takeLatest(GET_MOVIES_PENDING, loadMovies),
     takeLatest(GET_MOVIE_PENDING, loadMovie),
+    takeLatest(SEARCH_MOVIES_PENDING, searchMovies),
   ]);
 }
