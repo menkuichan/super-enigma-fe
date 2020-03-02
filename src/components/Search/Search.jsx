@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import SearchIcon from '../Icons/SearchIcon';
 import moviesAPI from '../../api/movies';
 import List from './List';
@@ -12,7 +13,7 @@ import {
   InputContainer,
 } from './styles';
 
-const Search = () => {
+const Search = ({ onEnterPress }) => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
   const debouncedValue = useDebounce(value, 200);
@@ -47,6 +48,7 @@ const Search = () => {
         <SearchInput
           placeholder="Type to search…"
           onChange={handleChange}
+          onKeyPress={onEnterPress}
           value={value}
         />
         <IconContainer>
@@ -63,6 +65,10 @@ const Search = () => {
         )}
     </SearchContainer>
   );
+};
+
+Search.propTypes = {
+  onEnterPress: PropTypes.func.isRequired,
 };
 
 export default Search;

@@ -26,6 +26,7 @@ const MoviesView = () => {
     vote_average,
     sortBy,
     genre = [],
+    title,
   } = queryString.parse(location.search);
 
   const handleChangePage = (newPage) => {
@@ -37,12 +38,17 @@ const MoviesView = () => {
         vote_average,
         genre,
         sortBy,
+        title,
       }, { sort: false })}`);
     }
   };
 
   useEffect(() => {
-    if (isEqual(previousFilters.current, [page, filter, year, vote_average, sortBy, genre])) {
+    if (isEqual(
+      previousFilters.current,
+      [page, filter, year, vote_average, sortBy, genre, title],
+      )
+    ) {
       return;
     }
     dispatch({
@@ -54,13 +60,14 @@ const MoviesView = () => {
         vote_average,
         genre,
         sortBy,
+        title,
       },
     });
   });
 
   const previousFilters = useRef();
   useEffect(() => {
-    previousFilters.current = [page, filter, year, vote_average, sortBy, genre];
+    previousFilters.current = [page, filter, year, vote_average, sortBy, genre, title];
   });
 
   return (

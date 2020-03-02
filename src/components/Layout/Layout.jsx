@@ -7,7 +7,7 @@ import Logo from '../Icons/Logo';
 import { Nav, NavLink } from '../Nav';
 import Filter from '../Filter';
 import Search from '../Search';
-import { NAV_LINKS } from '../../constants';
+import { NAV_LINKS, ENTER_KEY } from '../../constants';
 import { NavContainer } from './styles';
 
 const Layout = ({ children }) => {
@@ -17,6 +17,13 @@ const Layout = ({ children }) => {
 
   const handleFilter = (value) => {
     history.push(`/movies?filter=${value}`);
+  };
+
+  const onEnterPress = (e) => {
+    const { value } = e.target;
+    if (e.charCode === ENTER_KEY && value.trim().length >= 2) {
+      history.push(`/movies?title=${value}`);
+    }
   };
 
   return (
@@ -38,7 +45,7 @@ const Layout = ({ children }) => {
           <Filter />
         </NavContainer>
         <>
-          <Search />
+          <Search onEnterPress={onEnterPress} />
         </>
       </Header>
       {children}
