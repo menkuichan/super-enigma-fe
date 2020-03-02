@@ -47,8 +47,7 @@ const MoviesView = () => {
     if (isEqual(
       previousFilters.current,
       [page, filter, year, vote_average, sortBy, genre, title],
-      )
-    ) {
+    )) {
       return;
     }
     dispatch({

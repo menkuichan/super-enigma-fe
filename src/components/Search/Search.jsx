@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import SearchIcon from '../Icons/SearchIcon';
 import moviesAPI from '../../api/movies';
 import List from './List';
 import useDebounce from '../../hooks/useDebounce';
 import useOutsideClick from '../../hooks/useOutsideClick';
-import { SEARCH_PARAMS, EVENT_TYPE } from '../../constants';
+import { SEARCH_PARAMS, EVENT_TYPE, ENTER_KEY } from '../../constants';
 import {
   SearchContainer,
   SearchInput,
@@ -13,9 +13,10 @@ import {
   InputContainer,
 } from './styles';
 
-const Search = ({ onEnterPress }) => {
+const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
+  const history = useHistory();
   const debouncedValue = useDebounce(value, 200);
 
   const wrapperRef = useRef(null);
@@ -37,6 +38,13 @@ const Search = ({ onEnterPress }) => {
     setValue(event.target.value);
   };
 
+  const searchMovies = (e) => {
+    if ((e.charCode === ENTER_KEY || e.type === 'click') && value.trim().length >= 2) {
+      history.push(`/movies?title=${value}`);
+      setData([]);
+    }
+  };
+
   const onItemClick = () => {
     setData([]);
     setValue('');
@@ -48,7 +56,7 @@ const Search = ({ onEnterPress }) => {
         <SearchInput
           placeholder="Type to search…"
           onChange={handleChange}
-          onKeyPress={onEnterPress}
+          onKeyPress={searchMovies}
           value={value}
         />
         <IconContainer>
@@ -59,16 +67,13 @@ const Search = ({ onEnterPress }) => {
         && (
           <List
             onItemClick={onItemClick}
+            showAll={searchMovies}
             value={value}
             movies={data}
           />
         )}
     </SearchContainer>
   );
-};
-
-Search.propTypes = {
-  onEnterPress: PropTypes.func.isRequired,
 };
 
 export default Search;

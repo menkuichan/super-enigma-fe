@@ -19,7 +19,7 @@ const getTitle = (title, date) => {
   return title;
 };
 
-const List = ({ movies, onItemClick }) => (
+const List = ({ movies, onItemClick, showAll }) => (
   <ListContainer>
     {movies.map((movie, index) => (
       <Link
@@ -41,12 +41,17 @@ const List = ({ movies, onItemClick }) => (
         </Item>
       </Link>
     ))}
+    <Item>
+      <Title onClick={showAll} color="link">
+        Show all...
+      </Title>
+    </Item>
   </ListContainer>
 );
 
 List.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onItemClick: PropTypes.func.isRequired,
+  showAll: PropTypes.func.isRequired,
 };
 
 export default List;
