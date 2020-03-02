@@ -10,6 +10,7 @@ import {
   Info,
   Title,
   Overview,
+  ShowAllItem,
 } from './styles';
 
 const getTitle = (title, date) => {
@@ -42,15 +43,16 @@ const List = ({ movies, onItemClick, showAll }) => (
       </Link>
     ))}
     <Item>
-      <Title onClick={showAll} color="link">
-        Show all...
-      </Title>
+      <ShowAllItem onClick={showAll} color="link">
+        Show all…
+      </ShowAllItem>
     </Item>
   </ListContainer>
 );
 
 List.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onItemClick: PropTypes.func.isRequired,
   showAll: PropTypes.func.isRequired,
 };
 
