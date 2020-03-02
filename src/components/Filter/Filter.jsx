@@ -33,7 +33,7 @@ const reducer = (currentState, newState) => (
 const initialState = {
   sort: SORT_FILTERS[0].value,
   direction: 'desc',
-  year: '1998',
+  year: '',
   rating: '0',
   open: false,
   activeTags: [],
@@ -143,6 +143,7 @@ const SortFilter = () => {
             <LabelContainer>
               <Label>Year</Label>
               <TextField
+                placeholder="..."
                 value={year}
                 onChange={handleYearChange}
               />

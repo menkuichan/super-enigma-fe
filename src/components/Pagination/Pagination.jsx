@@ -84,7 +84,7 @@ const Pagination = ({ totalPages, page, handleClick }) => {
             {pageNumber}
           </PageNumber>
         ))}
-      {((actualPages[ACTUAL_PAGES_COUNT - 1] + 1) === (lastPages[0]))
+      {((actualPages[ACTUAL_PAGES_COUNT - 1] + 1) === (lastPages[0]) || !actualPages.length)
         ? ''
         : <PageNumber>...</PageNumber>}
       {lastPages

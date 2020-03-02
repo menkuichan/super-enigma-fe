@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import defaultTheme from '../../theme';
 
 export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 250px;
   margin: 40px;
 `;
