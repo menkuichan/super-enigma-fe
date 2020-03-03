@@ -25,5 +25,6 @@ module.exports = {
     'camelcase': 0,
     'import/no-extraneous-dependencies': 0,
     'react/jsx-filename-extension': 0,
+    'jsx-a11y/mouse-events-have-key-events': 0,
   },
 };
