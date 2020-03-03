@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import moviesApi from '../../api/movies';
 import StarIcon from '../../components/Icons/StarIcon';
-import { selectMovieById, selectLoading } from '../../store/reducers/movies';
+import { selectMovieById, selectLoading, selectSimilarMovies } from '../../store/reducers/movies';
 import { selectGenresByIds } from '../../store/reducers/genres';
-import { GET_MOVIE_PENDING } from '../../store/actionTypes';
+import { GET_MOVIE_PENDING, GET_SIMILAR_MOVIES_PENDING } from '../../store/actionTypes';
 import Spinner from '../../components/Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL, SIMILAR_POSTER_BASE_URL } from '../../constants';
@@ -31,10 +30,10 @@ import {
 } from './styles';
 
 const MovieDescription = () => {
-  const [similarMovies, setSimilarMovies] = useState([]);
   const { id } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
+  const similarMovies = useSelector(selectSimilarMovies);
   const movie = useSelector((state) => selectMovieById(state, id)) || {};
   const genres = useSelector((state) => selectGenresByIds(state, movie.genre_ids || []));
 
@@ -43,9 +42,10 @@ const MovieDescription = () => {
       type: GET_MOVIE_PENDING,
       payload: { id },
     });
-    moviesApi.get({
-      page: 1, perPage: 4, genre: genres.map((genre) => genre.id),
-    }).then(({ movies }) => setSimilarMovies(movies));
+    dispatch({
+      type: GET_SIMILAR_MOVIES_PENDING,
+      payload: { page: 1, perPage: 3, genres: genres.map((genre) => genre.id) },
+    });
   }, [id, genres.length]);
 
   const {

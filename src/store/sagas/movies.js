@@ -11,6 +11,9 @@ import {
   GET_MOVIE_SUCCESS,
   GET_MOVIE_ERROR,
   GET_GENRES_BY_IDS_PENDING,
+  GET_SIMILAR_MOVIES_PENDING,
+  GET_SIMILAR_MOVIES_SUCCESS,
+  GET_SIMILAR_MOVIES_ERROR,
 } from '../actionTypes';
 
 const getSortFilter = (filter) => {
@@ -70,9 +73,23 @@ function* loadMovie(action) {
   }
 }
 
+function* loadSimilarMovies(action) {
+  const { page, perPage, genres } = action.payload;
+  try {
+    const { movies } = yield call(moviesApi.get, { page, perPage, genres });
+    yield put({
+      type: GET_SIMILAR_MOVIES_SUCCESS,
+      payload: { movies },
+    });
+  } catch (e) {
+    yield put({ type: GET_SIMILAR_MOVIES_ERROR, payload: e.message });
+  }
+}
+
 export default function () {
   return all([
     takeLatest(GET_MOVIES_PENDING, loadMovies),
     takeLatest(GET_MOVIE_PENDING, loadMovie),
+    takeLatest(GET_SIMILAR_MOVIES_PENDING, loadSimilarMovies),
   ]);
 }
