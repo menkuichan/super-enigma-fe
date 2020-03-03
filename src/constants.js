@@ -52,6 +52,7 @@ export const MOVIES_PARAMS = {
   PER_PAGE: 20,
 };
 export const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
+export const SIMILAR_POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w154/';
 export const EVENT_TYPE = {
   MOUSEDOWN: 'mousedown',
 };

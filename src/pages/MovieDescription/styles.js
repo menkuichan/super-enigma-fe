@@ -2,16 +2,23 @@ import styled from 'styled-components';
 
 export const MovieContainer = styled.div`
   display: flex;
-  align-items: row;
   justify-content: flex-start;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.movies.background};
   padding-top: 110px;
 `;
 
 export const PosterContainer = styled.div`
-  height: auto;
   margin-left: 180px;
+`;
+
+export const SimilarPosterContainer = styled.div`
+  margin-right: 40px;
+`;
+
+export const SimilarPoster = styled.img`
+  vertical-align: middle;
+  width: 154px;
+  height: 231px;
+  border-radius: ${({ theme }) => theme.movies.borderRadius};
 `;
 
 export const Poster = styled.img`
@@ -22,9 +29,10 @@ export const Poster = styled.img`
 
 export const Info = styled.div`
   display: flex;
+  justify-content: space-between;
   overflow: hidden;
   flex-direction: column;
-  width: 40%;
+  width: 48%;
   padding-left: 90px;
 `;
 
@@ -113,4 +121,9 @@ export const Genres = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${({ theme }) => theme.movies.text};
+`;
+
+export const SimilarMoviesContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
