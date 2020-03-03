@@ -33,6 +33,7 @@ function* loadMovies(action) {
     vote_average,
     genre = '',
     sortBy,
+    title,
   } = action.payload;
 
   try {
@@ -44,6 +45,7 @@ function* loadMovies(action) {
       year,
       vote_average,
       genre,
+      title,
     });
     yield put({
       type: GET_MOVIES_SUCCESS,

@@ -58,3 +58,4 @@ export const EVENT_TYPE = {
 export const FIRST_PAGES_COUNT = 3;
 export const LAST_PAGES_COUNT = 3;
 export const ACTUAL_PAGES_COUNT = 3;
+export const ENTER_KEY = 13;

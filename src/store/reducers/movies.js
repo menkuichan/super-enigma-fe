@@ -12,12 +12,14 @@ const defaultState = {
   byId: {},
   page: 1,
   totalPages: 1,
+  search: {},
   isLoading: false,
 };
 
 export const movies = (state = defaultState, { type, payload }) => {
   switch (type) {
     case GET_MOVIES_PENDING:
+    case GET_MOVIE_PENDING:
       return { ...state, isLoading: true };
     case GET_MOVIES_SUCCESS:
       return {
@@ -26,16 +28,13 @@ export const movies = (state = defaultState, { type, payload }) => {
         byId: normalizeData(payload.movies),
         isLoading: false,
       };
-    case GET_MOVIES_ERROR:
-      return { ...state, isLoading: false };
-    case GET_MOVIE_PENDING:
-      return { ...state, isLoading: true };
     case GET_MOVIE_SUCCESS:
       return {
         ...state,
         byId: { ...state.byId, [payload.movie.id]: payload.movie },
         isLoading: false,
       };
+    case GET_MOVIES_ERROR:
     case GET_MOVIE_ERROR:
       return { ...state, isLoading: false };
     default:

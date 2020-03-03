@@ -78,9 +78,20 @@ export const Info = styled.div`
   margin-left: 10px;
 `;
 
+export const ShowAllItem = styled.h1`
+  user-select: none;
+  font-family: 'Open Sans', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+`;
+
 export const Title = styled.h1`
-  color: inherit;
-  text-decoration: inherit;
   font-family: 'Open Sans', sans-serif;
   white-space: nowrap;
   overflow: hidden;

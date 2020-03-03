@@ -6,6 +6,7 @@ export const GenresContainer = styled.div`
 `;
 
 export const FilterContainer = styled.div`
+  user-select: none;
   position: relative;
 `;
 

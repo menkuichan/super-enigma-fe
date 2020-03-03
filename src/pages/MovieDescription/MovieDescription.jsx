@@ -43,6 +43,7 @@ const MovieDescription = () => {
     poster_path, title, release_date, vote_average, vote_count, overview,
     original_title, original_language, popularity,
   } = movie;
+  const fullMovieTitle = `${title} (${new Date(release_date).getFullYear()}) `;
 
   return (
     <MovieContainer>
@@ -55,8 +56,8 @@ const MovieDescription = () => {
                 : <Poster src={EmptyPoster} />}
             </PosterContainer>
             <Info>
-              <Title>
-                {`${title} (${new Date(release_date).getFullYear()}) `}
+              <Title title={fullMovieTitle}>
+                {fullMovieTitle}
                 <Language>{original_language}</Language>
               </Title>
               <OriginalTitle>

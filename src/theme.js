@@ -9,6 +9,7 @@ export default {
     borderBottom: 'rgba(204, 204, 204, 0.4)',
     itemHover: '#ddc753',
     background: '#FFFFFF',
+    showAll: '#DDC753',
   },
   movies: {
     borderRadius: '15px',
