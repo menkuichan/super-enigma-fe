@@ -18,6 +18,3 @@ const FilterIcon = () => {
 };
 
 export default FilterIcon;
-
-// onMouseOver={() => changeColor('black')}
-// onMouseOut={() => changeColor('gray')}
