@@ -20,10 +20,11 @@ const Search = () => {
   const [value, setValue] = useState('');
   const history = useHistory();
   const movies = useSelector(selectSearchMovies);
-  const [data, setData] = useState(movies);
   const debouncedValue = useDebounce(value, 200);
   const wrapperRef = useRef(null);
-  useOutsideClick(wrapperRef, () => setData([]), EVENT_TYPE.MOUSEDOWN);
+  useOutsideClick(wrapperRef, () => dispatch({
+    type: CLEAR_SEARCH_MOVIES,
+  }), EVENT_TYPE.MOUSEDOWN);
 
   useEffect(() => {
     if (value && value.trim().length >= 2) {
@@ -34,7 +35,9 @@ const Search = () => {
         },
       });
     } else {
-      setData([]);
+      dispatch({
+        type: CLEAR_SEARCH_MOVIES,
+      });
     }
   }, [debouncedValue]);
 
@@ -45,7 +48,9 @@ const Search = () => {
   const searchMovies = (e) => {
     if ((e.charCode === ENTER_KEY || e.type === 'click') && value.trim().length >= 2) {
       history.push(`/movies?title=${value}`);
-      setData([]);
+      dispatch({
+        type: CLEAR_SEARCH_MOVIES,
+      });
     }
   };
 
