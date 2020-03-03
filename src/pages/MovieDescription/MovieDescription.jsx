@@ -44,6 +44,7 @@ const MovieDescription = () => {
     original_title, original_language, popularity,
   } = movie;
   const fullMovieTitle = `${title} (${new Date(release_date).getFullYear()}) `;
+
   return (
     <MovieContainer>
       {isLoading ? <SpinnerContainer><Spinner /></SpinnerContainer>

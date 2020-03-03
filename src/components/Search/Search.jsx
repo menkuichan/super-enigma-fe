@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { selectSearchMovies } from '../../store/reducers/movies';
+import { selectSearchMovies } from '../../store/reducers/search';
 import SearchIcon from '../Icons/SearchIcon';
 import List from './List';
 import useDebounce from '../../hooks/useDebounce';
@@ -22,9 +22,13 @@ const Search = () => {
   const movies = useSelector(selectSearchMovies);
   const debouncedValue = useDebounce(value, 200);
   const wrapperRef = useRef(null);
-  useOutsideClick(wrapperRef, () => dispatch({
-    type: CLEAR_SEARCH_MOVIES,
-  }), EVENT_TYPE.MOUSEDOWN);
+  useOutsideClick(wrapperRef, () => {
+    if (value) {
+      dispatch({
+        type: CLEAR_SEARCH_MOVIES,
+      });
+    }
+  }, EVENT_TYPE.MOUSEDOWN);
 
   useEffect(() => {
     if (value && value.trim().length >= 2) {
