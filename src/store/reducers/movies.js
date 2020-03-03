@@ -12,7 +12,6 @@ const defaultState = {
   byId: {},
   page: 1,
   totalPages: 1,
-  search: {},
   isLoading: false,
 };
 
