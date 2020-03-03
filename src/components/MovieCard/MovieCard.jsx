@@ -27,7 +27,7 @@ const MovieCard = ({
       </PosterContainer>
     </Link>
     <Info>
-      <Title>
+      <Title title={title}>
         {title}
       </Title>
       <RatingContainer>
