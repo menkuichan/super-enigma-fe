@@ -95,17 +95,17 @@ const MovieDescription = () => {
                 </div>
               </div>
               <SimilarMoviesContainer>
-                {similarMovies.map((similarMovie) => (
-                  similarMovie.id !== movie.id && (
-                  <Link to={`/movies/${similarMovie.id}`}>
-                    <SimilarPosterContainer>
-                      {similarMovie.poster_path
-                        ? <SimilarPoster src={`${SIMILAR_POSTER_BASE_URL}${similarMovie.poster_path}`} />
-                        : <SimilarPoster src={EmptyPoster} />}
-                    </SimilarPosterContainer>
-                  </Link>
-                  )
-                ))}
+                {similarMovies
+                  .filter((similarMovie) => similarMovie.id !== movie.id)
+                  .map((similarMovie) => (
+                    <Link to={`/movies/${similarMovie.id}`}>
+                      <SimilarPosterContainer>
+                        {similarMovie.poster_path
+                          ? <SimilarPoster src={`${SIMILAR_POSTER_BASE_URL}${similarMovie.poster_path}`} />
+                          : <SimilarPoster src={EmptyPoster} />}
+                      </SimilarPosterContainer>
+                    </Link>
+                  ))}
               </SimilarMoviesContainer>
             </Info>
           </MovieContainer>
