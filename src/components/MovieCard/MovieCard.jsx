@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { POSTER_BASE_URL } from '../../constants';
-import StarIcon from '../Icons/StarIcon';
+import Star from '../Icons/Star';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import {
   CardContainer,
@@ -32,7 +32,7 @@ const MovieCard = ({
       </Title>
       <RatingContainer>
         <IconContainer>
-          <StarIcon />
+          <Star />
         </IconContainer>
         <Rating>
           {`${vote_average} | ${vote_count}`}

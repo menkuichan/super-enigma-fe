@@ -37,9 +37,7 @@ const Layout = ({ children }) => {
           </Nav>
           <Filter />
         </NavContainer>
-        <>
-          <Search />
-        </>
+        <Search />
       </Header>
       {children}
     </>

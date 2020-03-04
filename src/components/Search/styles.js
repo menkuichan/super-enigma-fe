@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import DefaultSearchIcon from '../Icons/SearchIcon';
 import defaultTheme from '../../theme';
 
 const inputHeight = 31;
+
+export const SearchIcon = styled(DefaultSearchIcon)`
+  display: block;
+`;
 
 export const SearchInput = styled.input`
   font-family: 'Open Sans', sans-serif;

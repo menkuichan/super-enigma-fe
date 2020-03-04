@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import StarIcon from '../../components/Icons/StarIcon';
+import Star from '../../components/Icons/Star';
 import { selectMovieById, selectLoading, selectSimilarMovies } from '../../store/reducers/movies';
 import { selectGenresByIds } from '../../store/reducers/genres';
 import { GET_MOVIE_PENDING, GET_SIMILAR_MOVIES_PENDING } from '../../store/actionTypes';
@@ -85,7 +85,7 @@ const MovieDescription = () => {
                 </RatingContainer>
                 <RatingContainer>
                   <IconContainer>
-                    <StarIcon />
+                    <Star />
                   </IconContainer>
                   <Rating>
                     {`${vote_average} | ${vote_count}`}

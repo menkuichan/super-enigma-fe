@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { selectGenres, selectLoading } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
-import FilterIcon from '../Icons/FilterIcon';
-import SortBy from '../Icons/SortBy';
 import Hover from '../Icons/Hover';
 import RadioGroup from '../RadioGroup';
 import Button from '../Button';
@@ -24,6 +22,8 @@ import {
   IconContainer,
   GenresContainer,
   SpinnerContainer,
+  FilterIcon,
+  SortBy,
 } from './styles';
 
 const reducer = (currentState, newState) => (

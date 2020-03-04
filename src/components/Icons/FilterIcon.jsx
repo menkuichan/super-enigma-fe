@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const FilterIcon = () => {
-  const [color, changeColor] = useState('#808080');
-  return (
-    <svg
-      onMouseOver={() => changeColor('#f79b0e')}
-      onMouseOut={() => changeColor('#808080')}
-      width="18"
-      height="12"
-      viewBox="0 0 18 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fillRule="evenodd" clipRule="evenodd" d="M0 0V2H18V0H0ZM7 12H11V10H7V12ZM15 7H3V5H15V7Z" fill={color} />
-    </svg>
-  );
+const FilterIcon = ({
+  fill, width, height, viewBox, className,
+}) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox={viewBox}
+    fill={fill}
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path fillRule="evenodd" clipRule="evenodd" d="M0 0V2H18V0H0ZM7 12H11V10H7V12ZM15 7H3V5H15V7Z" />
+  </svg>
+);
+
+FilterIcon.propTypes = {
+  className: PropTypes.string.isRequired,
+  fill: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  viewBox: PropTypes.string,
+};
+
+FilterIcon.defaultProps = {
+  fill: '#fff',
+  width: '18',
+  height: '12',
+  viewBox: '0 0 18 12',
 };
 
 export default FilterIcon;

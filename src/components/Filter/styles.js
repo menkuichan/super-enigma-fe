@@ -1,5 +1,21 @@
 import styled from 'styled-components';
+import DefaultFilterIcon from '../Icons/FilterIcon';
+import DefaultSortByIcon from '../Icons/SortBy';
 import defaultTheme from '../../theme';
+
+export const FilterIcon = styled(DefaultFilterIcon)`
+  cursor: pointer;
+  fill: #808080;
+
+  &:hover {
+    fill: #f79b0e;
+  }
+`;
+
+export const SortBy = styled(DefaultSortByIcon)`
+  cursor: pointer;
+  ${({ direction }) => direction === 'desc' && 'transform: scaleY(-1);'}
+`;
 
 export const GenresContainer = styled.div`
   padding: 7px;
