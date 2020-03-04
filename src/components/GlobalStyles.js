@@ -12,4 +12,8 @@ export default createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  body {
+    background-color: ${({ theme }) => theme.movies.background};
+  }
 `;

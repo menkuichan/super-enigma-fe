@@ -1,5 +1,21 @@
 import styled from 'styled-components';
+import DefaultTrending from '../Icons/Trending';
+import DefaultSortByIcon from '../Icons/SortBy';
 import defaultTheme from '../../theme';
+
+export const Trending = styled(DefaultTrending)`
+  cursor: pointer;
+  fill: ${({ theme }) => theme.filter.default};
+
+  &:hover {
+    fill:  ${({ theme }) => theme.filter.active};
+  }
+`;
+
+export const SortBy = styled(DefaultSortByIcon)`
+  cursor: pointer;
+  ${({ direction }) => direction === 'desc' && 'transform: scaleY(-1);'}
+`;
 
 export const GenresContainer = styled.div`
   padding: 7px;

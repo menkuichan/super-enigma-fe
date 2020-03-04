@@ -4,9 +4,7 @@ import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { selectGenres, selectLoading } from '../../store/reducers/genres';
 import useOutsideClick from '../../hooks/useOutsideClick';
-import FilterIcon from '../Icons/FilterIcon';
-import SortBy from '../Icons/SortBy';
-import Hover from '../Icons/Hover';
+import ArrowDown from '../Icons/ArrowDown';
 import RadioGroup from '../RadioGroup';
 import Button from '../Button';
 import { GET_GENRES_PENDING } from '../../store/actionTypes';
@@ -24,6 +22,8 @@ import {
   IconContainer,
   GenresContainer,
   SpinnerContainer,
+  Trending,
+  SortBy,
 } from './styles';
 
 const reducer = (currentState, newState) => (
@@ -95,14 +95,14 @@ const SortFilter = () => {
   return (
     <FilterContainer ref={wrapperRef}>
       <IconContainer onClick={openFilterContainer}>
-        <FilterIcon />
+        <Trending />
       </IconContainer>
       {open && (
         <SortContainer>
           <ListContainer>
             <LabelContainer>
               <Label>Genres</Label>
-              <Hover />
+              <ArrowDown />
             </LabelContainer>
             {isLoading ? <SpinnerContainer><Spinner width="20" /></SpinnerContainer> : (
               <GenresContainer>

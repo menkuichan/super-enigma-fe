@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { selectSearchMovies } from '../../store/reducers/search';
-import SearchIcon from '../Icons/SearchIcon';
 import List from './List';
 import useDebounce from '../../hooks/useDebounce';
 import useOutsideClick from '../../hooks/useOutsideClick';
@@ -13,6 +12,7 @@ import {
   SearchInput,
   IconContainer,
   InputContainer,
+  Magnifier,
 } from './styles';
 
 const Search = () => {
@@ -75,7 +75,7 @@ const Search = () => {
           value={value}
         />
         <IconContainer>
-          <SearchIcon />
+          <Magnifier />
         </IconContainer>
       </InputContainer>
       {(movies.length > 0)
