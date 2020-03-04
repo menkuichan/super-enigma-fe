@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FilterIcon = ({
+const Trending = ({
   fill, width, height, viewBox, className,
 }) => (
   <svg
@@ -16,7 +16,7 @@ const FilterIcon = ({
   </svg>
 );
 
-FilterIcon.propTypes = {
+Trending.propTypes = {
   className: PropTypes.string.isRequired,
   fill: PropTypes.string,
   width: PropTypes.string,
@@ -24,11 +24,11 @@ FilterIcon.propTypes = {
   viewBox: PropTypes.string,
 };
 
-FilterIcon.defaultProps = {
+Trending.defaultProps = {
   fill: '#fff',
   width: '18',
   height: '12',
   viewBox: '0 0 18 12',
 };
 
-export default FilterIcon;
+export default Trending;

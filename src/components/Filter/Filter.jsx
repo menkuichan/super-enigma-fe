@@ -22,7 +22,7 @@ import {
   IconContainer,
   GenresContainer,
   SpinnerContainer,
-  FilterIcon,
+  Trending,
   SortBy,
 } from './styles';
 
@@ -95,7 +95,7 @@ const SortFilter = () => {
   return (
     <FilterContainer ref={wrapperRef}>
       <IconContainer onClick={openFilterContainer}>
-        <FilterIcon />
+        <Trending />
       </IconContainer>
       {open && (
         <SortContainer>

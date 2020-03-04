@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import DefaultFilterIcon from '../Icons/FilterIcon';
+import DefaultTrending from '../Icons/Trending';
 import DefaultSortByIcon from '../Icons/SortBy';
 import defaultTheme from '../../theme';
 
-export const FilterIcon = styled(DefaultFilterIcon)`
+export const Trending = styled(DefaultTrending)`
   cursor: pointer;
   fill: #808080;
 
