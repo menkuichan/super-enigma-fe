@@ -41,7 +41,6 @@ const MovieDescription = () => {
     dispatch({
       type: GET_MOVIE_PENDING,
       payload: { id },
-      genres: genres.map((genre) => genre.id),
     });
   }, [id, genres.length]);
 

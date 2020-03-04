@@ -60,7 +60,7 @@ function* loadMovies(action) {
 }
 
 function* loadMovie(action) {
-  const { id, genres } = action.payload;
+  const { id } = action.payload;
   try {
     const movie = yield call(moviesApi.getById, id);
     yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
@@ -70,7 +70,7 @@ function* loadMovie(action) {
     });
     yield put({
       type: GET_SIMILAR_MOVIES_PENDING,
-      payload: { genres },
+      payload: { genres: movie.genre_ids },
     });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });

@@ -5,10 +5,10 @@ import defaultTheme from '../../theme';
 
 export const Trending = styled(DefaultTrending)`
   cursor: pointer;
-  fill: #808080;
+  fill: ${({ theme }) => theme.filter.default};
 
   &:hover {
-    fill: #f79b0e;
+    fill:  ${({ theme }) => theme.filter.active};
   }
 `;
 

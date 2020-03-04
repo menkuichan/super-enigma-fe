@@ -37,6 +37,8 @@ export default {
   filter: {
     background: '#FFFFFF',
     border: 'rgba(60, 60, 60, 0.1)',
+    default: '#808080',
+    active: '#f79b0e',
   },
   radio: {
     label: '#666666',
