@@ -41,6 +41,7 @@ export const movies = (state = defaultState, { type, payload }) => {
     case GET_SIMILAR_MOVIES_SUCCESS:
       return {
         ...state,
+        isLoading: false,
         similar: payload.movies,
       };
     case GET_MOVIES_ERROR:

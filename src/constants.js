@@ -48,6 +48,10 @@ export const SEARCH_PARAMS = {
   REQUEST_PAGE: 1,
   REQUEST_PER_PAGE: 3,
 };
+export const SIMILAR_MOVIES_PARAMS = {
+  REQUEST_PAGE: 1,
+  REQUEST_PER_PAGE: 3,
+};
 export const MOVIES_PARAMS = {
   PER_PAGE: 20,
 };

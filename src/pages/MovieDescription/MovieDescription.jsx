@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Star from '../../components/Icons/Star';
 import { selectMovieById, selectLoading, selectSimilarMovies } from '../../store/reducers/movies';
 import { selectGenresByIds } from '../../store/reducers/genres';
-import { GET_MOVIE_PENDING, GET_SIMILAR_MOVIES_PENDING } from '../../store/actionTypes';
+import { GET_MOVIE_PENDING } from '../../store/actionTypes';
 import Spinner from '../../components/Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL, SIMILAR_POSTER_BASE_URL } from '../../constants';
@@ -41,10 +41,7 @@ const MovieDescription = () => {
     dispatch({
       type: GET_MOVIE_PENDING,
       payload: { id },
-    });
-    dispatch({
-      type: GET_SIMILAR_MOVIES_PENDING,
-      payload: { page: 1, perPage: 3, genres: genres.map((genre) => genre.id) },
+      genres: genres.map((genre) => genre.id),
     });
   }, [id, genres.length]);
 

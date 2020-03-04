@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Hover = ({
+const ArrowDown = ({
   fill, width, height, viewBox,
 }) => (
   <svg width={width} height={height} viewBox={viewBox} fill={fill} xmlns="http://www.w3.org/2000/svg">
@@ -9,18 +9,18 @@ const Hover = ({
   </svg>
 );
 
-Hover.propTypes = {
+ArrowDown.propTypes = {
   fill: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
   viewBox: PropTypes.string,
 };
 
-Hover.defaultProps = {
+ArrowDown.defaultProps = {
   fill: 'none',
   width: '8',
   height: '16',
   viewBox: '0 0 8 6',
 };
 
-export default Hover;
+export default ArrowDown;

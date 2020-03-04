@@ -2,7 +2,7 @@ import {
   all, call, put, takeLatest,
 } from 'redux-saga/effects';
 import moviesApi from '../../api/movies';
-import { MOVIES_PARAMS, NAV_LINKS } from '../../constants';
+import { MOVIES_PARAMS, SIMILAR_MOVIES_PARAMS, NAV_LINKS } from '../../constants';
 import {
   GET_MOVIES_PENDING,
   GET_MOVIES_SUCCESS,
@@ -60,7 +60,7 @@ function* loadMovies(action) {
 }
 
 function* loadMovie(action) {
-  const { id } = action.payload;
+  const { id, genres } = action.payload;
   try {
     const movie = yield call(moviesApi.getById, id);
     yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
@@ -68,15 +68,23 @@ function* loadMovie(action) {
       type: GET_GENRES_BY_IDS_PENDING,
       payload: { ids: movie.genre_ids },
     });
+    yield put({
+      type: GET_SIMILAR_MOVIES_PENDING,
+      payload: { genres },
+    });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }
 }
 
 function* loadSimilarMovies(action) {
-  const { page, perPage, genres } = action.payload;
+  const { genres } = action.payload;
   try {
-    const { movies } = yield call(moviesApi.get, { page, perPage, genres });
+    const { movies } = yield call(moviesApi.get, {
+      page: SIMILAR_MOVIES_PARAMS.REQUEST_PAGE,
+      perPage: SIMILAR_MOVIES_PARAMS.REQUEST_PER_PAGE,
+      genres,
+    });
     yield put({
       type: GET_SIMILAR_MOVIES_SUCCESS,
       payload: { movies },
