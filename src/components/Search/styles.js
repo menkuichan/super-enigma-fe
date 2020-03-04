@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import DefaultSearchIcon from '../Icons/SearchIcon';
+import DefaultSearchIcon from '../Icons/Magnifier';
 import defaultTheme from '../../theme';
 
 const inputHeight = 31;
 
-export const SearchIcon = styled(DefaultSearchIcon)`
+export const Magnifier = styled(DefaultSearchIcon)`
   display: block;
 `;
 

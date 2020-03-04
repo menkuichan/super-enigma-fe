@@ -12,7 +12,7 @@ import {
   SearchInput,
   IconContainer,
   InputContainer,
-  SearchIcon,
+  Magnifier,
 } from './styles';
 
 const Search = () => {
@@ -75,7 +75,7 @@ const Search = () => {
           value={value}
         />
         <IconContainer>
-          <SearchIcon />
+          <Magnifier />
         </IconContainer>
       </InputContainer>
       {(movies.length > 0)

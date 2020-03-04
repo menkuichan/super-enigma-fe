@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchIcon = ({
+const Magnifier = ({
   fill, width, height, viewBox, className,
 }) => (
   <svg
@@ -21,7 +21,7 @@ const SearchIcon = ({
   </svg>
 );
 
-SearchIcon.propTypes = {
+Magnifier.propTypes = {
   className: PropTypes.string.isRequired,
   fill: PropTypes.string,
   width: PropTypes.string,
@@ -29,11 +29,11 @@ SearchIcon.propTypes = {
   viewBox: PropTypes.string,
 };
 
-SearchIcon.defaultProps = {
+Magnifier.defaultProps = {
   fill: 'none',
   width: '16',
   height: '16',
   viewBox: '0 0 16 16',
 };
 
-export default SearchIcon;
+export default Magnifier;
