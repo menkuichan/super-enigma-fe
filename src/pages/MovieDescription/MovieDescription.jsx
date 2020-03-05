@@ -97,7 +97,7 @@ const MovieDescription = () => {
                 {similarMovies
                   .filter((similarMovie) => similarMovie.id !== movie.id)
                   .map((similarMovie) => (
-                    <Link to={`/movies/${similarMovie.id}`}>
+                    <Link key={similarMovie.id} to={`/movies/${similarMovie.id}`}>
                       <SimilarPosterContainer>
                         {similarMovie.poster_path
                           ? <SimilarPoster src={`${SIMILAR_POSTER_BASE_URL}${similarMovie.poster_path}`} />
