@@ -24,6 +24,9 @@ export const PageNumber = styled.span`
 `;
 
 export const PaginationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
   &:last-child {
     margin-bottom: 30px;
   }

@@ -53,12 +53,18 @@ const SortFilter = () => {
   };
 
   const applyFilters = () => {
-    history.push(`/movies?${queryString.stringify({
+    const query = queryString.stringify({
       sortBy: `${sort}.${direction}`,
       year,
       vote_average: rating,
       genre: activeTags,
-    }, { sort: false })}`);
+    },
+    {
+      sort: false,
+      arrayFormat: 'comma',
+    });
+
+    history.push(`/movies?${query}`);
     setState({ open: false });
   };
 

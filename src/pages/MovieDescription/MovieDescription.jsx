@@ -33,16 +33,13 @@ const MovieDescription = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
-  const similarMovies = useSelector(selectSimilarMovies);
+  const similarMovies = useSelector((state) => selectSimilarMovies(state, id));
   const movie = useSelector((state) => selectMovieById(state, id)) || {};
   const genres = useSelector((state) => selectGenresByIds(state, movie.genre_ids || []));
 
   useEffect(() => {
-    dispatch({
-      type: GET_MOVIE_PENDING,
-      payload: { id },
-    });
-  }, [id, genres.length]);
+    dispatch({ type: GET_MOVIE_PENDING, payload: { id } });
+  }, [id, dispatch]);
 
   const {
     poster_path, title, release_date, vote_average, vote_count, overview,
@@ -51,10 +48,11 @@ const MovieDescription = () => {
   const fullMovieTitle = `${title} (${new Date(release_date).getFullYear()}) `;
 
   return (
-    <>
-      {isLoading ? <SpinnerContainer><Spinner /></SpinnerContainer>
+    <MovieContainer>
+      {isLoading
+        ? <SpinnerContainer><Spinner /></SpinnerContainer>
         : (
-          <MovieContainer>
+          <>
             <PosterContainer>
               {poster_path
                 ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
@@ -95,7 +93,7 @@ const MovieDescription = () => {
               </div>
               <SimilarMoviesContainer>
                 {similarMovies
-                  .filter((similarMovie) => similarMovie.id !== movie.id)
+                  .slice(0, 3)
                   .map((similarMovie) => (
                     <Link key={similarMovie.id} to={`/movies/${similarMovie.id}`}>
                       <SimilarPosterContainer>
@@ -107,9 +105,9 @@ const MovieDescription = () => {
                   ))}
               </SimilarMoviesContainer>
             </Info>
-          </MovieContainer>
+          </>
         )}
-    </>
+    </MovieContainer>
   );
 };
 

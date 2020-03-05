@@ -1,4 +1,7 @@
 {
+  "plugins": [["babel-plugin-styled-components", {
+    "displayName": true
+  }]],
   "presets": [
     ["@babel/preset-env", {
       "useBuiltIns": "entry",

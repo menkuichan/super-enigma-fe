@@ -3,7 +3,22 @@ import styled from 'styled-components';
 export const MovieContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding-top: 110px;
+  padding: 110px 0;
+
+  &.page-enter {
+    opacity: 0;
+  }
+  &.page-enter-active {
+    opacity: 1;
+    transition: opacity 2000ms;
+  }
+  &.page-exit {
+    opacity: 1;
+  }
+  &.page-exit-active {
+    opacity: 0;
+    transition: opacity 2000ms;
+  }
 `;
 
 export const PosterContainer = styled.div`

@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 const MoviesView = () => {
+  const previousFilters = useRef();
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -64,7 +65,6 @@ const MoviesView = () => {
     });
   });
 
-  const previousFilters = useRef();
   useEffect(() => {
     previousFilters.current = [page, filter, year, vote_average, sortBy, genre, title];
   });
