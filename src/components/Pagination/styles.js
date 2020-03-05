@@ -26,6 +26,7 @@ export const PageNumber = styled.span`
 export const PaginationContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   &:last-child {
     margin-bottom: 30px;

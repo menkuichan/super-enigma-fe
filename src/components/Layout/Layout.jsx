@@ -8,7 +8,7 @@ import { Nav, NavLink } from '../Nav';
 import Filter from '../Filter';
 import Search from '../Search';
 import { NAV_LINKS } from '../../constants';
-import { NavContainer } from './styles';
+import { Container, NavContainer } from './styles';
 
 const Layout = ({ children }) => {
   const history = useHistory();
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <>
+    <Container>
       <Header>
         <NavContainer>
           <Logo />
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
         <Search />
       </Header>
       {children}
-    </>
+    </Container>
   );
 };
 
