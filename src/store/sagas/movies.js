@@ -62,7 +62,6 @@ function* loadMovie(action) {
     const movie = yield call(moviesApi.getById, id);
     yield put({ type: GET_MOVIE_SUCCESS, payload: { movie } });
     yield put({ type: GET_GENRES_PENDING });
-    yield put({ type: GET_MOVIES_PENDING, payload: { genre: movie.genre_ids.join(',') } });
   } catch (e) {
     yield put({ type: GET_MOVIE_ERROR, payload: e.message });
   }

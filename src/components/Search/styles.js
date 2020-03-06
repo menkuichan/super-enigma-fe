@@ -34,6 +34,7 @@ SearchInput.defaultProps = {
 export const SearchContainer = styled.div`
   display: flex;
   position: relative;
+  z-index: 1;
 `;
 
 export const ListContainer = styled.div`

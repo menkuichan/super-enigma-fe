@@ -24,6 +24,7 @@ export const GenresContainer = styled.div`
 export const FilterContainer = styled.div`
   user-select: none;
   position: relative;
+  z-index: 1;
 `;
 
 export const IconContainer = styled.div`
