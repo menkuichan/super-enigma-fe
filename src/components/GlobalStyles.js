@@ -15,5 +15,6 @@ export default createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.movies.background};
+    height: 100vh;
   }
 `;

@@ -1,7 +1,8 @@
+import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
@@ -20,6 +21,9 @@ ReactDOM.render(
       <Router history={history}>
         <Layout>
           <Switch>
+            <Route exact path="/">
+              <Redirect to="/movies" />
+            </Route>
             <Route
               exact
               path="/movies"

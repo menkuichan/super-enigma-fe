@@ -1,9 +1,36 @@
 import styled from 'styled-components';
 
 export const MovieContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+`;
+
+export const TransitionBox = styled.div`
+  position: relative;
+
+  &.page-enter {
+    opacity: 0;
+  }
+
+  &.page-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms;
+  }
+
+  &.page-exit {
+    opacity: 1;
+  }
+
+  &.page-exit-active {
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+`;
+
+export const MovieInfo = styled.div`
   display: flex;
-  justify-content: flex-start;
-  padding-top: 110px;
+  flex-direction: row;
+  padding: 110px 0;
 `;
 
 export const PosterContainer = styled.div`
