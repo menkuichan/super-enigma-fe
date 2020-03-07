@@ -69,7 +69,7 @@ const Search = () => {
     <SearchContainer ref={wrapperRef}>
       <InputContainer>
         <SearchInput
-          placeholder="Type to search…"
+          placeholder="Search films..."
           onChange={handleChange}
           onKeyPress={searchMovies}
           value={value}

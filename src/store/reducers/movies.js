@@ -27,7 +27,7 @@ export const movies = (state = defaultState, { type, payload }) => {
       return {
         ...state,
         totalPages: payload.totalPages,
-        byId: normalizeData(payload.movies),
+        byId: { ...state.byId, ...normalizeData(payload.movies) },
         isLoading: false,
       };
     case GET_MOVIE_SUCCESS:

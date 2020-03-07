@@ -38,6 +38,7 @@ export const SortContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.filter.border};
   border-radius: 5px;
   width: 270px;
+  z-index: 100;
 
   &::before {
     content: '';

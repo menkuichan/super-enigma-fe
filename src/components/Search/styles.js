@@ -13,17 +13,16 @@ export const SearchInput = styled.input`
   border: 0;
   color: ${({ theme }) => theme.header.text};
   font-size: 14px;
-  background-color: transparent;
-  padding: 6px 36px 6px 15px;
-  border: 1px solid #2b2b2b;
+  background-color: ${({ theme }) => theme.search.background};
+  padding: 6px 36px 6px 20px;
   border-radius: 5px;
   height: ${inputHeight}px;
-  width: 280px;
+  width: 300px;
   transition: background-color 0.3s ease-in-out;
 
   &:focus {
     outline: none;
-    background-color: ${({ theme }) => theme.search.background};
+    background-color: ${({ theme }) => theme.search.focusBackground};
   }
 `;
 
@@ -46,6 +45,7 @@ export const ListContainer = styled.div`
   top: ${inputHeight + 5}px;
   position: absolute;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 100;
 `;
 
 export const Item = styled.div`

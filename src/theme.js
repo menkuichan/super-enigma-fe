@@ -7,8 +7,9 @@ export default {
   search: {
     borderRadius: '3px',
     borderBottom: 'rgba(204, 204, 204, 0.4)',
-    itemHover: '#ddc753',
-    background: '#FFFFFF',
+    itemHover: '#efefef',
+    background: '#3e3e3e',
+    focusBackground: '#FFFFFF',
     showAll: '#DDC753',
   },
   movies: {
@@ -27,7 +28,7 @@ export default {
   },
   button: {
     primary: '#000000',
-    secondary: '#DDC753',
+    secondary: '#f79b0e',
     background: '#FFFFFF',
   },
   input: {
@@ -42,7 +43,7 @@ export default {
   },
   radio: {
     label: '#666666',
-    input: '#DDC753',
+    input: '#f79b0e',
     background: '#FFFFFF',
     border: '#B4B4B4',
   },
@@ -50,10 +51,10 @@ export default {
     background: '#DADADA',
     boxShadow: 'rgba(0, 0, 0, 0.25)',
     circle: '#666666',
-    activeField: '#DDC753',
+    activeField: '#f79b0e',
   },
   tag: {
-    active: '#DDC753',
+    active: '#f79b0e',
     border: '#000000',
     background: '#FFFFFF',
   },
