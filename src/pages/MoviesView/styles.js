@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const TransitionBox = styled.div`
   position: relative;
+  padding: 25px 0;
+  width: 100%;
 
   &.page-enter {
     opacity: 0;
@@ -37,7 +39,6 @@ export const MoviesViewContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) => theme.movies.background};
-  padding: 25px 0;
 `;
 
 export const MoviesListContainer = styled.div`
@@ -45,6 +46,7 @@ export const MoviesListContainer = styled.div`
   flex-wrap: wrap;
   width: 100%;
   padding: 0 5%;
+  margin: 5% 0;
 `;
 
 export const SpinnerContainer = styled.div`

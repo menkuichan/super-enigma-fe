@@ -27,37 +27,49 @@ export const TransitionBox = styled.div`
 export const MovieInfo = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 110px 0;
+  margin: 5% 0;
 `;
 
 export const PosterContainer = styled.div`
   margin-left: 180px;
+  width: 30%;
 `;
 
 export const SimilarPosterContainer = styled.div`
-  margin-right: 40px;
+  position: relative;
+  width: 20%;
+  margin-right: 3%;
+
+  a {
+    display: block;
+  }
 `;
 
 export const SimilarPoster = styled.img`
-  vertical-align: middle;
-  width: 154px;
-  height: 231px;
   border-radius: ${({ theme }) => theme.movies.borderRadius};
+  max-width: 100%;
+  width: 100%;
+  vertical-align: middle;
 `;
 
 export const Poster = styled.img`
-  vertical-align: middle;
-  max-width: 400px;
   border-radius: ${({ theme }) => theme.movies.borderRadius};
+  vertical-align: middle;
+  max-width: 100%;
+  width: 100%;
 `;
 
 export const Info = styled.div`
   display: flex;
-  justify-content: space-between;
   overflow: hidden;
   flex-direction: column;
   width: 48%;
   padding-left: 90px;
+`;
+
+export const InfoInner = styled.div`
+  position: relative;
+  margin-bottom: 25px;
 `;
 
 export const Title = styled.h1`
@@ -149,5 +161,5 @@ export const Genres = styled.p`
 
 export const SimilarMoviesContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
 `;

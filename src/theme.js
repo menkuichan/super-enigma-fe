@@ -17,8 +17,9 @@ export default {
     background: '#110F10',
     text: '#808080',
     borderColor: 'rgba(204, 204, 204, 0.4)',
-    boxShadow: 'rgb(128, 128, 128, 0.7)',
+    boxShadow: '#3e3e3e',
     whiteText: '#FFFFFF',
+    hoveredTitleColor: '#f79b0e',
   },
   spinner: {
     color: '#f79b0e',

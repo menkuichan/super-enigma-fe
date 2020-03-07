@@ -13,32 +13,35 @@ import {
   Rating,
   IconContainer,
   RatingContainer,
+  Inner,
 } from './styles';
 
 const MovieCard = ({
   title, vote_average, vote_count, poster_path, id,
 }) => (
   <CardContainer>
-    <Link to={`/movies/${id}`}>
-      <PosterContainer>
-        {poster_path
-          ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
-          : <Poster src={EmptyPoster} />}
-      </PosterContainer>
-    </Link>
-    <Info>
-      <Title title={title}>
-        {title}
-      </Title>
-      <RatingContainer>
-        <IconContainer>
-          <Star />
-        </IconContainer>
-        <Rating>
-          {`${vote_average} | ${vote_count}`}
-        </Rating>
-      </RatingContainer>
-    </Info>
+    <Inner>
+      <Link to={`/movies/${id}`}>
+        <PosterContainer>
+          {poster_path
+            ? <Poster src={`${POSTER_BASE_URL}${poster_path}`} />
+            : <Poster src={EmptyPoster} />}
+        </PosterContainer>
+        <Info>
+          <Title title={title}>
+            {title}
+          </Title>
+          <RatingContainer>
+            <IconContainer>
+              <Star />
+            </IconContainer>
+            <Rating>
+              {`${vote_average} | ${vote_count}`}
+            </Rating>
+          </RatingContainer>
+        </Info>
+      </Link>
+    </Inner>
   </CardContainer>
 );
 

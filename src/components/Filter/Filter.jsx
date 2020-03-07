@@ -149,7 +149,7 @@ const SortFilter = () => {
             <LabelContainer>
               <Label>Year</Label>
               <TextField
-                placeholder="..."
+                placeholder="_ _ _ _"
                 value={year}
                 onChange={handleYearChange}
               />

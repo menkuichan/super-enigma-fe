@@ -30,6 +30,7 @@ import {
   SimilarMoviesContainer,
   SimilarPosterContainer,
   SimilarPoster,
+  InfoInner,
 } from './styles';
 
 const MovieDescription = () => {
@@ -62,7 +63,7 @@ const MovieDescription = () => {
                   : <Poster src={EmptyPoster} />}
               </PosterContainer>
               <Info>
-                <div>
+                <InfoInner>
                   <Title title={`${movie.title} (${new Date(movie.release_date).getFullYear()})`}>
                     {`${movie.title} (${new Date(movie.release_date).getFullYear()})`}
                     &nbsp;
@@ -82,18 +83,18 @@ const MovieDescription = () => {
                   <div>
                     <Overview>{movie.overview}</Overview>
                   </div>
-                </div>
+                </InfoInner>
                 <SimilarMoviesContainer>
                   {similarMovies
                     .slice(0, 3)
                     .map((similarMovie) => (
-                      <Link key={similarMovie.id} to={`/movies/${similarMovie.id}`}>
-                        <SimilarPosterContainer>
+                      <SimilarPosterContainer key={similarMovie.id}>
+                        <Link to={`/movies/${similarMovie.id}`}>
                           {similarMovie.poster_path
                             ? <SimilarPoster src={`${SIMILAR_POSTER_BASE_URL}${similarMovie.poster_path}`} />
                             : <SimilarPoster src={EmptyPoster} />}
-                        </SimilarPosterContainer>
-                      </Link>
+                        </Link>
+                      </SimilarPosterContainer>
                     ))}
                 </SimilarMoviesContainer>
               </Info>
