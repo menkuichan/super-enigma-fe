@@ -6,6 +6,7 @@ import defaultTheme from '../../theme';
 export const Trending = styled(DefaultTrending)`
   cursor: pointer;
   fill: ${({ theme }) => theme.filter.default};
+
   &:hover {
     fill:  ${({ theme }) => theme.filter.active};
   }
@@ -40,6 +41,7 @@ export const SortContainer = styled.div`
   border-radius: 5px;
   width: 350px;
   z-index: 100;
+
   &::before {
     content: '';
     display: inline-block;
@@ -62,6 +64,7 @@ SortContainer.defaultProps = {
 
 export const ListContainer = styled.div`
   border-top: 1px solid ${({ theme }) => theme.filter.border};
+
   &:first-child {
     border-top: none;
   }
@@ -77,6 +80,7 @@ export const LabelContainer = styled.div`
   align-items: center;
   padding: 15px;
   border-bottom: 1px solid ${({ theme }) => theme.filter.border};
+
   &:last-child {
     border-bottom: none;
   }

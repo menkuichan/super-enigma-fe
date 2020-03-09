@@ -70,6 +70,7 @@ export const Inner = styled.div`
   a {
     display: block;
   }
+
   &:hover {
     ${Poster} {
       box-shadow: 0px 1px 3px ${({ theme }) => theme.movies.boxShadow};

@@ -19,6 +19,7 @@ export const SearchInput = styled.input`
   height: ${inputHeight}px;
   width: 300px;
   transition: background-color 0.3s ease-in-out;
+
   &:focus {
     outline: none;
     background-color: ${({ theme }) => theme.search.focusBackground};
@@ -55,10 +56,12 @@ export const Item = styled.div`
   padding: 10px;
   cursor: pointer;
   border-bottom: 1px solid ${({ theme }) => theme.search.borderBottom};
+
   &:hover {
     background-color: ${({ theme }) => theme.search.itemHover};
     border-radius: ${({ theme }) => theme.search.borderRadius};
   }
+
   &:last-child {
     border-bottom: none;
   }
