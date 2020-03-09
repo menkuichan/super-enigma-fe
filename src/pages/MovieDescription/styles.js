@@ -11,19 +11,16 @@ export const TransitionBox = styled.div`
   &.page-enter {
     opacity: 0;
   }
-
   &.page-enter-active {
     opacity: 1;
-    transition: opacity 1000ms;
+    transition: opacity 2000ms;
   }
-
   &.page-exit {
     opacity: 1;
   }
-
   &.page-exit-active {
     opacity: 0;
-    transition: opacity 1000ms;
+    transition: opacity 2000ms;
   }
 `;
 

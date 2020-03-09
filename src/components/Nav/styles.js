@@ -8,6 +8,7 @@ export const LinkButton = styled.button`
   font-size: 15px;
   padding: 20px 30px;
   color: ${({ filter, value, theme }) => (filter === value ? theme.header.activeLink : theme.header.text)};
+
   &:focus {
     outline: none
   }
