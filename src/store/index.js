@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { enableBatching } from 'redux-batched-actions';
 import rootSaga from './sagas';
 import rootReducer from './reducers';
 
@@ -15,7 +14,7 @@ const enhancer = composeEnhancers(
 );
 
 const configureStore = () => {
-  const store = createStore(enableBatching(rootReducer), enhancer);
+  const store = createStore(rootReducer, enhancer);
   sagaMiddleware.run(rootSaga);
 
   return store;
