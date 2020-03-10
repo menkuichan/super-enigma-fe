@@ -28,7 +28,7 @@ export const PaginationContainer = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  &:last-child {
-    margin-bottom: 30px;
+  &:first-child {
+    margin-bottom: 1%;
   }
 `;

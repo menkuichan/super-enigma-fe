@@ -2,6 +2,7 @@ import {
   GET_GENRES_PENDING,
   GET_GENRES_SUCCESS,
   GET_GENRES_ERROR,
+  GET_MOVIE_DESCRIPTION_SUCCESS,
 } from '../actionTypes';
 import { normalizeData } from '../../utils';
 
@@ -26,6 +27,12 @@ export const genres = (state = defaultState, { type, payload }) => {
     case GET_GENRES_ERROR:
       return {
         ...state,
+        isLoading: false,
+      };
+    case GET_MOVIE_DESCRIPTION_SUCCESS:
+      return {
+        ...state,
+        byId: { ...state.byId, ...normalizeData(payload.genres) },
         isLoading: false,
       };
     default:

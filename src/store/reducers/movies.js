@@ -3,9 +3,9 @@ import {
   GET_MOVIES_PENDING,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_ERROR,
-  GET_MOVIE_SUCCESS,
-  GET_MOVIE_PENDING,
-  GET_MOVIE_ERROR,
+  GET_MOVIE_DESCRIPTION_PENDING,
+  GET_MOVIE_DESCRIPTION_SUCCESS,
+  GET_MOVIE_DESCRIPTION_ERROR,
 } from '../actionTypes';
 
 const defaultState = {
@@ -18,7 +18,7 @@ const defaultState = {
 export const movies = (state = defaultState, { type, payload }) => {
   switch (type) {
     case GET_MOVIES_PENDING:
-    case GET_MOVIE_PENDING:
+    case GET_MOVIE_DESCRIPTION_PENDING:
       return {
         ...state,
         isLoading: true,
@@ -30,15 +30,20 @@ export const movies = (state = defaultState, { type, payload }) => {
         byId: normalizeData(payload.movies),
         isLoading: false,
       };
-    case GET_MOVIE_SUCCESS:
+    case GET_MOVIES_ERROR:
+    case GET_MOVIE_DESCRIPTION_ERROR:
+      return { ...state, isLoading: false };
+    case GET_MOVIE_DESCRIPTION_SUCCESS:
       return {
         ...state,
-        byId: { ...state.byId, [payload.movie.id]: payload.movie },
+        totalPages: payload.totalPages,
+        byId: {
+          ...state.byId,
+          ...normalizeData(payload.movies),
+          [payload.movie.id]: payload.movie,
+        },
         isLoading: false,
       };
-    case GET_MOVIES_ERROR:
-    case GET_MOVIE_ERROR:
-      return { ...state, isLoading: false };
     default:
       return state;
   }

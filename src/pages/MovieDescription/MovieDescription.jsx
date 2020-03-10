@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import Star from '../../components/Icons/Star';
 import { selectMovieById, selectLoading, selectSimilarMovies } from '../../store/reducers/movies';
 import { selectGenresByIds } from '../../store/reducers/genres';
-import { GET_MOVIE_PENDING } from '../../store/actionTypes';
+import { GET_MOVIE_DESCRIPTION_PENDING } from '../../store/actionTypes';
 import Spinner from '../../components/Spinner';
 import EmptyPoster from '../../../assets/empty-poster.png';
 import { POSTER_BASE_URL, SIMILAR_POSTER_BASE_URL } from '../../constants';
@@ -41,7 +41,7 @@ const MovieDescription = () => {
   const genres = useSelector((state) => selectGenresByIds(state, movie.genre_ids || []));
 
   useEffect(() => {
-    dispatch({ type: GET_MOVIE_PENDING, payload: { id } });
+    dispatch({ type: GET_MOVIE_DESCRIPTION_PENDING, payload: { id } });
   }, [id, dispatch]);
 
   return (
@@ -63,8 +63,8 @@ const MovieDescription = () => {
               </PosterContainer>
               <Info>
                 <div>
-                  <Title title={`${movie.title} (${new Date(movie.release_date).getFullYear()})`}>
-                    {`${movie.title} (${new Date(movie.release_date).getFullYear()})`}
+                  <Title title={`${movie.title} ${movie.release_date && `(${new Date(movie.release_date).getFullYear()})`}`}>
+                    {`${movie.title} ${movie.release_date && `(${new Date(movie.release_date).getFullYear()})`}`}
                     &nbsp;
                     <Language>{movie.original_language}</Language>
                   </Title>
