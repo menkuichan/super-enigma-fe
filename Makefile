@@ -12,7 +12,7 @@ build-image:
 
 run-service:
 	@ echo "---> Running service Docker container ..."
-	@ docker run -p $(SERVICE_PORT):$(SERVICE_PORT) -d --rm --name $(SERVICE_NAME) $(IMAGE_URI):$(IMAGE_VERSION)
+	@ docker run -it -p $(SERVICE_PORT):80 -d --rm --name $(SERVICE_NAME) $(IMAGE_URI):$(IMAGE_VERSION)
 .PHONY: run-service
 
 stop-service:
