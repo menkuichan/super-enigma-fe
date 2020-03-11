@@ -1,11 +1,11 @@
-FROM node:10
+FROM nginx:alpine
 
 WORKDIR /app
 
-COPY . /app
+COPY ./build /app/
 
-RUN yarn install
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-CMD yarn start
+EXPOSE 80
 
-EXPOSE 8080
+CMD nginx -g daemon off;
