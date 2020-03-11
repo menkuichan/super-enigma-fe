@@ -3,7 +3,7 @@ WORKDIR := $(PWD)
 IMAGE_URI = menkuican/super-enigma-fe
 SERVICE_NAME = super-enigma-fe
 IMAGE_VERSION = develop
-SERVICE_PORT = 8888
+SERVICE_PORT = 8080
 
 build-image:
 	@ echo "---> Building service Docker image ..."
