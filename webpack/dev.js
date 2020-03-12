@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const { resolve } = require('path');
 const { baseConfig, rules, plugins } = require('./base');
 
-require('dotenv').config();
-
 const webpackConfig = {
   ...baseConfig,
   mode: 'development',

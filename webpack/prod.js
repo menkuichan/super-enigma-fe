@@ -3,8 +3,6 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const { baseConfig, rules, plugins } = require('./base');
 
-require('dotenv').config();
-
 const webpackConfig = {
   ...baseConfig,
   mode: 'production',
