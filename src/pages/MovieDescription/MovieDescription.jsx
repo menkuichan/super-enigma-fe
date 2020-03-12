@@ -54,7 +54,7 @@ const MovieDescription = () => {
         unmountOnExit
       >
         <TransitionBox>
-          {movie.id && !isLoading && ( // ensure that movie loaded
+          {movie.id && !isLoading && (
             <MovieInfo>
               <PosterContainer>
                 {movie.poster_path
@@ -65,7 +65,6 @@ const MovieDescription = () => {
                 <div>
                   <Title title={`${movie.title} ${movie.release_date && `(${new Date(movie.release_date).getFullYear()})`}`}>
                     {`${movie.title} ${movie.release_date && `(${new Date(movie.release_date).getFullYear()})`}`}
-                    &nbsp;
                     <Language>{movie.original_language}</Language>
                   </Title>
                   <OriginalTitle>{movie.original_title}</OriginalTitle>

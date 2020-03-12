@@ -85,7 +85,7 @@ const MoviesView = () => {
         unmountOnExit
       >
         <TransitionBox>
-          {movies.length && !isLoading && (
+          {!!movies.length && !isLoading && (
             <>
               <Pagination
                 page={parseInt(page, 10)}
