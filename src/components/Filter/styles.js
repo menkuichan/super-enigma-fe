@@ -18,6 +18,8 @@ export const SortBy = styled(DefaultSortByIcon)`
 `;
 
 export const GenresContainer = styled.div`
+  max-height: 100px;
+  overflow: auto;
   padding: 7px;
 `;
 
@@ -37,7 +39,8 @@ export const SortContainer = styled.div`
   background-color: ${({ theme }) => theme.filter.background};
   border: 1px solid ${({ theme }) => theme.filter.border};
   border-radius: 5px;
-  width: 270px;
+  width: 350px;
+  z-index: 100;
 
   &::before {
     content: '';

@@ -1,5 +1,29 @@
 import styled from 'styled-components';
 
+export const TransitionBox = styled.div`
+  position: relative;
+  width: 100%;
+
+  &.page-enter {
+    opacity: 0;
+  }
+
+  &.page-enter-active {
+    opacity: 1;
+    transition: opacity 2000ms;
+  }
+
+  &.page-exit {
+    opacity: 1;
+  }
+
+  &.page-exit-active {
+    opacity: 0;
+    transition: opacity 2000ms;
+  }
+`;
+
+
 export const NoResults = styled.h1`
   color: ${({ theme }) => theme.movies.whiteText};
   font-family: 'Open Sans', sans-serif;
@@ -17,8 +41,8 @@ export const MoviesViewContainer = styled.div`
   overflow: auto;
   flex-direction: column;
   align-items: center;
-  padding-top: 65px;
   background-color: ${({ theme }) => theme.movies.background};
+  padding: 25px 0;
 `;
 
 export const MoviesListContainer = styled.div`

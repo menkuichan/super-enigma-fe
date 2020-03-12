@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const LinkButton = styled.button`
+  cursor: pointer;
   font-family: 'Open Sans', sans-serif;
   border: 0;
   background: none;
@@ -10,5 +11,9 @@ export const LinkButton = styled.button`
 
   &:focus {
     outline: none
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.header.activeLink}
   }
 `;

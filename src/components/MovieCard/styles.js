@@ -4,24 +4,18 @@ import defaultTheme from '../../theme';
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
-  margin: 40px;
+  width: 20%;
+  padding: 0 16px;
 `;
 
 export const PosterContainer = styled.div`
 `;
 
 export const Poster = styled.img`
-  height: 375px;
   vertical-align: middle;
   max-width: 100%;
   border-radius: ${({ theme }) => theme.movies.borderRadius};
   transition: box-shadow 0.2s ease-in-out;
-
-  &:hover {
-    border-radius: ${({ theme }) => theme.movies.borderRadius};
-    box-shadow: 2px 2px 8px ${({ theme }) => theme.movies.boxShadow};;
-  }
 `;
 
 Poster.defaultProps = {
@@ -32,7 +26,7 @@ export const Info = styled.div`
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  padding: 15px;
+  padding: 15px 0;
 `;
 
 export const Title = styled.h1`
@@ -44,6 +38,7 @@ export const Title = styled.h1`
   font-size: 18px;
   font-weight: 600;
   color: ${({ theme }) => theme.movies.whiteText};
+  transition: color 0.2s ease-in-out;
 `;
 
 export const Rating = styled.p`
@@ -69,4 +64,19 @@ export const IconContainer = styled.div`
 export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const Inner = styled.div`
+  a {
+    display: block;
+  }
+
+  &:hover {
+    ${Poster} {
+      box-shadow: 0px 1px 3px ${({ theme }) => theme.movies.boxShadow};
+    }
+    ${Title} {
+      color: ${({ theme }) => theme.movies.hoveredTitleColor};
+    }
+  }
 `;
