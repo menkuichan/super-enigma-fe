@@ -6,6 +6,7 @@ const webpackConfig = {
   ...baseConfig,
   mode: 'development',
   output: {
+    publicPath: '/',
     chunkFilename: '[name].js',
     filename: '[name].js',
     path: resolve(__dirname, 'dev'),

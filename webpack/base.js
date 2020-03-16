@@ -8,10 +8,6 @@ const dir = {
 
 const baseConfig = {
   entry: ['@babel/polyfill', './src/index.jsx'],
-  output: {
-    filename: 'bundle.js',
-    publicPath: '/',
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
