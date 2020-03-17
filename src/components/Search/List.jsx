@@ -27,7 +27,10 @@ const List = ({ movies, onItemClick, showAll }) => (
         to={`/movies/${movie.id}`}
         key={index} // eslint-disable-line
       >
-        <Item onClick={onItemClick}>
+        <Item
+          data-testid="searchItem"
+          onClick={onItemClick}
+        >
           {movie.poster_path
             ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
             : <Poster src={EmptyPoster} />}
