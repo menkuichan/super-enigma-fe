@@ -55,7 +55,7 @@ const MovieDescription = () => {
       >
         <TransitionBox>
           {movie.id && !isLoading && (
-            <MovieInfo>
+            <MovieInfo data-testid="movieInfo">
               <PosterContainer>
                 {movie.poster_path
                   ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
