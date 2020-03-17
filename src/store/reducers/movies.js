@@ -38,7 +38,6 @@ export const movies = (state = defaultState, { type, payload }) => {
         ...state,
         totalPages: payload.totalPages,
         byId: {
-          ...state.byId,
           ...normalizeData(payload.movies),
           [payload.movie.id]: payload.movie,
         },
@@ -49,17 +48,12 @@ export const movies = (state = defaultState, { type, payload }) => {
   }
 };
 
-export const selectMovies = (store) => (
-  Object
-    .keys(store.movies.byId)
-    .map((key) => store.movies.byId[key])
-);
+export const selectMovies = (store) => Object.values(store.movies.byId);
 export const selectTotalPages = (store) => store.movies.totalPages;
 export const selectMovieById = (store, id) => store.movies.byId[id];
 export const selectSimilarMovies = (store, currentMovieId) => (
   Object
-    .keys(store.movies.byId)
-    .map((key) => store.movies.byId[key])
+    .values(store.movies.byId)
     .filter((movie) => movie.id !== +currentMovieId)
 );
 export const selectLoading = (store) => store.movies.isLoading;
