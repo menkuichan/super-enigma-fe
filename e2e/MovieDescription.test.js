@@ -11,11 +11,19 @@ beforeAll(async () => {
     slowMo: 0,
   });
   page = await browser.newPage();
-  await page.goto('http://localhost:8888/movies/2');
 });
 
-describe('On movie description page load ', () => {
+describe('On movies view page load', () => {
   test('loads correctly', async () => {
+    await page.goto('http://localhost:8888/movies');
+    const movieInfo = await page.$('[data-testid="movieCard"]');
+    expect(movieInfo).toBeTruthy();
+  }, 10000);
+});
+
+describe('On movie description page load', () => {
+  test('loads correctly', async () => {
+    await page.goto('http://localhost:8888/movies/2');
     const movieInfo = await page.$('[data-testid="movieInfo"]');
     expect(movieInfo).toBeTruthy();
   }, 10000);
