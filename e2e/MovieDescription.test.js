@@ -13,54 +13,6 @@ beforeAll(async () => {
   page = await browser.newPage();
 });
 
-describe('On movies view page load', () => {
-  const moviesURL = 'http://localhost:8888/movies';
-  const moviesErrors = [];
-
-  test('loads correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
-    expect(movieCard).toBeTruthy();
-  }, 10000);
-
-  test('does not have exceptions', () => {
-    page.on('pageerror', (error) => moviesErrors.push(error.text));
-    expect(moviesErrors.length).toBe(0);
-  });
-
-  test('goes to next page correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="nextPage"]');
-    const nextPage = await page.$('[data-testid="nextPage"]');
-    await nextPage.tap();
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
-    expect(movieCard).toBeTruthy();
-  }, 10000);
-
-  test('goes to movie description page correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
-    await movieCard.tap();
-    await page.waitForSelector('[data-testid="movieInfo"]');
-    const movieInfo = await page.$('[data-testid="movieInfo"]');
-    expect(movieInfo).toBeTruthy();
-  }, 10000);
-
-  test('searches correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="searchInput"]');
-    const searchInput = await page.$('[data-testid="searchInput"]');
-    await searchInput.tap();
-    await searchInput.type('world');
-    await page.waitForSelector('[data-testid="searchItem"]');
-    const searchItem = await page.$('[data-testid="searchItem"]');
-    expect(searchItem).toBeTruthy();
-  }, 10000);
-});
-
 describe('On movie description page load', () => {
   const movieURL = 'http://localhost:8888/movies/2';
   const movieErrors = [];
