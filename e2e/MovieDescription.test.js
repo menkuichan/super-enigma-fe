@@ -16,6 +16,7 @@ beforeAll(async () => {
 describe('On movies view page load', () => {
   test('loads correctly', async () => {
     await page.goto('http://localhost:8888/movies');
+    await page.waitForSelector('[data-testid="movieCard"]');
     const movieInfo = await page.$('[data-testid="movieCard"]');
     expect(movieInfo).toBeTruthy();
   }, 10000);
@@ -24,6 +25,7 @@ describe('On movies view page load', () => {
 describe('On movie description page load', () => {
   test('loads correctly', async () => {
     await page.goto('http://localhost:8888/movies/2');
+    await page.waitForSelector('[data-testid="movieInfo"]');
     const movieInfo = await page.$('[data-testid="movieInfo"]');
     expect(movieInfo).toBeTruthy();
   }, 10000);
