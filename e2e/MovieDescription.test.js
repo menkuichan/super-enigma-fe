@@ -15,9 +15,25 @@ beforeAll(async () => {
 
 describe('On movies view page load', () => {
   const moviesURL = 'http://localhost:8888/movies';
+  const moviesErrors = [];
 
   test('loads correctly', async () => {
     await page.goto(moviesURL);
+    await page.waitForSelector('[data-testid="movieCard"]');
+    const movieCard = await page.$('[data-testid="movieCard"]');
+    expect(movieCard).toBeTruthy();
+  }, 10000);
+
+  test('does not have exceptions', () => {
+    page.on('pageerror', (error) => moviesErrors.push(error.text));
+    expect(moviesErrors.length).toBe(0);
+  });
+
+  test('goes to next page correctly', async () => {
+    await page.goto(moviesURL);
+    await page.waitForSelector('[data-testid="nextPage"]');
+    const nextPage = await page.$('[data-testid="nextPage"]');
+    await nextPage.tap();
     await page.waitForSelector('[data-testid="movieCard"]');
     const movieCard = await page.$('[data-testid="movieCard"]');
     expect(movieCard).toBeTruthy();
@@ -47,6 +63,7 @@ describe('On movies view page load', () => {
 
 describe('On movie description page load', () => {
   const movieURL = 'http://localhost:8888/movies/2';
+  const movieErrors = [];
 
   test('loads correctly', async () => {
     await page.goto(movieURL);
@@ -54,6 +71,11 @@ describe('On movie description page load', () => {
     const movieInfo = await page.$('[data-testid="movieInfo"]');
     expect(movieInfo).toBeTruthy();
   }, 10000);
+
+  test('does not have exceptions', () => {
+    page.on('pageerror', (error) => movieErrors.push(error.text));
+    expect(movieErrors.length).toBe(0);
+  });
 
   test('goes to similar movie correctly', async () => {
     await page.goto(movieURL);

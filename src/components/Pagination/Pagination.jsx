@@ -96,7 +96,12 @@ const Pagination = ({ totalPages, page, handleClick }) => {
             {pageNumber}
           </PageNumber>
         ))}
-      <PageNumber onClick={() => handleClick(page + 1)}>{'>'}</PageNumber>
+      <PageNumber
+        data-testid="nextPage"
+        onClick={() => handleClick(page + 1)}
+      >
+        {'>'}
+      </PageNumber>
       <PageNumber onClick={() => handleClick(totalPages)}>{'>>'}</PageNumber>
     </PaginationContainer>
   );
