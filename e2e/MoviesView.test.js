@@ -14,7 +14,7 @@ beforeAll(async () => {
 });
 
 describe('MoviesView page', () => {
-  const moviesURL = 'http://localhost:8888/movies';
+  const moviesURL = 'http://localhost:8888/movies/';
   const movieCardSelector = '[data-testid="movieCard"]';
   const nextPageSelector = '[data-testid="nextPage"]';
   const movieInfoSelector = '[data-testid="movieInfo"]';
@@ -50,9 +50,10 @@ describe('MoviesView page', () => {
     await page.waitForSelector(movieCardSelector);
     const movieCard = await page.$(movieCardSelector);
     await movieCard.tap();
-    console.log(page.url());
     await page.waitForSelector(movieInfoSelector);
     const movieInfo = await page.$(movieInfoSelector);
+    const movieId = page.url().split(moviesURL)[1];
+    expect(movieId).toBeTruthy();
     expect(movieInfo).toBeTruthy();
   }, 10000);
 });
