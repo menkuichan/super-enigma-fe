@@ -42,7 +42,7 @@ describe('MoviesView page', () => {
     await nextPage.tap();
     await page.waitForSelector(activePageSelector);
     const secondActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
-    expect(secondActivePage > firstActivePage).toBe(true);
+    expect(secondActivePage).toBeGreaterThan(firstActivePage);
   }, 10000);
 
   it('goes to movie description page correctly', async () => {
@@ -52,8 +52,8 @@ describe('MoviesView page', () => {
     await movieCard.tap();
     await page.waitForSelector(movieInfoSelector);
     const movieInfo = await page.$(movieInfoSelector);
-    const movieId = page.url().split(moviesURL)[1];
-    expect(movieId).toBeTruthy();
+    const currentUrl = page.url();
+    expect(/http:\/\/localhost:8888\/movies\/\d+$/.test(currentUrl)).toBeTruthy();
     expect(movieInfo).toBeTruthy();
   }, 10000);
 });

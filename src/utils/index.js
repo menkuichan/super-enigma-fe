@@ -10,10 +10,8 @@ export const normalizeData = (data) => {
 };
 
 /**
- * Convert data from object to array of ids
- * @param {Object} data - input data from response
- * @return {Array}
+ * Convert data from array of objects to array of ids
+ * @param {Array} data - input data from response
+ * @return {Array} - array of ids
  */
-export const getIds = (obj) => Object
-  .values(obj)
-  .map((el) => el.id);
+export const getIds = (data) => data.map((el) => el.id);
