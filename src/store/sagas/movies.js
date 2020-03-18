@@ -23,10 +23,6 @@ const getSortFilter = (filter) => {
   return sortBy;
 };
 
-const getIds = (obj) => Object
-  .values(obj)
-  .map((el) => el.id);
-
 function* loadMovies(action) {
   const {
     page,
@@ -54,7 +50,6 @@ function* loadMovies(action) {
       payload: {
         totalPages,
         movies,
-        ids: getIds(movies),
       },
     });
   } catch (e) {
@@ -79,7 +74,6 @@ function* getMovieDescriptonData(action) {
         movie,
         genres,
         movies,
-        ids: getIds(movies),
         totalPages: totalPages || 1,
       },
     });

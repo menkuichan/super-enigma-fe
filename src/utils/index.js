@@ -8,3 +8,12 @@ export const normalizeData = (data) => {
   data.forEach((movie) => Object.assign(newObj, { [movie.id]: movie }));
   return newObj;
 };
+
+/**
+ * Convert data from object to array of ids
+ * @param {Object} data - input data from response
+ * @return {Array}
+ */
+export const getIds = (obj) => Object
+  .values(obj)
+  .map((el) => el.id);

@@ -1,4 +1,4 @@
-import { normalizeData } from '../../utils/index';
+import { normalizeData, getIds } from '../../utils/index';
 import {
   GET_MOVIES_PENDING,
   GET_MOVIES_SUCCESS,
@@ -29,7 +29,7 @@ export const movies = (state = defaultState, { type, payload }) => {
         ...state,
         totalPages: payload.totalPages,
         byId: normalizeData(payload.movies),
-        ids: payload.ids,
+        ids: getIds(payload.movies),
         isLoading: false,
       };
     case GET_MOVIES_ERROR:
@@ -43,7 +43,7 @@ export const movies = (state = defaultState, { type, payload }) => {
           ...normalizeData(payload.movies),
           [payload.movie.id]: payload.movie,
         },
-        ids: payload.ids,
+        ids: getIds(payload.movies),
         isLoading: false,
       };
     default:
