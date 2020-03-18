@@ -10,6 +10,7 @@ import {
 
 const defaultState = {
   byId: {},
+  ids: [],
   page: 1,
   totalPages: 1,
   isLoading: false,
@@ -28,6 +29,7 @@ export const movies = (state = defaultState, { type, payload }) => {
         ...state,
         totalPages: payload.totalPages,
         byId: normalizeData(payload.movies),
+        ids: payload.ids,
         isLoading: false,
       };
     case GET_MOVIES_ERROR:
@@ -41,6 +43,7 @@ export const movies = (state = defaultState, { type, payload }) => {
           ...normalizeData(payload.movies),
           [payload.movie.id]: payload.movie,
         },
+        ids: payload.ids,
         isLoading: false,
       };
     default:
@@ -48,12 +51,13 @@ export const movies = (state = defaultState, { type, payload }) => {
   }
 };
 
-export const selectMovies = (store) => Object.values(store.movies.byId);
+export const selectMovies = (store) => store.movies.ids
+  .map((id) => store.movies.byId[id]);
 export const selectTotalPages = (store) => store.movies.totalPages;
 export const selectMovieById = (store, id) => store.movies.byId[id];
 export const selectSimilarMovies = (store, currentMovieId) => (
-  Object
-    .values(store.movies.byId)
+  store.movies.ids
+    .map((id) => store.movies.byId[id])
     .filter((movie) => movie.id !== +currentMovieId)
 );
 export const selectLoading = (store) => store.movies.isLoading;

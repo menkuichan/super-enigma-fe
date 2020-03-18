@@ -23,6 +23,10 @@ const getSortFilter = (filter) => {
   return sortBy;
 };
 
+const getIds = (obj) => Object
+  .values(obj)
+  .map((el) => el.id);
+
 function* loadMovies(action) {
   const {
     page,
@@ -47,7 +51,11 @@ function* loadMovies(action) {
     });
     yield put({
       type: GET_MOVIES_SUCCESS,
-      payload: { totalPages, movies },
+      payload: {
+        totalPages,
+        movies,
+        ids: getIds(movies),
+      },
     });
   } catch (e) {
     yield put({ type: GET_MOVIES_ERROR, payload: e.message });
@@ -67,7 +75,13 @@ function* getMovieDescriptonData(action) {
 
     yield put({
       type: GET_MOVIE_DESCRIPTION_SUCCESS,
-      payload: { movie, genres, movies, totalPages: totalPages || 1 },
+      payload: {
+        movie,
+        genres,
+        movies,
+        ids: getIds(movies),
+        totalPages: totalPages || 1,
+      },
     });
   } catch (e) {
     yield put({ type: GET_MOVIE_DESCRIPTION_ERROR, payload: e.message });
