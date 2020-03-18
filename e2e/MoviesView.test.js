@@ -50,6 +50,7 @@ describe('MoviesView page', () => {
     await page.waitForSelector(movieCardSelector);
     const movieCard = await page.$(movieCardSelector);
     await movieCard.tap();
+    console.log(page.url());
     await page.waitForSelector(movieInfoSelector);
     const movieInfo = await page.$(movieInfoSelector);
     expect(movieInfo).toBeTruthy();

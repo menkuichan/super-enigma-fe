@@ -26,6 +26,9 @@ describe('Search', () => {
     const searchInput = await page.$(searchInputSelector);
     await searchInput.tap();
     await searchInput.type('world');
+    await page.waitForSelector(searchItemSelector);
+    const searchItem = await page.$$(searchItemSelector);
+    expect(searchItem.length).toBeGreaterThanOrEqual(1);
     await page.keyboard.press('Enter');
     await page.waitForSelector(movieCardSelector);
     const movieCard = await page.$$(movieCardSelector);
