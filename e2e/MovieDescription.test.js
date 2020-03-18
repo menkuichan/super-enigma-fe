@@ -13,29 +13,32 @@ beforeAll(async () => {
   page = await browser.newPage();
 });
 
-describe('On movie description page load', () => {
+describe('MovieDescription page', () => {
   const movieURL = 'http://localhost:8888/movies/2';
+  const similarMovieSelector = '[data-testid="similarMovie"]';
+  const movieInfoSelector = '[data-testid="movieInfo"]';
   const movieErrors = [];
 
-  test('loads correctly', async () => {
+  it('loads correctly', async () => {
     await page.goto(movieURL);
-    await page.waitForSelector('[data-testid="movieInfo"]');
-    const movieInfo = await page.$('[data-testid="movieInfo"]');
+    await page.waitForSelector(movieInfoSelector);
+    const movieInfo = await page.$(movieInfoSelector);
     expect(movieInfo).toBeTruthy();
   }, 10000);
 
-  test('does not have exceptions', () => {
+  it('does not have exceptions', () => {
     page.on('pageerror', (error) => movieErrors.push(error.text));
     expect(movieErrors.length).toBe(0);
-  });
+  }, 10000);
 
-  test('goes to similar movie correctly', async () => {
+  it('goes to similar movie correctly', async () => {
     await page.goto(movieURL);
-    await page.waitForSelector('[data-testid="similarMovie"]');
-    const similarMovie = await page.$('[data-testid="similarMovie"]');
+    const similarMovie = await page.$(similarMovieSelector);
+    if (!similarMovie) return;
+    await page.waitForSelector(similarMovieSelector);
     await similarMovie.tap();
-    await page.waitForSelector('[data-testid="movieInfo"]');
-    const movieInfo = await page.$('[data-testid="movieInfo"]');
+    await page.waitForSelector(movieInfoSelector);
+    const movieInfo = await page.$(movieInfoSelector);
     expect(movieInfo).toBeTruthy();
   }, 10000);
 });

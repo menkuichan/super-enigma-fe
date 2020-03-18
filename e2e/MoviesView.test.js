@@ -13,39 +13,42 @@ beforeAll(async () => {
   page = await browser.newPage();
 });
 
-describe('On movies view page load', () => {
+describe('MoviesView page', () => {
   const moviesURL = 'http://localhost:8888/movies';
+  const movieCardSelector = '[data-testid="movieCard"]';
+  const nextPageSelector = '[data-testid="nextPage"]';
+  const movieInfoSelector = '[data-testid="movieInfo"]';
   const moviesErrors = [];
 
-  test('loads correctly', async () => {
+  it('loads correctly', async () => {
     await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
+    await page.waitForSelector(movieCardSelector);
+    const movieCard = await page.$(movieCardSelector);
     expect(movieCard).toBeTruthy();
   }, 10000);
 
-  test('does not have exceptions', () => {
+  it('does not have exceptions', () => {
     page.on('pageerror', (error) => moviesErrors.push(error.text));
     expect(moviesErrors.length).toBe(0);
   });
 
-  test('goes to next page correctly', async () => {
+  it('goes to next page correctly', async () => {
     await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="nextPage"]');
-    const nextPage = await page.$('[data-testid="nextPage"]');
+    await page.waitForSelector(nextPageSelector);
+    const nextPage = await page.$(nextPageSelector);
     await nextPage.tap();
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
+    await page.waitForSelector(movieCardSelector);
+    const movieCard = await page.$(movieCardSelector);
     expect(movieCard).toBeTruthy();
   }, 10000);
 
-  test('goes to movie description page correctly', async () => {
+  it('goes to movie description page correctly', async () => {
     await page.goto(moviesURL);
-    await page.waitForSelector('[data-testid="movieCard"]');
-    const movieCard = await page.$('[data-testid="movieCard"]');
+    await page.waitForSelector(movieCardSelector);
+    const movieCard = await page.$(movieCardSelector);
     await movieCard.tap();
-    await page.waitForSelector('[data-testid="movieInfo"]');
-    const movieInfo = await page.$('[data-testid="movieInfo"]');
+    await page.waitForSelector(movieInfoSelector);
+    const movieInfo = await page.$(movieInfoSelector);
     expect(movieInfo).toBeTruthy();
   }, 10000);
 });
