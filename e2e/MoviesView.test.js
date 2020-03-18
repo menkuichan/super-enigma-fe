@@ -24,8 +24,8 @@ describe('MoviesView page', () => {
   it('loads correctly', async () => {
     await page.goto(moviesURL);
     await page.waitForSelector(movieCardSelector);
-    const movieCard = await page.$(movieCardSelector);
-    expect(movieCard).toBeTruthy();
+    const movieCard = await page.$$(movieCardSelector);
+    expect(movieCard.length).toBeGreaterThanOrEqual(1);
   }, 10000);
 
   it('does not have exceptions', () => {
