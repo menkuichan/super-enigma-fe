@@ -10,16 +10,12 @@ export const PageNumber = styled.span`
   color: ${({ theme }) => theme.movies.text};
   transition: background-color .3s;
   border-radius: 5px;
+  background-color: ${({ theme, active }) => active && theme.header.activeLink};
+  color: ${({ theme, active }) => active && theme.pagination.page};
 
-  &.p${({ page }) => page} {
-    background-color: ${({ theme }) => theme.header.activeLink};
-    color: ${({ theme }) => theme.pagination.page};
-  }
-
-  &:hover:not(.p${({ page }) => page}) {
-    border-radius: 5px;
-    background-color: rgba(221, 221, 221, 0.4);
-    color: ${({ theme }) => theme.pagination.page};
+  &:hover {
+    background-color: ${({ theme, active }) => !active && theme.pagination.background};
+    color: ${({ theme, active }) => !active && theme.pagination.page};
   }
 `;
 

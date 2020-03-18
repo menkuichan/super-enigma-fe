@@ -63,8 +63,8 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : 'notActive'}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}
@@ -76,8 +76,8 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : 'notActive'}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}
@@ -89,8 +89,8 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : 'notActive'}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}

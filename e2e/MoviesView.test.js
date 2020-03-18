@@ -18,6 +18,7 @@ describe('MoviesView page', () => {
   const movieCardSelector = '[data-testid="movieCard"]';
   const nextPageSelector = '[data-testid="nextPage"]';
   const movieInfoSelector = '[data-testid="movieInfo"]';
+  const activePageSelector = '[data-testid="active"]';
   const moviesErrors = [];
 
   it('loads correctly', async () => {
@@ -35,11 +36,13 @@ describe('MoviesView page', () => {
   it('goes to next page correctly', async () => {
     await page.goto(moviesURL);
     await page.waitForSelector(nextPageSelector);
+    await page.waitForSelector(activePageSelector);
+    const firstActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
     const nextPage = await page.$(nextPageSelector);
     await nextPage.tap();
-    await page.waitForSelector(movieCardSelector);
-    const movieCard = await page.$(movieCardSelector);
-    expect(movieCard).toBeTruthy();
+    await page.waitForSelector(activePageSelector);
+    const secondActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
+    expect(firstActivePage !== secondActivePage).toBe(true);
   }, 10000);
 
   it('goes to movie description page correctly', async () => {
