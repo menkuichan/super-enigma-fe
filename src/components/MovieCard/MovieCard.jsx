@@ -19,7 +19,7 @@ import {
 const MovieCard = ({
   title, vote_average, vote_count, poster_path, id,
 }) => (
-  <CardContainer>
+  <CardContainer data-testid="movieCard">
     <Inner>
       <Link to={`/movies/${id}`}>
         <PosterContainer>

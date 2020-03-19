@@ -55,7 +55,7 @@ const MovieDescription = () => {
       >
         <TransitionBox>
           {movie.id && !isLoading && (
-            <MovieInfo>
+            <MovieInfo data-testid="movieInfo">
               <PosterContainer>
                 {movie.poster_path
                   ? <Poster src={`${POSTER_BASE_URL}${movie.poster_path}`} />
@@ -86,7 +86,11 @@ const MovieDescription = () => {
                   {similarMovies
                     .slice(0, 3)
                     .map((similarMovie) => (
-                      <Link key={similarMovie.id} to={`/movies/${similarMovie.id}`}>
+                      <Link
+                        data-testid="similarMovie"
+                        key={similarMovie.id}
+                        to={`/movies/${similarMovie.id}`}
+                      >
                         <SimilarPosterContainer>
                           {similarMovie.poster_path
                             ? <SimilarPoster src={`${SIMILAR_POSTER_BASE_URL}${similarMovie.poster_path}`} />

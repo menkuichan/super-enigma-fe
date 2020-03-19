@@ -109,7 +109,7 @@ const MoviesView = () => {
           )}
           {!movies.length && !isLoading && (
             <NoResultsContainer>
-              <NoResults>No results</NoResults>
+              <NoResults data-testid="noResults">No results</NoResults>
             </NoResultsContainer>
           )}
         </TransitionBox>

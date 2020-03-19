@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const TransitionBox = styled.div`
   position: relative;
+  width: 100%;
 
   &.page-enter {
     opacity: 0;

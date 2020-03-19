@@ -26,6 +26,7 @@ export default {
   },
   pagination: {
     page: '#FFFFFF',
+    background: 'rgba(221, 221, 221, 0.4)',
   },
   button: {
     primary: '#000000',

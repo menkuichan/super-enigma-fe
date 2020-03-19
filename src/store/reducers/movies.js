@@ -1,4 +1,4 @@
-import { normalizeData } from '../../utils/index';
+import { normalizeData, getIds } from '../../utils/index';
 import {
   GET_MOVIES_PENDING,
   GET_MOVIES_SUCCESS,
@@ -10,6 +10,7 @@ import {
 
 const defaultState = {
   byId: {},
+  ids: [],
   page: 1,
   totalPages: 1,
   isLoading: false,
@@ -28,6 +29,7 @@ export const movies = (state = defaultState, { type, payload }) => {
         ...state,
         totalPages: payload.totalPages,
         byId: normalizeData(payload.movies),
+        ids: getIds(payload.movies),
         isLoading: false,
       };
     case GET_MOVIES_ERROR:
@@ -38,10 +40,10 @@ export const movies = (state = defaultState, { type, payload }) => {
         ...state,
         totalPages: payload.totalPages,
         byId: {
-          ...state.byId,
           ...normalizeData(payload.movies),
           [payload.movie.id]: payload.movie,
         },
+        ids: getIds(payload.movies),
         isLoading: false,
       };
     default:
@@ -49,17 +51,13 @@ export const movies = (state = defaultState, { type, payload }) => {
   }
 };
 
-export const selectMovies = (store) => (
-  Object
-    .keys(store.movies.byId)
-    .map((key) => store.movies.byId[key])
-);
+export const selectMovies = (store) => store.movies.ids
+  .map((id) => store.movies.byId[id]);
 export const selectTotalPages = (store) => store.movies.totalPages;
 export const selectMovieById = (store, id) => store.movies.byId[id];
 export const selectSimilarMovies = (store, currentMovieId) => (
-  Object
-    .keys(store.movies.byId)
-    .map((key) => store.movies.byId[key])
+  store.movies.ids
+    .map((id) => store.movies.byId[id])
     .filter((movie) => movie.id !== +currentMovieId)
 );
 export const selectLoading = (store) => store.movies.isLoading;

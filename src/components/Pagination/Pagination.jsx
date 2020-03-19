@@ -63,8 +63,8 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : ''}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}
@@ -76,8 +76,8 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : ''}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}
@@ -89,14 +89,19 @@ const Pagination = ({ totalPages, page, handleClick }) => {
         .map((pageNumber, index) => (
           <PageNumber
             onClick={() => handleClick(pageNumber)}
-            className={`p${pageNumber}`}
-            page={page}
+            data-testid={pageNumber === page ? 'active' : ''}
+            active={pageNumber === page}
             key={index} // eslint-disable-line
           >
             {pageNumber}
           </PageNumber>
         ))}
-      <PageNumber onClick={() => handleClick(page + 1)}>{'>'}</PageNumber>
+      <PageNumber
+        data-testid="nextPage"
+        onClick={() => handleClick(page + 1)}
+      >
+        {'>'}
+      </PageNumber>
       <PageNumber onClick={() => handleClick(totalPages)}>{'>>'}</PageNumber>
     </PaginationContainer>
   );
