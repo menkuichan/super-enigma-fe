@@ -9,11 +9,17 @@ export const CardContainer = styled.div`
 `;
 
 export const PosterContainer = styled.div`
+  display: block;
+  position: relative;
+  padding-bottom: 150%;
 `;
 
 export const Poster = styled.img`
-  vertical-align: middle;
-  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   border-radius: ${({ theme }) => theme.movies.borderRadius};
   transition: box-shadow 0.2s ease-in-out;
 `;
