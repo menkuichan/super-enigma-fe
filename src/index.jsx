@@ -11,6 +11,7 @@ import GlobalStyles from './components/GlobalStyles';
 import MoviesView from './pages/MoviesView';
 import store from './store';
 import theme from './theme';
+import './i18n';
 
 const history = createBrowserHistory();
 
