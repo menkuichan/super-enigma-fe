@@ -42,7 +42,7 @@ describe('MoviesView page', () => {
     await nextPage.tap();
     await page.waitForSelector(activePageSelector);
     const secondActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
-    expect(secondActivePage).toBeGreaterThan(firstActivePage);
+    expect(+secondActivePage).toBeGreaterThan(+firstActivePage);
   }, 10000);
 
   it('goes to movie description page correctly', async () => {
