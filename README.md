@@ -12,7 +12,10 @@ Download Node.js not lower than version 8.10 and [Yarn](https://yarnpkg.com/). A
 
 ### Clone
 
-Clone this repo to your local machine using `https://github.com/IlonaMenkui/super-enigma-fe.git`.
+Clone this repo to your local machine using:
+```
+git clone https://github.com/menkuichan/super-enigma-fe.git
+```
 
 ## Installation
 
@@ -38,13 +41,13 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 
 Runs the Storybook for developing UI components in isolation for React.
 
-### `yarn test test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.
 
 ## Run Docker container with application
 
-First, make sure that [super-enigma-service](https://github.com/IlonaMenkui/super-enigma-service#run-docker-container-with-project-and-mongodb) is running.
+First, make sure that [super-enigma-service](https://github.com/IlonaMenkui/super-enigma-service#run-docker-container-with-project-and-mongodb) and MongoDB are running.
 Then you need to build a docker image. Use:
 ```
 docker build -t imageURI:image-version work-directory
