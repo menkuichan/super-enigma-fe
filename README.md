@@ -42,6 +42,54 @@ Runs the Storybook for developing UI components in isolation for React.
 
 Launches the test runner in the interactive watch mode.
 
+## Run Docker container with application
+
+First, make sure that [super-enigma-service](https://github.com/IlonaMenkui/super-enigma-service#run-docker-container-with-project-and-mongodb) is running.
+Then you need to build a docker image. Use:
+```
+docker build -t imageURI:image-version work-directory
+```
+... where ```imageURI``` is the image URI, ```image-version``` is the image version and ```work-directory``` is the work directory.
+
+or just run ...
+```
+make build-image
+```
+
+In the end, run the docker container with application.
+```
+docker run -P -d --rm --env TMDB_API_KEY=YOURSECRETAPIKEY --name service-name --link db-name:db image-uri:image-version
+ docker run -it -p service-name:80 -d --rm --name service-name imageURI:image-version
+```
+... where ```service-name``` is the service name and so on.
+
+... or run the following command:
+
+```
+make run-service
+```
+
+## Stop Docker container with application
+
+To stop application use:
+```
+docker stop service-name
+```
+... or:
+```
+make stop-service
+```
+
+## Available commands in the Makefile
+
+`build-image` - build an image from a Dockerfile with the service.
+
+`run-service` - run a docker container with the service.
+
+`stop-service` - stop running container with the service.
+
+`image-publish` - push an image with the service to a registry.
+
 ## Built With
 
 * [ReactJS](https://reactjs.org/) - A JavaScript library for building user interfaces
