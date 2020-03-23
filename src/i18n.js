@@ -3,23 +3,26 @@ import { initReactI18next } from 'react-i18next';
 
 const resources = {
   en: {
-    header: {
-      labels: {
-        popular: 'Popular',
-        upcoming: 'Upcoming',
-        mostrated: 'Most rated',
-        mostVoted: 'Most voted',
+    translation: {
+      header: {
+        labels: {
+          popular: 'Popular',
+          upcoming: 'Upcoming',
+          mostRated: 'Most rated',
+          mostVoted: 'Most voted',
+        },
       },
     },
   },
   ru: {
-    header: {
-
-      labels: {
-        popular: 'Популярные',
-        Upcoming: 'Ожидаемые',
-        mostRated: 'Cамые рейтинговые',
-        mostVoted: 'Наиболее оцененные',
+    translation: {
+      header: {
+        labels: {
+          popular: 'Популярные',
+          upcoming: 'Ожидаемые',
+          mostRated: 'Cамые рейтинговые',
+          mostVoted: 'Наиболее оцененные',
+        },
       },
     },
   },
@@ -31,7 +34,7 @@ i18n
     resources,
     lng: 'en',
 
-    keySeparator: false,
+    keySeparator: '.',
 
     interpolation: {
       escapeValue: false,

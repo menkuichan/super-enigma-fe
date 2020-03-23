@@ -17,7 +17,7 @@ export const NAV_LINKS = [
   {
     title: 'Most voted',
     filter: 'vote_count.desc',
-    value: 'nowPlaying',
+    value: 'mostVoted',
   },
 ];
 export const SORT_FILTERS = [
