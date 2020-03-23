@@ -17,29 +17,7 @@ export const NAV_LINKS = [
   {
     title: 'Most voted',
     filter: 'vote_count.desc',
-    value: 'nowPlaying',
-  },
-];
-export const SORT_FILTERS = [
-  {
-    title: 'Popularity',
-    value: 'popularity',
-  },
-  {
-    title: 'Release date',
-    value: 'release_date',
-  },
-  {
-    title: 'Original title',
-    value: 'original_title',
-  },
-  {
-    title: 'Vote average',
-    value: 'vote_average',
-  },
-  {
-    title: 'Vote count',
-    value: 'vote_count',
+    value: 'mostVoted',
   },
 ];
 const PORT = 3000;
@@ -60,3 +38,4 @@ export const FIRST_PAGES_COUNT = 3;
 export const LAST_PAGES_COUNT = 3;
 export const ACTUAL_PAGES_COUNT = 3;
 export const ENTER_KEY = 13;
+export const LANGUAGES = ['ru', 'en'];
