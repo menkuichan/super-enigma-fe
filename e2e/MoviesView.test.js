@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
+import { MoviesView } from './pages/MoviesView';
+
 const puppeteer = require('puppeteer');
-const regeneratorRuntime = require('@babel/runtime/regenerator');
 
 let browser;
 let page;
+let moviesViewPage;
 
 beforeAll(async () => {
   browser = await puppeteer.launch({
@@ -11,6 +13,7 @@ beforeAll(async () => {
     slowMo: 0,
   });
   page = await browser.newPage();
+  moviesViewPage = new MoviesView(page);
 });
 
 describe('MoviesView page', () => {
@@ -55,6 +58,26 @@ describe('MoviesView page', () => {
     const currentUrl = page.url();
     expect(/http:\/\/localhost:8888\/movies\/\d+$/.test(currentUrl)).toBeTruthy();
     expect(movieInfo).toBeTruthy();
+  }, 10000);
+
+  it('searches correctly with the correct search value', async () => {
+    await moviesViewPage.goTo();
+    await moviesViewPage.search('world');
+    const searchItems = await moviesViewPage.getSearchItems();
+    expect(searchItems.length).toBeGreaterThanOrEqual(1);
+    await moviesViewPage.enterPress();
+    const movieCard = await moviesViewPage.getMovieCard();
+    expect(movieCard.length).toBeGreaterThanOrEqual(1);
+  }, 10000);
+
+  it('searches correctly with invalid search value', async () => {
+    await moviesViewPage.goTo();
+    await moviesViewPage.search('vjmklolnjbvgfch');
+    const searchItem = await moviesViewPage.getSearchItem();
+    expect(searchItem).toBeNull();
+    await moviesViewPage.enterPress();
+    const noResults = await moviesViewPage.getNoResults();
+    expect(noResults).toBeTruthy();
   }, 10000);
 });
 

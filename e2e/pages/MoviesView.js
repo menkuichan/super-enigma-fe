@@ -1,6 +1,6 @@
 const regeneratorRuntime = require('@babel/runtime/regenerator');
 
-export class Search {
+export class MoviesView {
   constructor(page) {
     this.page = page;
     this.moviesURL = 'http://localhost:8888/movies';
@@ -10,6 +10,10 @@ export class Search {
       noResultsSelector: '[data-testid="noResults"]',
       searchInputSelector: '[data-testid="searchInput"]',
     };
+  }
+
+  async goTo() {
+    await this.page.goto(this.moviesURL);
   }
 
   async getSearchItems() {
@@ -40,7 +44,6 @@ export class Search {
   }
 
   async search(value) {
-    await this.page.goto(this.moviesURL);
     await this.page.waitForSelector(this.selectors.searchInputSelector);
     const searchInput = await this.page.$(this.selectors.searchInputSelector);
     await searchInput.tap();
