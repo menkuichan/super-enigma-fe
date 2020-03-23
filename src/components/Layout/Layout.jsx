@@ -9,10 +9,8 @@ import { Nav, NavLink } from '../Nav';
 import { Translation, TranslationLink } from '../Translation';
 import Filter from '../Filter';
 import Search from '../Search';
-import { NAV_LINKS } from '../../constants';
+import { NAV_LINKS, LANGUAGES } from '../../constants';
 import { Container, NavContainer } from './styles';
-
-const languages = ['ru', 'en'];
 
 const Layout = ({ children }) => {
   const history = useHistory();
@@ -47,7 +45,7 @@ const Layout = ({ children }) => {
           </Nav>
           <Filter />
           <Translation>
-            {languages.map((language, index) => (
+            {LANGUAGES.map((language, index) => (
               <TranslationLink
                 onClickLink={handleTranslation}
                 language={language}
