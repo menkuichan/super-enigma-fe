@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { selectSearchMovies } from '../../store/reducers/search';
 import List from './List';
 import useDebounce from '../../hooks/useDebounce';
@@ -22,6 +23,8 @@ const Search = () => {
   const movies = useSelector(selectSearchMovies);
   const debouncedValue = useDebounce(value, 200);
   const wrapperRef = useRef(null);
+  const { t } = useTranslation();
+
   useOutsideClick(wrapperRef, () => {
     if (value) {
       dispatch({
@@ -70,7 +73,7 @@ const Search = () => {
       <InputContainer>
         <SearchInput
           data-testid="searchInput"
-          placeholder="Search films..."
+          placeholder={t('search.placeholder')}
           onChange={handleChange}
           onKeyPress={searchMovies}
           value={value}

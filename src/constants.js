@@ -20,28 +20,6 @@ export const NAV_LINKS = [
     value: 'mostVoted',
   },
 ];
-export const SORT_FILTERS = [
-  {
-    title: 'Popularity',
-    value: 'popularity',
-  },
-  {
-    title: 'Release date',
-    value: 'release_date',
-  },
-  {
-    title: 'Original title',
-    value: 'original_title',
-  },
-  {
-    title: 'Vote average',
-    value: 'vote_average',
-  },
-  {
-    title: 'Vote count',
-    value: 'vote_count',
-  },
-];
 const PORT = 3000;
 export const API_URL = `http://localhost:${PORT}`;
 export const SEARCH_PARAMS = {
