@@ -9,11 +9,51 @@ export class MoviesView {
       searchItemSelector: '[data-testid="searchItem"]',
       noResultsSelector: '[data-testid="noResults"]',
       searchInputSelector: '[data-testid="searchInput"]',
+      activePageSelector: '[data-testid="active"]',
+      nextPageSelector: '[data-testid="nextPage"]',
+      movieInfoSelector: '[data-testid="movieInfo"]',
     };
+    this.moviesErrors = [];
   }
 
   async goTo() {
     await this.page.goto(this.moviesURL);
+  }
+
+  async goToNextPage() {
+    await this.page.waitForSelector(this.selectors.nextPageSelector);
+    const nextPage = await this.page.$(this.selectors.nextPageSelector);
+    await nextPage.tap();
+  }
+
+  async goToMovieCard() {
+    await this.page.waitForSelector(this.selectors.movieCardSelector);
+    const movieCard = await this.page.$(this.selectors.movieCardSelector);
+    await movieCard.tap();
+  }
+
+  async getUrl() {
+    return this.page.url();
+  }
+
+  async getErrors() {
+    await this.page.on('pageerror', (error) => this.moviesErrors.push(error.text));
+    return this.moviesErrors;
+  }
+
+  async getMovieInfo() {
+    await this.page.waitForSelector(this.selectors.movieInfoSelector);
+    const movieInfo = await this.page.$(this.selectors.movieInfoSelector);
+    return movieInfo;
+  }
+
+  async getActivePage() {
+    await this.page.waitForSelector(this.selectors.activePageSelector);
+    const activePage = await this.page.$eval(
+      this.selectors.activePageSelector,
+      (el) => +el.textContent,
+    );
+    return activePage;
   }
 
   async getSearchItems() {

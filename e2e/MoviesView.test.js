@@ -17,45 +17,30 @@ beforeAll(async () => {
 });
 
 describe('MoviesView page', () => {
-  const moviesURL = 'http://localhost:8888/movies/';
-  const movieCardSelector = '[data-testid="movieCard"]';
-  const nextPageSelector = '[data-testid="nextPage"]';
-  const movieInfoSelector = '[data-testid="movieInfo"]';
-  const activePageSelector = '[data-testid="active"]';
-  const moviesErrors = [];
-
   it('loads correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector(movieCardSelector);
-    const movieCard = await page.$$(movieCardSelector);
+    await moviesViewPage.goTo();
+    const movieCard = await moviesViewPage.getMovieCard();
     expect(movieCard.length).toBeGreaterThanOrEqual(1);
   }, 10000);
 
-  it('does not have exceptions', () => {
-    page.on('pageerror', (error) => moviesErrors.push(error.text));
+  it('does not have exceptions', async () => {
+    const moviesErrors = await moviesViewPage.getErrors();
     expect(moviesErrors.length).toBe(0);
   });
 
   it('goes to next page correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector(nextPageSelector);
-    await page.waitForSelector(activePageSelector);
-    const firstActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
-    const nextPage = await page.$(nextPageSelector);
-    await nextPage.tap();
-    await page.waitForSelector(activePageSelector);
-    const secondActivePage = await page.$eval(activePageSelector, (el) => el.textContent);
-    expect(+secondActivePage).toBeGreaterThan(+firstActivePage);
+    await moviesViewPage.goTo();
+    const firstActivePage = await moviesViewPage.getActivePage();
+    await moviesViewPage.goToNextPage();
+    const secondActivePage = await moviesViewPage.getActivePage();
+    expect(secondActivePage).toBeGreaterThan(firstActivePage);
   }, 10000);
 
   it('goes to movie description page correctly', async () => {
-    await page.goto(moviesURL);
-    await page.waitForSelector(movieCardSelector);
-    const movieCard = await page.$(movieCardSelector);
-    await movieCard.tap();
-    await page.waitForSelector(movieInfoSelector);
-    const movieInfo = await page.$(movieInfoSelector);
-    const currentUrl = page.url();
+    await moviesViewPage.goTo();
+    await moviesViewPage.goToMovieCard();
+    const movieInfo = await moviesViewPage.getMovieInfo();
+    const currentUrl = await moviesViewPage.getUrl();
     expect(/http:\/\/localhost:8888\/movies\/\d+$/.test(currentUrl)).toBeTruthy();
     expect(movieInfo).toBeTruthy();
   }, 10000);
