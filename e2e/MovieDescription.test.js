@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
+import { MovieDescription } from './pages/MovieDescription';
+
 const puppeteer = require('puppeteer');
-const regeneratorRuntime = require('@babel/runtime/regenerator');
 
 let browser;
 let page;
+let movieDescription;
 
 beforeAll(async () => {
   browser = await puppeteer.launch({
@@ -11,34 +13,27 @@ beforeAll(async () => {
     slowMo: 0,
   });
   page = await browser.newPage();
+  movieDescription = new MovieDescription(page);
 });
 
 describe('MovieDescription page', () => {
-  const movieURL = 'http://localhost:8888/movies/2';
-  const similarMovieSelector = '[data-testid="similarMovie"]';
-  const movieInfoSelector = '[data-testid="movieInfo"]';
-  const movieErrors = [];
-
   it('loads correctly', async () => {
-    await page.goto(movieURL);
-    await page.waitForSelector(movieInfoSelector);
-    const movieInfo = await page.$(movieInfoSelector);
+    await movieDescription.goTo();
+    const movieInfo = await movieDescription.getMovieInfo();
     expect(movieInfo).toBeTruthy();
   }, 10000);
 
-  it('does not have exceptions', () => {
-    page.on('pageerror', (error) => movieErrors.push(error.text));
-    expect(movieErrors.length).toBe(0);
-  }, 10000);
+  it('does not have exceptions', async () => {
+    const moviesErrors = await movieDescription.getErrors();
+    expect(moviesErrors.length).toBe(0);
+  });
 
   it('goes to similar movie correctly', async () => {
-    await page.goto(movieURL);
-    const similarMovie = await page.$(similarMovieSelector);
+    await movieDescription.goTo();
+    const similarMovie = await movieDescription.getSimilarMovie();
     if (!similarMovie) return;
-    await page.waitForSelector(similarMovieSelector);
     await similarMovie.tap();
-    await page.waitForSelector(movieInfoSelector);
-    const movieInfo = await page.$(movieInfoSelector);
+    const movieInfo = await movieDescription.getMovieInfo();
     expect(movieInfo).toBeTruthy();
   }, 10000);
 });
