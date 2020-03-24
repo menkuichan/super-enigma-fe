@@ -19,8 +19,8 @@ beforeAll(async () => {
 describe('MoviesView page', () => {
   it('loads correctly', async () => {
     await moviesViewPage.goTo();
-    const movieCard = await moviesViewPage.getMovieCard();
-    expect(movieCard.length).toBeGreaterThanOrEqual(1);
+    const movieCards = await moviesViewPage.getMovieCards();
+    expect(movieCards.length).toBeGreaterThanOrEqual(1);
   }, 10000);
 
   it('does not have exceptions', async () => {
@@ -51,7 +51,7 @@ describe('MoviesView page', () => {
     const searchItems = await moviesViewPage.getSearchItems();
     expect(searchItems.length).toBeGreaterThanOrEqual(1);
     await moviesViewPage.enterPress();
-    const movieCard = await moviesViewPage.getMovieCard();
+    const movieCard = await moviesViewPage.getMovieCards();
     expect(movieCard.length).toBeGreaterThanOrEqual(1);
   }, 10000);
 

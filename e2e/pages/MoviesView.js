@@ -67,7 +67,7 @@ export class MoviesView {
     return searchItem;
   }
 
-  async getMovieCard() {
+  async getMovieCards() {
     await this.page.waitForSelector(this.selectors.movieCardSelector);
     const movieCard = await this.page.$$(this.selectors.movieCardSelector);
     return movieCard;
